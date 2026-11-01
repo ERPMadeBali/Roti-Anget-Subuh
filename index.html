@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="id">
+
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>BAKERY POS | Luxury Edition</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link
+         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+         rel="stylesheet">
+      <style>
+         :root {
+            --bg: #f5f1e9;
+            --paper: #fffdf9;
+            --ink: #29251f;
+            --muted: #918879;
+            --gold: #b58a4a;
+            --gold2: #e3c58f;
+            --line: #e9e1d5;
+            --dark: #28231d;
+            --green: #55765b;
+            --red: #b64e43;
+            --shadow: 0 18px 55px #382b1712
+         }
+
+         * {
+            box-sizing: border-box
+         }
+
+         body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif
+         }
+
+         button,
+         input,
+         select {
+            font: inherit
+         }
+
+         button {
+            cursor: pointer
+         }
+
+         .hidden {
+            display: none !important
+         }
+
+         .login-wrap {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            background: var(--dark)
+         }
+
+         .login-art {
+            padding: 8vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+            background: linear-gradient(135deg, #211c17d9, #211c17a8), url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1400&q=85') center/cover
+         }
+
+         .brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            letter-spacing: 2px
+         }
+
+         .brand small {
+            display: block;
+            font: 10px 'DM Sans';
+            letter-spacing: 5px;
+            color: var(--gold2);
+            margin-top: 5px
+         }
+
+         .login-art h1 {
+            font: clamp(42px, 5vw, 72px)/1.08 'Playfair Display';
+            max-width: 560px;
+            margin: 0
+         }
+
+         .login-art p {
+            color: #e5d9c7;
+            max-width: 390px;
+            line-height: 1.8
+         }
+
+         .login-panel {
+            background: var(--paper);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 35px
+         }
+
+         .login-box {
+            width: min(420px, 100%)
+         }
+
+         .eyebrow {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            font-weight: 700;
+            text-transform: uppercase
+         }
+
+         .login-box h2 {
+            font: 40px 'Playfair Display';
+            margin: 12px 0 8px
+         }
+
+         .muted {
+            color: var(--muted)
+         }
+
+         .field {
+            margin: 17px 0
+         }
+
+         .field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #61594e
+         }
+
+         .field input,
+         .field select {
+            width: 100%;
+            border: 1px solid var(--line);
+            background: #fff;
+            padding: 13px 14px;
+            border-radius: 10px;
+            outline: none;
+            color: var(--ink)
+         }
+
+         .field input:focus,
+         .field select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px #b58a4a18
+         }
+
+         .btn {
+            border: 0;
+            border-radius: 10px;
+            padding: 13px 18px;
+            font-weight: 700;
+            transition: .2s
+         }
+
+         .btn-primary {
+            background: var(--dark);
+            color: #fff
+         }
+
+         .btn-primary:hover {
+            background: #493a29;
+            transform: translateY(-1px)
+         }
+
+         .btn-gold {
+            background: var(--gold);
+            color: white
+         }
+
+         .btn-light {
+            background: #f2ece2;
+            color: #514638
+         }
+
+         .btn-danger {
+            background: #f9e9e6;
+            color: var(--red)
+         }
+
+         .btn-block {
+            width: 100%
+         }
+
+         .app {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 250px 1fr
+         }
+
+         .sidebar {
+            background: var(--dark);
+            color: #eee5d8;
+            padding: 28px 18px;
+            display: flex;
+            flex-direction: column
+         }
+
+         .sidebar .brand {
+            padding: 0 12px 30px
+         }
+
+         .nav-label {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: #8d8274;
+            padding: 14px 12px 8px
+         }
+
+         .nav button {
+            width: 100%;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 13px 12px;
+            border: 0;
+            border-radius: 9px;
+            background: transparent;
+            color: #cfc5b8;
+            text-align: left;
+            margin: 3px 0
+         }
+
+         .nav button.active,
+         .nav button:hover {
+            background: #ffffff13;
+            color: #fff
+         }
+
+         .nav .ico {
+            width: 20px;
+            text-align: center;
+            color: var(--gold2)
+         }
+
+         .sidebar-foot {
+            margin-top: auto;
+            border-top: 1px solid #ffffff1c;
+            padding: 18px 12px;
+            color: #b7ab9b;
+            font-size: 11px
+         }
+
+         .main {
+            min-width: 0;
+            padding: 28px clamp(18px, 3vw, 44px)
+         }
+
+         .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 28px
+         }
+
+         .topbar h1 {
+            font: 30px 'Playfair Display';
+            margin: 0
+         }
+
+         .topbar p {
+            margin: 5px 0 0;
+            color: var(--muted);
+            font-size: 12px
+         }
+
+         .user-chip {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 30px;
+            padding: 8px 13px;
+            font-size: 12px
+         }
+
+         .page {
+            display: none
+         }
+
+         .page.active {
+            display: block
+         }
+
+         .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 10px 0 20px
+         }
+
+         .section-head h2 {
+            font: 25px 'Playfair Display';
+            margin: 0
+         }
+
+         .section-head p {
+            margin: 5px 0;
+            color: var(--muted);
+            font-size: 12px
+         }
+
+         .cards {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 15px;
+            margin-bottom: 24px
+         }
+
+         .stat {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 15px;
+            padding: 19px;
+            box-shadow: var(--shadow)
+         }
+
+         .stat span {
+            font-size: 11px;
+            color: var(--muted)
+         }
+
+         .stat strong {
+            display: block;
+            font: 26px 'Playfair Display';
+            margin: 10px 0 4px
+         }
+
+         .stat small {
+            font-size: 10px;
+            color: var(--green)
+         }
+
+         .panel {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 15px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+            margin-bottom: 18px
+         }
+
+         .panel h3 {
+            font: 20px 'Playfair Display';
+            margin: 0 0 17px
+         }
+
+         .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 18px
+         }
+
+         .span-2 {
+            grid-column: span 2
+         }
+
+         .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px
+         }
+
+         table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px
+         }
+
+         th {
+            text-align: left;
+            color: var(--muted);
+            font-weight: 600;
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--line)
+         }
+
+         td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #f0ebe3
+         }
+
+         tr:last-child td {
+            border-bottom: 0
+         }
+
+         .table-wrap {
+            overflow: auto
+         }
+
+         .thumb {
+            width: 42px;
+            height: 42px;
+            border-radius: 9px;
+            object-fit: cover;
+            background: #eee
+         }
+
+         .tag {
+            display: inline-block;
+            border-radius: 30px;
+            padding: 5px 9px;
+            background: #edf3ed;
+            color: var(--green);
+            font-size: 10px
+         }
+
+         .pos-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(300px, .85fr);
+            gap: 18px
+         }
+
+         .product-preview {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: #f8f4ed;
+            border-radius: 12px;
+            padding: 12px;
+            margin: 10px 0
+         }
+
+         .product-preview img {
+            width: 82px;
+            height: 82px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #eee
+         }
+
+         .product-preview strong {
+            display: block;
+            font: 18px 'Playfair Display'
+         }
+
+         .price {
+            color: var(--gold);
+            font-weight: 700;
+            margin-top: 5px
+         }
+
+         .total-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 9px 0;
+            font-size: 13px
+         }
+
+         .total-line.grand {
+            border-top: 1px solid var(--line);
+            margin-top: 8px;
+            padding-top: 17px;
+            font-weight: 700;
+            font-size: 17px
+         }
+
+         .qr-area {
+            text-align: center;
+            padding: 20px;
+            border: 1px dashed var(--gold2);
+            border-radius: 12px;
+            background: #fffaf1
+         }
+
+         .qr-area img {
+            width: 190px;
+            height: 190px;
+            object-fit: contain;
+            background: white;
+            padding: 8px;
+            border-radius: 8px
+         }
+
+         .qr-placeholder {
+            width: 190px;
+            height: 190px;
+            margin: auto;
+            display: grid;
+            place-items: center;
+            background: #f2ece2;
+            color: #88775e;
+            border-radius: 8px;
+            font-size: 12px;
+            padding: 20px
+         }
+
+         .notice {
+            padding: 12px 14px;
+            background: #fff5df;
+            border: 1px solid #f0dfb8;
+            color: #80612b;
+            border-radius: 10px;
+            font-size: 11px;
+            line-height: 1.6;
+            margin: 12px 0
+         }
+
+         .success {
+            color: var(--green)
+         }
+
+         .danger {
+            color: var(--red)
+         }
+
+         .empty {
+            text-align: center;
+            color: var(--muted);
+            padding: 25px
+         }
+
+         .mobile-menu {
+            display: none
+         }
+
+         @media(max-width:950px) {
+            .cards {
+               grid-template-columns: repeat(2, 1fr)
+            }
+
+            .app {
+               grid-template-columns: 205px 1fr
+            }
+
+            .pos-grid {
+               grid-template-columns: 1fr
+            }
+         }
+
+         @media(max-width:680px) {
+            .login-wrap {
+               grid-template-columns: 1fr
+            }
+
+            .login-art {
+               display: none
+            }
+
+            .app {
+               display: block
+            }
+
+            .sidebar {
+               position: fixed;
+               z-index: 5;
+               left: -260px;
+               top: 0;
+               bottom: 0;
+               width: 245px;
+               transition: .25s
+            }
+
+            .sidebar.open {
+               left: 0
+            }
+
+            .main {
+               padding: 20px 14px
+            }
+
+            .mobile-menu {
+               display: inline-block
+            }
+
+            .topbar h1 {
+               font-size: 25px
+            }
+
+            .cards {
+               gap: 9px
+            }
+
+            .stat {
+               padding: 14px
+            }
+
+            .stat strong {
+               font-size: 21px
+            }
+
+            .form-grid {
+               grid-template-columns: 1fr
+            }
+
+            .span-2 {
+               grid-column: auto
+            }
+
+            .panel {
+               padding: 16px
+            }
+
+            .user-chip {
+               font-size: 10px
+            }
+         }
+      </style>
+   </head>
+
+   <body>
+      <section id="loginScreen" class="login-wrap">
+         <div class="login-art">
+            <div class="brand">MAISON <span style="color:var(--gold2)">BOULANGERIE</span><small>ARTISAN BAKERY • POINT
+                  OF SALE</small></div>
+            <div>
+               <h1>Freshly baked.<br>Beautifully served.</h1>
+               <p>Kelola produk, persediaan, dan transaksi penjualan roti dalam satu sistem kasir yang elegan.</p>
+            </div><small style="color:#c9b99f;letter-spacing:2px">BAKERY POS • LUXURY EDITION</small>
+         </div>
+         <div class="login-panel">
+            <div class="login-box">
+               <div class="eyebrow">Secure workspace</div>
+               <h2>Welcome back.</h2>
+               <p class="muted">Masuk untuk membuka dashboard kasir Anda.</p>
+               <form id="loginForm">
+                  <div class="field"><label>Email</label><input id="loginEmail" type="email"
+                        placeholder="nama@email.com" required></div>
+                  <div class="field"><label>Password</label><input id="loginPassword" type="password"
+                        placeholder="Masukkan password" required></div><button class="btn btn-primary btn-block"
+                     type="submit">LOGIN TO DASHBOARD →</button>
+               </form>
+               <p id="loginMessage" class="muted" style="font-size:11px;margin-top:15px"></p>
+               <div class="notice">Akun login dibuat dan dikelola melalui Firebase Authentication (Email/Password).
+                  Jangan menaruh password di dalam kode HTML.</div>
+            </div>
+         </div>
+      </section>
+      <div id="appScreen" class="app hidden">
+         <aside id="sidebar" class="sidebar">
+            <div class="brand">MAISON <span style="color:var(--gold2)">BAKERY</span><small>POINT OF SALE</small></div>
+            <div class="nav-label">MAIN MENU</div>
+            <nav class="nav">
+               <button class="active" data-page="dashboard"><span class="ico">▦</span> Dashboard</button>
+               <button data-page="products"><span class="ico">◇</span> Input Data</button>
+               <button data-page="stock"><span class="ico">▤</span> Input Stock</button>
+               <button data-page="pos"><span class="ico">▣</span> Menu Kasir</button>
+               <button data-page="history"><span class="ico">◷</span> Riwayat Transaksi</button>
+            </nav>
+            <div class="sidebar-foot">Connected to Firebase<br><span id="connectionState">Menunggu
+                  koneksi…</span><br><br><button id="logoutBtn" class="btn btn-light btn-block">Keluar / Logout</button>
+            </div>
+         </aside>
+         <main class="main">
+            <header class="topbar">
+               <div><button class="btn btn-light mobile-menu" id="menuToggle">☰</button> <span class="eyebrow">BAKERY
+                     MANAGEMENT</span>
+                  <h1 id="pageTitle">Dashboard</h1>
+                  <p id="todayText">Ringkasan operasional toko</p>
+               </div>
+               <div class="user-chip" id="userEmail">Kasir</div>
+            </header>
+            <section id="dashboard" class="page active">
+               <div class="cards">
+                  <div class="stat"><span>Penjualan Hari Ini</span><strong id="statSales">Rp 0</strong><small>Transaksi
+                        berhasil</small></div>
+                  <div class="stat"><span>Jumlah Transaksi</span><strong id="statOrders">0</strong><small>Hari
+                        ini</small></div>
+                  <div class="stat"><span>Produk Terdaftar</span><strong id="statProducts">0</strong><small>Master
+                        produk</small></div>
+                  <div class="stat"><span>Total Stok</span><strong id="statStock">0 pcs</strong><small>Persediaan saat
+                        ini</small></div>
+               </div>
+               <div class="panel">
+                  <h3>Transaksi Terbaru</h3>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Waktu</th>
+                              <th>No. Transaksi</th>
+                              <th>Pembayaran</th>
+                              <th>Total</th>
+                           </tr>
+                        </thead>
+                        <tbody id="recentTable">
+                           <tr>
+                              <td colspan="4" class="empty">Belum ada transaksi</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </section>
+            <section id="products" class="page">
+               <div class="section-head">
+                  <div>
+                     <h2>Master Produk</h2>
+                     <p>Daftarkan katalog roti dan harga jual.</p>
+                  </div>
+               </div>
+               <div class="panel">
+                  <h3>Tambah / Perbarui Produk</h3>
+                  <form id="productForm">
+                     <div class="form-grid">
+                        <div class="field"><label>Kode Item (otomatis)</label><input id="productCode" readonly
+                              placeholder="RAS001"></div>
+                        <div class="field"><label>Nama Roti</label><input id="productName" required
+                              placeholder="Contoh: Roti Sobek Cokelat"></div>
+                        <div class="field"><label>Harga Jual (Rp)</label><input id="productPrice" type="number" min="1"
+                              required placeholder="15000"></div>
+                        <div class="field"><label>Foto Produk</label><input id="productImage" type="file"
+                              accept="image/*"></div>
+                     </div>
+                     <div class="actions"><button class="btn btn-primary" type="submit">Simpan Produk</button><button
+                           class="btn btn-light" type="reset" id="resetProduct">Reset</button></div>
+                  </form>
+                  <p id="productMessage" class="muted" style="font-size:11px"></p>
+               </div>
+               <div class="panel">
+                  <h3>Daftar Produk</h3>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Foto</th>
+                              <th>Kode</th>
+                              <th>Nama Roti</th>
+                              <th>Harga</th>
+                              <th>Aksi</th>
+                           </tr>
+                        </thead>
+                        <tbody id="productsTable">
+                           <tr>
+                              <td colspan="5" class="empty">Memuat produk…</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </section>
+            <section id="stock" class="page">
+               <div class="section-head">
+                  <div>
+                     <h2>Input Stock</h2>
+                     <p>Catat barang masuk berdasarkan tanggal penerimaan.</p>
+                  </div>
+               </div>
+               <div class="panel">
+                  <h3>Tambah Persediaan</h3>
+                  <form id="stockForm">
+                     <div class="form-grid">
+                        <div class="field"><label>Pilih Nama Roti</label><select id="stockProduct" required>
+                              <option value="">Pilih produk…</option>
+                           </select></div>
+                        <div class="field"><label>Qty Masuk (pcs)</label><input id="stockQty" type="number" min="1"
+                              step="1" required placeholder="0"></div>
+                        <div class="field"><label>Tanggal Input</label><input id="stockDate" type="date" required></div>
+                     </div><button class="btn btn-primary" type="submit">Simpan Stock</button>
+                  </form>
+                  <p id="stockMessage" class="muted" style="font-size:11px"></p>
+               </div>
+               <div class="panel">
+                  <h3>Posisi Stok</h3>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Kode</th>
+                              <th>Nama Roti</th>
+                              <th>Stok Tersedia</th>
+                           </tr>
+                        </thead>
+                        <tbody id="stockTable"></tbody>
+                     </table>
+                  </div>
+               </div>
+            </section>
+            <section id="pos" class="page">
+               <div class="section-head">
+                  <div>
+                     <h2>Point of Sale</h2>
+                     <p>Pilih produk, tentukan jumlah, lalu proses pembayaran.</p>
+                  </div>
+               </div>
+               <div class="pos-grid">
+                  <div class="panel">
+                     <h3>Pilih Produk</h3>
+                     <div class="field"><label>Ketik kode roti atau pilih nama</label><input id="posCode"
+                           list="productOptions" placeholder="Ketik RAS001 atau nama roti…"><datalist
+                           id="productOptions"></datalist></div>
+                     <div id="productPreview" class="product-preview">
+                        <div class="empty" style="width:100%">Pilih produk untuk melihat detail.</div>
+                     </div>
+                     <div class="form-grid">
+                        <div class="field"><label>Qty Pembelian (pcs)</label><input id="posQty" type="number" min="1"
+                              value="1"></div>
+                        <div class="field"><label>&nbsp;</label><button id="addCartBtn" class="btn btn-gold btn-block"
+                              type="button">+ Tambahkan ke Keranjang</button></div>
+                     </div>
+                     <h3 style="margin-top:25px">Keranjang</h3>
+                     <div class="table-wrap">
+                        <table>
+                           <thead>
+                              <tr>
+                                 <th>Produk</th>
+                                 <th>Qty</th>
+                                 <th>Subtotal</th>
+                                 <th></th>
+                              </tr>
+                           </thead>
+                           <tbody id="cartTable">
+                              <tr>
+                                 <td colspan="4" class="empty">Keranjang masih kosong</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="panel">
+                     <h3>Ringkasan Pembayaran</h3>
+                     <div class="total-line"><span>Subtotal</span><strong id="cartSubtotal">Rp 0</strong></div>
+                     <div class="total-line"><span>Diskon</span><strong>Rp 0</strong></div>
+                     <div class="total-line grand"><span>Total Tagihan</span><strong id="cartTotal">Rp 0</strong></div>
+                     <div class="field"><label>Metode Pembayaran</label><select id="paymentMethod">
+                           <option value="CASH">CASH</option>
+                           <option value="QRIS">NON CASH (QRIS)</option>
+                        </select></div>
+                     <div id="cashFields">
+                        <div class="field"><label>Uang Diterima (Rp)</label><input id="cashReceived" type="number"
+                              min="0" placeholder="Masukkan nominal"></div>
+                        <div class="total-line"><span>Kembalian</span><strong id="changeAmount">Rp 0</strong></div>
+                     </div>
+                     <div id="qrisFields" class="hidden">
+                        <div class="qr-area">
+                           <div id="qrisImageBox" class="qr-placeholder">Tambahkan URL gambar QRIS resmi di konfigurasi
+                              Firebase aplikasi.</div>
+                           <p style="font-size:10px;color:#76664f">ID Merchant: <b>ID1025383607252</b></p>
+                           <div class="total-line grand"><span>Nominal QRIS</span><strong id="qrisAmount">Rp 0</strong>
+                           </div>
+                        </div>
+                        <div class="notice">Gunakan QRIS resmi dari bank/acquirer Anda. Nominal yang tampil di sini
+                           adalah referensi tagihan; konfirmasi pembayaran tetap harus dilakukan melalui dashboard
+                           penyedia QRIS.</div>
+                     </div>
+                     <button id="checkoutBtn" class="btn btn-primary btn-block" style="margin-top:14px">PROSES
+                        TRANSAKSI</button><button id="clearCartBtn" class="btn btn-light btn-block"
+                        style="margin-top:8px">Kosongkan Keranjang</button>
+                     <p id="checkoutMessage" style="font-size:11px"></p>
+                  </div>
+               </div>
+            </section>
+            <section id="history" class="page">
+               <div class="section-head">
+                  <div>
+                     <h2>Riwayat Transaksi</h2>
+                     <p>Daftar transaksi yang tersimpan di Firestore.</p>
+                  </div>
+               </div>
+               <div class="panel">
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Tanggal</th>
+                              <th>No. Transaksi</th>
+                              <th>Item</th>
+                              <th>Metode</th>
+                              <th>Total</th>
+                           </tr>
+                        </thead>
+                        <tbody id="historyTable"></tbody>
+                     </table>
+                  </div>
+               </div>
+            </section>
+         </main>
+      </div>
+      <script type="module">
+         import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+         import {getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+         import {getFirestore, collection, doc, setDoc, addDoc, getDocs, getDoc, updateDoc, runTransaction, query, orderBy, limit, serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+         import {getStorage, ref, uploadBytes, getDownloadURL} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+         /* 1) GANTI konfigurasi di bawah dengan Firebase Console > Project settings > Your apps.
+            2) Aktifkan Authentication > Email/Password, Firestore Database, dan Storage.
+            3) Buat user kasir dari Authentication > Users. Jangan menyimpan password di file ini. */
+         const firebaseConfig = {
+            apiKey: "AIzaSyDhWWLBX2DqO3Z0JW5E0TlI-wCuqrq98Pg",
+            authDomain: "roti-anget-subuh.firebaseapp.com",
+            projectId: "roti-anget-subuh",
+            storageBucket: "roti-anget-subuh.firebasestorage.app",
+            messagingSenderId: "697822931254",
+            appId: "1:697822931254:web:365fbad4f1964b995a2b97",
+            measurementId: "G-QD1FTD2M91"
+         };
+         /* URL gambar QRIS statis resmi milik toko (opsional). Untuk QRIS dinamis, integrasikan API acquirer/payment gateway. */
+         const QRIS_IMAGE_URL = ""; // contoh: https://domain-anda.com/qris-resmi.png
+         const MERCHANT_QRIS_ID = "ID1025383607252";
+
+         const $ = id => document.getElementById(id);
+         const rupiah = n => new Intl.NumberFormat('id-ID', {style: 'currency', currency: 'IDR', maximumFractionDigits: 0}).format(Number(n) || 0);
+         const today = () => {const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`};
+         let app, auth, db, storage, currentUser = null, products = [], cart = [], transactions = [];
+         const configured = firebaseConfig.apiKey && !firebaseConfig.apiKey.startsWith("GANTI_");
+         if (configured) {try {app = initializeApp(firebaseConfig); auth = getAuth(app); db = getFirestore(app); storage = getStorage(app); $('connectionState').textContent = 'Firebase siap';} catch (e) {$('loginMessage').textContent = 'Konfigurasi Firebase tidak valid: ' + e.message;} }
+         else {$('loginMessage').textContent = 'Lengkapi firebaseConfig di dalam file sebelum login.';}
+         $('todayText').textContent = new Date().toLocaleDateString('id-ID', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+         $('stockDate').value = today();
+         if (QRIS_IMAGE_URL) {$('qrisImageBox').outerHTML = `<img id="qrisImageBox" src="${QRIS_IMAGE_URL}" alt="QRIS resmi toko">`;}
+         function message(id, text, kind = '') {const el = $(id); el.textContent = text; el.className = kind;}
+         function escapeHtml(s = '') {return String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));}
+         $('loginForm').addEventListener('submit', async e => {e.preventDefault(); if (!auth) {message('loginMessage', 'Konfigurasi Firebase belum diisi.', 'danger'); return;} try {message('loginMessage', 'Memverifikasi akun…'); await signInWithEmailAndPassword(auth, $('loginEmail').value.trim(), $('loginPassword').value);} catch (err) {message('loginMessage', friendlyError(err), 'danger');} });
+         function friendlyError(e) {const m = e.code || e.message || 'Terjadi kesalahan'; return m.includes('invalid-credential') || m.includes('wrong-password') ? 'Email atau password tidak sesuai.' : m.includes('user-not-found') ? 'Akun tidak ditemukan.' : m;}
+         if (auth) onAuthStateChanged(auth, async user => {currentUser = user; if (user) {$('loginScreen').classList.add('hidden'); $('appScreen').classList.remove('hidden'); $('userEmail').textContent = user.email || 'Kasir'; await loadAll();} else {$('appScreen').classList.add('hidden'); $('loginScreen').classList.remove('hidden');} });
+         $('logoutBtn').onclick = () => signOut(auth);
+         document.querySelectorAll('.nav button').forEach(b => b.addEventListener('click', () => {document.querySelectorAll('.nav button').forEach(x => x.classList.remove('active')); b.classList.add('active'); document.querySelectorAll('.page').forEach(x => x.classList.remove('active')); $(b.dataset.page).classList.add('active'); $('pageTitle').textContent = b.textContent.trim(); $('sidebar').classList.remove('open');}));
+         $('menuToggle').onclick = () => $('sidebar').classList.toggle('open');
+
+         async function loadAll() {try {const [p, t] = await Promise.all([getDocs(collection(db, 'products')), getDocs(query(collection(db, 'transactions'), orderBy('createdAt', 'desc'), limit(100)))]); products = p.docs.map(d => ({id: d.id, ...d.data()})); transactions = t.docs.map(d => ({id: d.id, ...d.data()})); renderAll();} catch (e) {console.error(e); $('connectionState').textContent = 'Gagal memuat data';} }
+         function renderAll() {renderProducts(); renderStock(); renderHistory(); renderDashboard(); updateProductOptions(); renderCart();}
+         function renderProducts() {$('productsTable').innerHTML = products.length ? products.map(p => `<tr><td><img class="thumb" src="${p.imageUrl || ''}" onerror="this.style.visibility='hidden'"></td><td>${escapeHtml(p.code)}</td><td>${escapeHtml(p.name)}</td><td>${rupiah(p.price)}</td><td><button class="btn btn-light" data-edit="${p.id}" style="padding:7px 10px">Edit</button></td></tr>`).join('') : '<tr><td colspan="5" class="empty">Belum ada produk.</td></tr>'; document.querySelectorAll('[data-edit]').forEach(b => b.onclick = () => editProduct(b.dataset.edit)); $('productCode').value = awaitNextCode();}
+         function awaitNextCode() {let max = 0; products.forEach(p => {const n = Number((p.code || '').replace(/^RAS/i, '')); if (Number.isFinite(n)) max = Math.max(max, n)}); return 'RAS' + String(max + 1).padStart(3, '0');}
+         function editProduct(id) {const p = products.find(x => x.id === id); if (!p) return; $('productCode').value = p.code; $('productName').value = p.name; $('productPrice').value = p.price; $('productForm').dataset.edit = id; message('productMessage', 'Mode edit: simpan untuk memperbarui produk.');}
+         $('resetProduct').onclick = () => {$('productForm').dataset.edit = ''; setTimeout(() => $('productCode').value = awaitNextCode(), 0);};
+         $('productForm').onsubmit = async e => {e.preventDefault(); try {const editId = $('productForm').dataset.edit; const code = $('productCode').value || awaitNextCode(); let imageUrl = editId ? (products.find(p => p.id === editId)?.imageUrl || '') : ''; const file = $('productImage').files[0]; if (file) {const path = `products/${code}_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`; const r = ref(storage, path); await uploadBytes(r, file); imageUrl = await getDownloadURL(r);} const data = {code, name: $('productName').value.trim(), price: Number($('productPrice').value), imageUrl, updatedAt: serverTimestamp()}; if (editId) await updateDoc(doc(db, 'products', editId), data); else {data.stock = 0; data.createdAt = serverTimestamp(); await setDoc(doc(db, 'products', code), data);} message('productMessage', 'Produk berhasil disimpan.', 'success'); $('productForm').reset(); $('productForm').dataset.edit = ''; await loadAll();} catch (err) {message('productMessage', 'Gagal menyimpan: ' + friendlyError(err), 'danger');} };
+         function updateProductOptions() {$('stockProduct').innerHTML = '<option value="">Pilih produk…</option>' + products.map(p => `<option value="${p.id}">${escapeHtml(p.name)} (${p.code})</option>`).join(''); $('productOptions').innerHTML = products.map(p => `<option value="${escapeHtml(p.code)}">${escapeHtml(p.name)}</option>`).join('');}
+         function renderStock() {$('stockTable').innerHTML = products.length ? products.map(p => `<tr><td>${escapeHtml(p.code)}</td><td>${escapeHtml(p.name)}</td><td><b>${Number(p.stock) || 0} pcs</b></td></tr>`).join('') : '<tr><td colspan="3" class="empty">Belum ada data.</td></tr>';}
+         $('stockForm').onsubmit = async e => {e.preventDefault(); const id = $('stockProduct').value, qty = Number($('stockQty').value), date = $('stockDate').value; if (!id || qty < 1) return; try {await runTransaction(db, async tx => {const r = doc(db, 'products', id), s = await tx.get(r); if (!s.exists()) throw new Error('Produk tidak ditemukan'); tx.update(r, {stock: (Number(s.data().stock) || 0) + qty, updatedAt: serverTimestamp()});}); await addDoc(collection(db, 'stockEntries'), {productId: id, productName: products.find(p => p.id === id)?.name || '', qty, date, createdBy: currentUser.uid, createdAt: serverTimestamp()}); message('stockMessage', 'Stock berhasil ditambahkan.', 'success'); $('stockForm').reset(); $('stockDate').value = today(); await loadAll();} catch (err) {message('stockMessage', 'Gagal input stock: ' + friendlyError(err), 'danger');} };
+         function findProduct(value) {const v = value.trim().toLowerCase(); return products.find(p => p.code.toLowerCase() === v || p.name.toLowerCase() === v);}
+         let selectedProduct = null;
+         $('posCode').addEventListener('input', () => {selectedProduct = findProduct($('posCode').value); const p = selectedProduct; if (p) {$('productPreview').innerHTML = `<img src="${p.imageUrl || ''}" onerror="this.style.visibility='hidden'"><div><strong>${escapeHtml(p.name)}</strong><div class="muted">${p.code} • Stok: ${p.stock || 0} pcs</div><div class="price">${rupiah(p.price)}</div></div>`;} else {$('productPreview').innerHTML = '<div class="empty" style="width:100%">Produk tidak ditemukan. Pilih kode/nama yang tersedia.</div>';} });
+         $('addCartBtn').onclick = () => {const p = findProduct($('posCode').value), qty = Number($('posQty').value); if (!p || qty < 1) {message('checkoutMessage', 'Pilih produk dan qty yang valid.', 'danger'); return;} const existing = cart.find(x => x.id === p.id); const next = (existing?.qty || 0) + qty; if (next > Number(p.stock || 0)) {message('checkoutMessage', `Stok ${p.name} tidak cukup. Tersedia ${p.stock || 0} pcs.`, 'danger'); return;} if (existing) existing.qty = next; else cart.push({id: p.id, code: p.code, name: p.name, price: Number(p.price), qty, imageUrl: p.imageUrl || ''}); $('posCode').value = ''; $('posQty').value = 1; $('productPreview').innerHTML = '<div class="empty" style="width:100%">Pilih produk untuk melihat detail.</div>'; selectedProduct = null; message('checkoutMessage', ''); renderCart();};
+         function cartTotal() {return cart.reduce((s, x) => s + x.price * x.qty, 0);}
+         function renderCart() {$('cartTable').innerHTML = cart.length ? cart.map((x, i) => `<tr><td>${escapeHtml(x.name)}</td><td>${x.qty}</td><td>${rupiah(x.price * x.qty)}</td><td><button class="btn btn-danger" data-remove="${i}" style="padding:6px 9px">×</button></td></tr>`).join('') : '<tr><td colspan="4" class="empty">Keranjang masih kosong</td></tr>'; $('cartSubtotal').textContent = rupiah(cartTotal()); $('cartTotal').textContent = rupiah(cartTotal()); $('qrisAmount').textContent = rupiah(cartTotal()); document.querySelectorAll('[data-remove]').forEach(b => b.onclick = () => {cart.splice(Number(b.dataset.remove), 1); renderCart();}); updateChange();}
+         $('paymentMethod').onchange = () => {const q = $('paymentMethod').value === 'QRIS'; $('qrisFields').classList.toggle('hidden', !q); $('cashFields').classList.toggle('hidden', q);};
+         $('cashReceived').oninput = updateChange; function updateChange() {const change = Number($('cashReceived').value || 0) - cartTotal(); $('changeAmount').textContent = rupiah(Math.max(0, change));}
+         $('clearCartBtn').onclick = () => {cart = []; renderCart(); message('checkoutMessage', 'Keranjang dikosongkan.');};
+         $('checkoutBtn').onclick = async () => {if (!cart.length) {message('checkoutMessage', 'Keranjang masih kosong.', 'danger'); return;} const method = $('paymentMethod').value, total = cartTotal(), paid = Number($('cashReceived').value || 0); if (method === 'CASH' && paid < total) {message('checkoutMessage', 'Uang diterima kurang dari total tagihan.', 'danger'); return;} try {const items = cart.map(x => ({...x, subtotal: x.price * x.qty})); const txRef = doc(collection(db, 'transactions')); await runTransaction(db, async t => {for (const item of items) {const r = doc(db, 'products', item.id), s = await t.get(r); if (!s.exists()) throw new Error(`Produk ${item.name} tidak ditemukan`); const stock = Number(s.data().stock) || 0; if (stock < item.qty) throw new Error(`Stok ${item.name} tidak cukup. Sisa ${stock}`); t.update(r, {stock: stock - item.qty, updatedAt: serverTimestamp()});} t.set(txRef, {invoice: txRef.id.slice(-8).toUpperCase(), items, total, method, cashReceived: method === 'CASH' ? paid : null, change: method === 'CASH' ? paid - total : null, merchantId: method === 'QRIS' ? MERCHANT_QRIS_ID : null, status: method === 'CASH' ? 'PAID' : 'WAITING_QRIS_CONFIRMATION', createdBy: currentUser.uid, createdAt: serverTimestamp()});}); message('checkoutMessage', method === 'CASH' ? 'Transaksi berhasil. Pembayaran CASH tercatat.' : 'Transaksi tersimpan sebagai MENUNGGU KONFIRMASI QRIS. Verifikasi pembayaran pada penyedia QRIS sebelum menyerahkan barang.', 'success'); cart = []; $('cashReceived').value = ''; renderCart(); await loadAll();} catch (err) {message('checkoutMessage', 'Transaksi gagal: ' + friendlyError(err), 'danger');} };
+         function renderHistory() {$('historyTable').innerHTML = transactions.length ? transactions.map(t => `<tr><td>${formatDate(t.createdAt)}</td><td>${escapeHtml(t.invoice || t.id.slice(-8))}</td><td>${(t.items || []).reduce((s, x) => s + x.qty, 0)} pcs</td><td><span class="tag">${escapeHtml(t.method || '')}</span><br><small>${escapeHtml(t.status || '')}</small></td><td>${rupiah(t.total)}</td></tr>`).join('') : '<tr><td colspan="5" class="empty">Belum ada transaksi.</td></tr>';}
+         function formatDate(ts) {try {return ts?.toDate ? ts.toDate().toLocaleString('id-ID') : new Date().toLocaleString('id-ID')} catch {return '-'} }
+         function renderDashboard() {const day = today(), daily = transactions.filter(t => t.createdAt?.toDate && t.createdAt.toDate().toISOString().slice(0, 10) === day && t.status === 'PAID'); $('statSales').textContent = rupiah(daily.reduce((s, t) => s + (Number(t.total) || 0), 0)); $('statOrders').textContent = daily.length; $('statProducts').textContent = products.length; $('statStock').textContent = products.reduce((s, p) => s + (Number(p.stock) || 0), 0) + ' pcs'; $('recentTable').innerHTML = transactions.slice(0, 7).map(t => `<tr><td>${formatDate(t.createdAt)}</td><td>${escapeHtml(t.invoice || t.id.slice(-8))}</td><td>${escapeHtml(t.method || '')}</td><td>${rupiah(t.total)}</td></tr>`).join('') || '<tr><td colspan="4" class="empty">Belum ada transaksi</td></tr>';}
+      </script>
+   </body>
+
+</html>
