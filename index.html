@@ -75,7 +75,15 @@
                     </div>
                     <button class="admin-only" data-page="stock"><span class="ico">▤</span> Input Stock</button>
                     <button data-page="pos"><span class="ico">▣</span> Menu Kasir</button>
-                    <button class="admin-only" data-page="history"><span class="ico">◷</span> Riwayat Transaksi</button>
+                    <div class="nav-group admin-only" id="managementGroup"><button type="button" class="nav-parent"
+                            id="managementToggle" aria-expanded="false" aria-controls="managementChildren"><span
+                                class="ico">▤</span> Management <span class="nav-chevron">▼</span></button>
+                        <div class="nav-children" id="managementChildren"><button class="nav-sub"
+                                data-page="history"><span class="sub-dot">—</span> Riwayat Transaksi</button><button
+                                class="nav-sub" data-page="customers"><span class="sub-dot">—</span> Data
+                                Konsumen</button><button class="nav-sub" data-page="promoBlast"><span
+                                    class="sub-dot">—</span> Blast Promo</button></div>
+                    </div>
                 </nav>
                 <div class="sidebar-foot">Connected to Firebase<br><span id="connectionState">Menunggu
                         koneksi…</span><br><br><button id="logoutBtn" class="btn btn-light btn-block">Keluar /
@@ -302,12 +310,24 @@
                                     0</strong></div>
                             <div class="total-line grand"><span>Total Tagihan</span><strong id="cartTotal">Rp 0</strong>
                             </div>
-                            <div class="field" style="margin-top:18px"><label>Nama Pembeli</label><input
-                                    id="customerName" maxlength="80" placeholder="Nama pelanggan"></div>
-                            <div class="field"><label>Nomor HP Pembeli</label><input id="customerPhone" type="tel"
-                                    inputmode="numeric" placeholder="Contoh: 081234567890">
-                                <div id="customerHint" class="customer-hint">Nomor HP yang sudah terdaftar akan
-                                    menampilkan nama pelanggan tersimpan.</div>
+                            <div class="customer-entry" style="margin-top:18px">
+                                <div class="field"><label>Nomor Pelanggan / Nomor HP</label><input id="customerPhone"
+                                        type="text" inputmode="text" autocomplete="off"
+                                        placeholder="NPRAS0001 atau 081234567890">
+                                    <div id="customerHint" class="customer-hint">Cari pelanggan menggunakan nomor
+                                        anggota atau nomor HP. Nomor HP tetap tersimpan sebagai data privat dan tidak
+                                        dicetak di struk.</div>
+                                </div>
+                                <div id="customerNewFields" class="customer-new-fields hidden">
+                                    <div class="field"><label>Nama Konsumen</label><input id="customerName"
+                                            maxlength="80" autocomplete="name" placeholder="Nama lengkap konsumen">
+                                    </div>
+                                    <div class="field"><label>Alamat Konsumen</label><textarea id="customerAddress"
+                                            rows="2" maxlength="240" placeholder="Alamat konsumen"></textarea></div>
+                                    <label class="remember-user"><input id="customerPromoConsent"
+                                            type="checkbox"><span>Konsumen setuju menerima informasi promo melalui
+                                            WhatsApp</span></label>
+                                </div>
                             </div>
                             <div class="field"><label>Metode Pembayaran</label><select id="paymentMethod">
                                     <option value="CASH">CASH</option>
@@ -353,8 +373,15 @@
                             <div class="field"><label>Dari Tanggal</label><input type="date" id="historyStart"></div>
                             <div class="field"><label>Sampai Tanggal</label><input type="date" id="historyEnd"></div>
                             <button class="btn btn-gold" id="filterHistoryBtn" type="button">Tampilkan</button><button
-                                class="btn btn-light" id="resetHistoryBtn" type="button">Semua Data</button><button
-                                class="btn btn-primary" id="printReportBtn" type="button">Cetak Laporan</button>
+                                class="btn btn-light" id="resetHistoryBtn" type="button">Hari Ini</button>
+                            <div class="field page-size-field"><label>Tampilkan Data</label><select
+                                    id="historyPageSize">
+                                    <option value="10">10 data</option>
+                                    <option value="25">25 data</option>
+                                    <option value="50">50 data</option>
+                                    <option value="100">100 data</option>
+                                </select></div><button class="btn btn-primary" id="printReportBtn" type="button">Cetak
+                                Laporan</button>
                         </div>
                         <div class="history-summary"><span>Jumlah transaksi: <strong
                                     id="historyCount">0</strong></span><span>Total penjualan lunas: <strong
@@ -375,6 +402,94 @@
                                 </thead>
                                 <tbody id="historyTable"></tbody>
                             </table>
+                        </div>
+                        <div class="table-pagination" id="historyPagination"></div>
+                    </div>
+                </section>
+                <section id="customers" class="page admin-only">
+                    <div class="section-head">
+                        <div>
+                            <h2>Data Konsumen</h2>
+                            <p>Daftar pelanggan yang tercatat dari transaksi kasir.</p>
+                        </div>
+                        <div class="customer-count" id="customerCount">0 konsumen</div>
+                    </div>
+                    <div class="panel">
+                        <div class="history-tools">
+                            <div class="field" style="min-width:220px"><label>Cari Konsumen</label><input
+                                    id="customerSearch" type="search" placeholder="Nama, NPRAS, atau nomor HP"></div>
+                            <div class="field page-size-field"><label>Tampilkan Data</label><select
+                                    id="customerPageSize">
+                                    <option value="10">10 data</option>
+                                    <option value="25">25 data</option>
+                                    <option value="50">50 data</option>
+                                    <option value="100">100 data</option>
+                                </select></div><button class="btn btn-light" id="refreshCustomersBtn" type="button">Muat
+                                Ulang</button>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>No. Pelanggan</th>
+                                        <th>Nama Pelanggan</th>
+                                        <th>Alamat</th>
+                                        <th>Nomor HP (Privat)</th>
+                                        <th>Promo WhatsApp</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="customersTable">
+                                    <tr>
+                                        <td colspan="6" class="empty">Memuat data konsumen…</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-pagination" id="customerPagination"></div>
+                        <p class="customer-hint">Status promo WhatsApp hanya boleh diaktifkan jika pelanggan telah
+                            memberikan persetujuan.</p>
+                    </div>
+                </section>
+                <section id="promoBlast" class="page admin-only">
+                    <div class="section-head">
+                        <div>
+                            <h2>Blast Promo WhatsApp</h2>
+                            <p>Buat pesan promo, tinjau penerima yang menyetujui pesan promosi, lalu kirim satu per satu
+                                melalui WhatsApp.</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>Buat Isi Promo</h3>
+                        <form id="blastForm">
+                            <div class="field"><label>Judul Promo</label><input id="blastTitle" maxlength="80" required
+                                    placeholder="Contoh: Promo Roti Akhir Pekan"></div>
+                            <div class="field"><label>Isi Pesan WhatsApp</label><textarea id="blastMessage" rows="6"
+                                    maxlength="1200" required placeholder="Halo {nama}, ada promo spesial dari ROTI ANGET SUBUH...
+
+Gunakan kode promo ..."></textarea>
+                                <div class="customer-hint">Gunakan {nama} untuk menyisipkan nama pelanggan. Cantumkan
+                                    cara berhenti menerima promo bila diperlukan.</div>
+                            </div><button class="btn btn-primary" type="submit">Simpan Draft Promo</button>
+                        </form>
+                        <p id="blastSaveMessage" class="muted" style="font-size:11px"></p>
+                    </div>
+                    <div class="panel">
+                        <div class="section-head">
+                            <div>
+                                <h3>Draft Promo Tersimpan</h3>
+                                <p>Pilih draft untuk menyiapkan pesan WhatsApp.</p>
+                            </div>
+                        </div>
+                        <div id="blastDraftList" class="promo-list"><span class="muted">Belum ada draft promo.</span>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>Daftar Penerima & Pengiriman</h3>
+                        <div id="blastSelectedInfo" class="notice">Pilih draft promo untuk melihat jumlah penerima yang
+                            menyetujui pesan promosi.</div>
+                        <div id="blastQueue" class="blast-queue">
+                            <div class="empty">Belum ada pengiriman yang disiapkan.</div>
                         </div>
                     </div>
                 </section>
@@ -397,6 +512,26 @@
                         id="closeReceiptBtn" type="button">Tutup</button></div>
             </div>
         </div>
+
+        <div id="customerCardModal" class="customer-card-modal" role="dialog" aria-modal="true"
+            aria-labelledby="customerCardTitle">
+            <div class="customer-card-dialog">
+                <div class="section-head">
+                    <div>
+                        <h2 id="customerCardTitle" style="font:24px 'Playfair Display';margin:0">Kartu Pelanggan</h2>
+                        <p class="muted">ROTI ANGET SUBUH • MEMBERSHIP CARD</p>
+                    </div><button type="button" class="btn btn-light" id="closeCustomerCardBtn">Tutup</button>
+                </div>
+                <div id="customerCardArtwork" class="customer-card-preview"></div>
+                <div id="customerCardDetails" class="member-card-details"></div>
+                <div class="actions"><button type="button" class="btn btn-primary" id="shareCustomerCardBtn">Kirim Kartu
+                        via WhatsApp</button><button type="button" class="btn btn-light"
+                        id="downloadCustomerCardBtn">Simpan Kartu PNG</button></div>
+                <p class="customer-hint">Di perangkat yang mendukung berbagi file, kartu PNG dapat langsung dibagikan ke
+                    WhatsApp. Jika tidak, simpan gambar lalu lampirkan pada chat WhatsApp pelanggan.</p>
+            </div>
+        </div>
+
         <div id="imageZoom" class="image-zoom" aria-hidden="true"><button type="button" class="zoom-close"
                 id="zoomClose" aria-label="Tutup zoom">×</button><img id="zoomImage" alt="Foto produk diperbesar">
             <div id="zoomCaption" class="zoom-caption">Klik area gelap atau tombol × untuk menutup</div>
