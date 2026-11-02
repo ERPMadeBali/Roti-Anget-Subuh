@@ -1,498 +1,542 @@
 <!DOCTYPE html>
 <html lang="id">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>ROTI ANGET SUBUH | Bakery POS</title>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link
-         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-         rel="stylesheet">
-      <link rel="stylesheet" href="style.css">
-   </head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ROTI ANGET SUBUH | Bakery POS</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-   <body>
-      <section id="loginScreen" class="login-wrap">
-         <div class="login-art">
-            <div class="brand">ROTI <span style="color:var(--gold2)">ANGET SUBUH</span><small>BAKERY • POINT OF
-                  SALE</small>
-               <div class="brand-address"><span class="brand-pin">⌖</span><span>Jl. Raya Kuta, No. 58D, Tuban</span>
-               </div>
+    <body>
+        <section id="loginScreen" class="login-wrap">
+            <div class="login-art">
+                <div class="brand">ROTI <span style="color:var(--gold2)">ANGET SUBUH</span><small>ARTISAN BAKERY • POINT
+                        OF SALE</small>
+                    <div class="brand-address"><span class="brand-pin">⌖</span><span>Jl. Raya Kuta, No. 58D,
+                            Tuban</span></div>
+                </div>
+                <div>
+                    <h1>Freshly baked.<br>Beautifully served.</h1>
+                    <p>Kelola produk, persediaan, dan transaksi penjualan roti dalam satu sistem kasir yang elegan.</p>
+                </div><small style="color:#c9b99f;letter-spacing:2px">BAKERY POS • LUXURY EDITION</small>
             </div>
-            <div>
-               <h1>Freshly baked.<br>Beautifully served.</h1>
-               <p>Kelola produk, persediaan, dan transaksi penjualan roti dalam satu sistem kasir yang elegan.</p>
-            </div><small style="color:#c9b99f;letter-spacing:2px">BAKERY POS • LUXURY EDITION</small>
-         </div>
-         <div class="login-panel">
-            <div class="login-box">
-               <div class="login-mobile-brand">
-                  <div class="brand">ROTI <span style="color:var(--gold)">ANGET SUBUH</span><small>BAKERY •
-                        POINT OF SALE</small>
-                     <div class="brand-address"><span class="brand-pin">⌖</span><span>Jl. Raya Kuta, No. 58D,
-                           Tuban</span></div>
-                  </div>
-               </div>
-               <div class="eyebrow">Secure workspace</div>
-               <h2>Welcome back.</h2>
-               <p class="muted">Masuk untuk membuka dashboard kasir Anda.</p>
-               <form id="loginForm">
-                  <div class="field"><label>Email</label><input id="loginEmail" type="email"
-                        placeholder="nama@email.com" required></div>
-                  <div class="field"><label>Password</label><input id="loginPassword" type="password"
-                        placeholder="Masukkan password" required></div>
-                  <p id="adminHelp" class="muted" style="display:none;font-size:12px;margin:-5px 0 14px">Sudah lebih
-                     dari 3 kali gagal login? <a href="https://s.id/atrisna" target="_blank" rel="noopener noreferrer"
-                        style="color:var(--gold);font-weight:700;text-decoration:underline">Hubungi Administrator</a>
-                  </p><button class="btn btn-primary btn-block" type="submit">LOGIN TO DASHBOARD →</button><label
-                     class="remember-user"><input id="rememberUser" type="checkbox"> <span>Simpan email pengguna di
-                        perangkat ini</span></label>
-               </form>
-               <p id="loginMessage" class="muted" style="font-size:11px;margin-top:15px"></p>
-               <div class="notice">Area akses terbatas. Gunakan akun resmi perusahaan dan jangan membagikan kata sandi
-                  Anda. Lupa akses? Hubungi <a href="https://s.id/atrisna" target="_blank" rel="noopener noreferrer"
-                     style="color:var(--gold);font-weight:700;text-decoration:underline">administrator</a>.</div>
+            <div class="login-panel">
+                <div class="login-box">
+                    <div class="login-mobile-brand">
+                        <div class="brand">ROTI <span style="color:var(--gold)">ANGET SUBUH</span><small>ARTISAN BAKERY
+                                • POINT OF SALE</small>
+                            <div class="brand-address"><span class="brand-pin">⌖</span><span>Jl. Raya Kuta, No. 58D,
+                                    Tuban</span></div>
+                        </div>
+                    </div>
+                    <div class="eyebrow">Secure workspace</div>
+                    <h2>Welcome back.</h2>
+                    <p class="muted">Masuk untuk membuka dashboard kasir Anda.</p>
+                    <form id="loginForm">
+                        <div class="field"><label>Email</label><input id="loginEmail" type="email"
+                                placeholder="nama@email.com" required></div>
+                        <div class="field"><label>Password</label><input id="loginPassword" type="password"
+                                placeholder="Masukkan password" required></div>
+                        <p id="adminHelp" class="muted" style="display:none;font-size:12px;margin:-5px 0 14px">Sudah
+                            lebih dari 3 kali gagal login? <a href="https://s.id/atrisna" target="_blank"
+                                rel="noopener noreferrer"
+                                style="color:var(--gold);font-weight:700;text-decoration:underline">Hubungi
+                                Administrator</a></p><button class="btn btn-primary btn-block" type="submit">LOGIN TO
+                            DASHBOARD →</button><label class="remember-user"><input id="rememberUser" type="checkbox">
+                            <span>Simpan email pengguna di perangkat ini</span></label>
+                    </form>
+                    <p id="loginMessage" class="muted" style="font-size:11px;margin-top:15px"></p>
+                    <div class="notice">Area akses terbatas. Gunakan akun resmi perusahaan dan jangan membagikan kata
+                        sandi Anda. Lupa akses? Hubungi <a href="https://s.id/atrisna" target="_blank"
+                            rel="noopener noreferrer"
+                            style="color:var(--gold);font-weight:700;text-decoration:underline">administrator</a>.</div>
+                </div>
             </div>
-         </div>
-      </section>
-      <div id="appScreen" class="app hidden">
-         <aside id="sidebar" class="sidebar">
-            <div class="brand">ROTI <span style="color:var(--gold2)">ANGET SUBUH</span><small>POINT OF SALE</small>
-            </div>
-            <div class="nav-label">MAIN MENU</div>
-            <nav class="nav">
-               <button class="active" data-page="dashboard"><span class="ico">▦</span> Dashboard</button>
-               <div class="nav-group admin-only" id="inputDataGroup"><button type="button" class="nav-parent"
-                     id="inputDataToggle" aria-expanded="false" aria-controls="inputDataChildren"><span
-                        class="ico">◇</span> Input Data <span class="nav-chevron">▼</span></button>
-                  <div class="nav-children" id="inputDataChildren"><button class="nav-sub" data-page="products"><span
-                           class="sub-dot">—</span> Master Produk</button><button class="nav-sub"
-                        data-page="promos"><span class="sub-dot">—</span> Seting Promo</button></div>
-               </div>
-               <button class="admin-only" data-page="stock"><span class="ico">▤</span> Input Stock</button>
-               <button data-page="pos"><span class="ico">▣</span> Menu Kasir</button>
-               <div class="nav-group admin-only" id="managementGroup"><button type="button" class="nav-parent"
-                     id="managementToggle" aria-expanded="false" aria-controls="managementChildren"><span
-                        class="ico">▤</span> Management <span class="nav-chevron">▼</span></button>
-                  <div class="nav-children" id="managementChildren"><button class="nav-sub" data-page="history"><span
-                           class="sub-dot">—</span> Riwayat Transaksi</button><button class="nav-sub"
-                        data-page="customers"><span class="sub-dot">—</span> Data Konsumen</button><button
-                        class="nav-sub" data-page="promoBlast"><span class="sub-dot">—</span> Blast Promo</button></div>
-               </div>
-            </nav>
-            <div class="sidebar-foot">Connected to Firebase<br><span id="connectionState">Menunggu
-                  koneksi…</span><br><br><button id="logoutBtn" class="btn btn-light btn-block">Keluar / Logout</button>
-            </div>
-         </aside>
-         <main class="main">
-            <header class="topbar">
-               <div><button class="btn btn-light mobile-menu" id="menuToggle">☰</button> <span class="eyebrow">BAKERY
-                     MANAGEMENT</span>
-                  <h1 id="pageTitle">Dashboard</h1>
-                  <p id="todayText">Ringkasan operasional toko</p>
-               </div>
-               <div class="user-chip" id="userEmail">Kasir</div>
-            </header>
-            <section id="dashboard" class="page active">
-               <div class="dashboard-address"><span class="pin">⌖</span>
-                  <div class="store-address">
-                     <div><strong>Alamat Toko</strong>Jl. Raya Kuta, No. 58D, Tuban</div>
-                  </div>
-               </div>
-               <div class="cards">
-                  <div class="stat"><span>Penjualan Hari Ini</span><strong id="statSales">Rp 0</strong><small>Transaksi
-                        berhasil</small></div>
-                  <div class="stat"><span>Jumlah Transaksi</span><strong id="statOrders">0</strong><small>Hari
-                        ini</small></div>
-                  <div class="stat"><span>Produk Terdaftar</span><strong id="statProducts">0</strong><small>Master
-                        produk</small></div>
-                  <div class="stat"><span>Total Stok</span><strong id="statStock">0 pcs</strong><small>Persediaan saat
-                        ini</small></div>
-               </div>
-               <div class="dashboard-charts">
-                  <div class="panel chart-panel">
-                     <div class="chart-heading">
+        </section>
+        <div id="appScreen" class="app hidden">
+            <aside id="sidebar" class="sidebar">
+                <div class="brand">ROTI <span style="color:var(--gold2)">ANGET SUBUH</span><small>POINT OF SALE</small>
+                </div>
+                <div class="nav-label">MAIN MENU</div>
+                <nav class="nav">
+                    <button class="active" data-page="dashboard"><span class="ico">▦</span> Dashboard</button>
+                    <div class="nav-group admin-only" id="inputDataGroup"><button type="button" class="nav-parent"
+                            id="inputDataToggle" aria-expanded="false" aria-controls="inputDataChildren"><span
+                                class="ico">◇</span> Input Data <span class="nav-chevron">▼</span></button>
+                        <div class="nav-children" id="inputDataChildren"><button class="nav-sub"
+                                data-page="products"><span class="sub-dot">—</span> Master Produk</button><button
+                                class="nav-sub" data-page="promos"><span class="sub-dot">—</span> Seting Promo</button>
+                        </div>
+                    </div>
+                    <button class="admin-only" data-page="stock"><span class="ico">▤</span> Input Stock</button>
+                    <button data-page="pos"><span class="ico">▣</span> Menu Kasir</button>
+                    <div class="nav-group admin-only" id="managementGroup"><button type="button" class="nav-parent"
+                            id="managementToggle" aria-expanded="false" aria-controls="managementChildren"><span
+                                class="ico">▤</span> Management <span class="nav-chevron">▼</span></button>
+                        <div class="nav-children" id="managementChildren"><button class="nav-sub"
+                                data-page="history"><span class="sub-dot">—</span> Riwayat Transaksi</button><button
+                                class="nav-sub" data-page="customers"><span class="sub-dot">—</span> Data
+                                Konsumen</button><button class="nav-sub" data-page="promoBlast"><span
+                                    class="sub-dot">—</span> Blast Promo</button></div>
+                    </div>
+                </nav>
+                <div class="sidebar-foot">Connected to Firebase<br><span id="connectionState">Menunggu
+                        koneksi…</span><br><br><button id="logoutBtn" class="btn btn-light btn-block">Keluar /
+                        Logout</button></div>
+            </aside>
+            <main class="main">
+                <header class="topbar">
+                    <div><button class="btn btn-light mobile-menu" id="menuToggle">☰</button> <span
+                            class="eyebrow">BAKERY MANAGEMENT</span>
+                        <h1 id="pageTitle">Dashboard</h1>
+                        <p id="todayText">Ringkasan operasional toko</p>
+                    </div>
+                    <div class="user-chip" id="userEmail">Kasir</div>
+                </header>
+                <section id="dashboard" class="page active">
+                    <div class="dashboard-address"><span class="pin">⌖</span>
+                        <div class="store-address">
+                            <div><strong>Alamat Toko</strong>Jl. Raya Kuta, No. 58D, Tuban</div>
+                        </div>
+                    </div>
+                    <div class="cards">
+                        <div class="stat"><span>Penjualan Hari Ini</span><strong id="statSales">Rp
+                                0</strong><small>Transaksi berhasil</small></div>
+                        <div class="stat"><span>Jumlah Transaksi</span><strong id="statOrders">0</strong><small>Hari
+                                ini</small></div>
+                        <div class="stat"><span>Produk Terdaftar</span><strong id="statProducts">0</strong><small>Master
+                                produk</small></div>
+                        <div class="stat"><span>Total Stok</span><strong id="statStock">0 pcs</strong><small>Persediaan
+                                saat ini</small></div>
+                    </div>
+                    <div class="dashboard-charts">
+                        <div class="panel chart-panel">
+                            <div class="chart-heading">
+                                <div>
+                                    <h3>Penjualan Roti Terlaris</h3>
+                                    <p>Ranking jumlah roti terjual pada bulan ini</p>
+                                </div><span id="topProductsMonth" class="chart-period"></span>
+                            </div>
+                            <div id="topProductsChart" class="top-products-chart">
+                                <div class="empty">Belum ada data penjualan.</div>
+                            </div>
+                        </div>
+                        <div class="panel chart-panel">
+                            <div class="chart-heading">
+                                <div>
+                                    <h3>Sales Chart</h3>
+                                    <p>Penjualan per minggu dalam bulan berjalan</p>
+                                </div><span id="salesChartMonth" class="chart-period"></span>
+                            </div>
+                            <div id="monthlySalesChart" class="monthly-sales-chart">
+                                <div class="empty">Belum ada data penjualan bulan ini.</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="products" class="page">
+                    <div class="section-head">
                         <div>
-                           <h3>Penjualan Roti Terlaris</h3>
-                           <p>Ranking jumlah roti terjual pada bulan ini</p>
-                        </div><span id="topProductsMonth" class="chart-period"></span>
-                     </div>
-                     <div id="topProductsChart" class="top-products-chart">
-                        <div class="empty">Belum ada data penjualan.</div>
-                     </div>
-                  </div>
-                  <div class="panel chart-panel">
-                     <div class="chart-heading">
+                            <h2>Master Produk</h2>
+                            <p>Daftarkan katalog roti dan harga jual.</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>Tambah / Perbarui Produk</h3>
+                        <form id="productForm">
+                            <div class="form-grid">
+                                <div class="field"><label>Kode Item (otomatis)</label><input id="productCode" readonly
+                                        placeholder="RAS001"></div>
+                                <div class="field"><label>Nama Roti</label><input id="productName" required
+                                        placeholder="Contoh: Roti Sobek Cokelat"></div>
+                                <div class="field"><label>Harga Jual (Rp)</label><input id="productPrice" type="number"
+                                        min="1" required placeholder="15000"></div>
+                                <div class="field span-2"><label>Foto Produk</label>
+                                    <div class="photo-picker">
+                                        <div class="field"><input id="productImage" type="file" accept="image/*">
+                                            <div class="photo-hint">Pratinjau foto tampil di samping sebelum produk
+                                                disimpan.</div>
+                                        </div>
+                                        <div id="productImagePreview" class="photo-preview">Belum ada foto dipilih</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="actions"><button class="btn btn-primary" type="submit">Simpan
+                                    Produk</button><button class="btn btn-light" type="reset"
+                                    id="resetProduct">Reset</button></div>
+                        </form>
+                        <p id="productMessage" class="muted" style="font-size:11px"></p>
+                    </div>
+                    <div class="panel">
+                        <h3>Daftar Produk</h3>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Foto</th>
+                                        <th>Kode</th>
+                                        <th>Nama Roti</th>
+                                        <th>Harga</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTable">
+                                    <tr>
+                                        <td colspan="5" class="empty">Memuat produk…</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section id="promos" class="page">
+                    <div class="section-head">
                         <div>
-                           <h3>Sales Chart</h3>
-                           <p>Penjualan per minggu dalam bulan berjalan</p>
-                        </div><span id="salesChartMonth" class="chart-period"></span>
-                     </div>
-                     <div id="monthlySalesChart" class="monthly-sales-chart">
-                        <div class="empty">Belum ada data penjualan bulan ini.</div>
-                     </div>
-                  </div>
-               </div>
-            </section>
-            <section id="products" class="page">
-               <div class="panel">
-                  <h3>Tambah / Perbarui Produk</h3>
-                  <form id="productForm">
-                     <div class="form-grid">
-                        <div class="field"><label>Kode Item (otomatis)</label><input id="productCode" readonly
-                              placeholder="RAS001"></div>
-                        <div class="field"><label>Nama Roti</label><input id="productName" required
-                              placeholder="Contoh: Roti Sobek Cokelat"></div>
-                        <div class="field"><label>Harga Jual (Rp)</label><input id="productPrice" type="number" min="1"
-                              required placeholder="15000"></div>
-                        <div class="field span-2"><label>Foto Produk</label>
-                           <div class="photo-picker">
-                              <div class="field"><input id="productImage" type="file" accept="image/*">
-                                 <div class="photo-hint">Pratinjau foto tampil di samping sebelum produk disimpan.</div>
-                              </div>
-                              <div id="productImagePreview" class="photo-preview">Belum ada foto dipilih</div>
-                           </div>
+                            <h2>Seting Promo</h2>
+                            <p>Atur potongan harga yang dapat dipilih pada menu kasir.</p>
                         </div>
-                     </div>
-                     <div class="actions"><button class="btn btn-primary" type="submit">Simpan Produk</button><button
-                           class="btn btn-light" type="reset" id="resetProduct">Reset</button></div>
-                  </form>
-                  <p id="productMessage" class="muted" style="font-size:11px"></p>
-               </div>
-               <div class="panel">
-                  <h3>Daftar Produk</h3>
-                  <div class="table-wrap">
-                     <table>
-                        <thead>
-                           <tr>
-                              <th>Foto</th>
-                              <th>Kode</th>
-                              <th>Nama Roti</th>
-                              <th>Harga</th>
-                              <th>Aksi</th>
-                           </tr>
-                        </thead>
-                        <tbody id="productsTable">
-                           <tr>
-                              <td colspan="5" class="empty">Memuat produk…</td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </div>
-               </div>
-            </section>
-            <section id="promos" class="page">
-               <div class="panel">
-                  <h3>Pengaturan Promo & Discount</h3>
-                  <p class="muted" style="font-size:11px">Buat promo dengan potongan persentase. Promo tersimpan akan
-                     tersedia di menu kasir.</p>
-                  <form id="promoForm">
-                     <div class="form-grid">
-                        <div class="field"><label>Nama Promo</label><input id="promoName" required maxlength="60"
-                              placeholder="Contoh: Hari Kemerdekaan"></div>
-                        <div class="field"><label>Discount (%)</label><input id="promoPercent" type="number" min="0.01"
-                              max="100" step="0.01" required placeholder="10"></div>
-                     </div><button class="btn btn-primary" type="submit">Simpan Promo</button>
-                  </form>
-                  <p id="promoMessage" class="muted" style="font-size:11px"></p>
-                  <h3 style="margin-top:18px">Promo Tersimpan</h3>
-                  <div id="promoList" class="promo-list"><span class="muted">Belum ada promo.</span></div>
-               </div>
-            </section>
-            <section id="stock" class="page">
-               <div class="panel">
-                  <h3>Tambah Persediaan</h3>
-                  <form id="stockForm">
-                     <div class="form-grid">
-                        <div class="field"><label>Pilih Nama Roti</label><select id="stockProduct" required>
-                              <option value="">Pilih produk…</option>
-                           </select></div>
-                        <div class="field"><label>Qty Masuk (pcs)</label><input id="stockQty" type="number" min="1"
-                              step="1" required placeholder="0"></div>
-                        <div class="field"><label>Tanggal Input</label><input id="stockDate" type="date" required></div>
-                     </div><button class="btn btn-primary" type="submit">Simpan Stock</button>
-                  </form>
-                  <p id="stockMessage" class="muted" style="font-size:11px"></p>
-               </div>
-               <div class="panel">
-                  <h3>Posisi Stok</h3>
-                  <div class="table-wrap">
-                     <table>
-                        <thead>
-                           <tr>
-                              <th>Kode</th>
-                              <th>Nama Roti</th>
-                              <th>Stok Tersedia</th>
-                           </tr>
-                        </thead>
-                        <tbody id="stockTable"></tbody>
-                     </table>
-                  </div>
-               </div>
-            </section>
-            <section id="pos" class="page">
-               <div class="pos-grid">
-                  <div class="panel">
-                     <h3>Pilih Produk</h3>
-                     <div class="field"><label>Ketik kode roti atau pilih nama</label><input id="posCode"
-                           list="productOptions" placeholder="Ketik RAS001 atau nama roti…"><datalist
-                           id="productOptions"></datalist></div>
-                     <div id="productPreview" class="product-preview">
-                        <div class="empty" style="width:100%">Pilih produk untuk melihat detail.</div>
-                     </div>
-                     <div class="form-grid">
-                        <div class="field"><label>Qty Pembelian (pcs)</label><input id="posQty" type="number" min="1"
-                              value="1"></div>
-                        <div class="field"><label>&nbsp;</label><button id="addCartBtn" class="btn btn-gold btn-block"
-                              type="button">+ Tambahkan ke Keranjang</button></div>
-                     </div>
-                     <h3 style="margin-top:25px">Keranjang</h3>
-                     <div class="table-wrap">
-                        <table>
-                           <thead>
-                              <tr>
-                                 <th>Produk</th>
-                                 <th>Qty</th>
-                                 <th>Subtotal</th>
-                                 <th></th>
-                              </tr>
-                           </thead>
-                           <tbody id="cartTable">
-                              <tr>
-                                 <td colspan="4" class="empty">Keranjang masih kosong</td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </div>
-                  </div>
-                  <div class="panel">
-                     <h3>Ringkasan Pembayaran</h3>
-                     <div class="total-line"><span>Subtotal</span><strong id="cartSubtotal">Rp 0</strong></div>
-                     <div class="field"><label>Pilih Promo / Discount</label><select id="posPromo">
-                           <option value="">Tanpa Promo</option>
-                        </select>
-                        <div id="promoInfo" class="customer-hint">Pilih promo jika tersedia.</div>
-                     </div>
-                     <div class="total-line discount-line"><span>Diskon</span><strong id="cartDiscount">- Rp 0</strong>
-                     </div>
-                     <div class="total-line grand"><span>Total Tagihan</span><strong id="cartTotal">Rp 0</strong></div>
-                     <div class="customer-entry" style="margin-top:18px">
-                        <div class="field"><label>Nomor Pelanggan / Nomor HP</label><input id="customerPhone"
-                              type="text" inputmode="text" autocomplete="off" placeholder="NPRAS0001 atau 081234567890">
-                           <div id="customerHint" class="customer-hint">Cari pelanggan menggunakan nomor anggota atau
-                              nomor HP. Nomor HP tetap tersimpan sebagai data privat dan tidak dicetak di struk.</div>
+                    </div>
+                    <div class="panel">
+                        <h3>Pengaturan Promo & Discount</h3>
+                        <p class="muted" style="font-size:11px">Buat promo dengan potongan persentase. Promo tersimpan
+                            akan tersedia di menu kasir.</p>
+                        <form id="promoForm">
+                            <div class="form-grid">
+                                <div class="field"><label>Nama Promo</label><input id="promoName" required
+                                        maxlength="60" placeholder="Contoh: Hari Kemerdekaan"></div>
+                                <div class="field"><label>Discount (%)</label><input id="promoPercent" type="number"
+                                        min="0.01" max="100" step="0.01" required placeholder="10"></div>
+                            </div><button class="btn btn-primary" type="submit">Simpan Promo</button>
+                        </form>
+                        <p id="promoMessage" class="muted" style="font-size:11px"></p>
+                        <h3 style="margin-top:18px">Promo Tersimpan</h3>
+                        <div id="promoList" class="promo-list"><span class="muted">Belum ada promo.</span></div>
+                    </div>
+                </section>
+                <section id="stock" class="page">
+                    <div class="section-head">
+                        <div>
+                            <h2>Input Stock</h2>
+                            <p>Catat barang masuk berdasarkan tanggal penerimaan.</p>
                         </div>
-                        <div id="customerNewFields" class="customer-new-fields hidden">
-                           <div class="field"><label>Nama Konsumen</label><input id="customerName" maxlength="80"
-                                 autocomplete="name" placeholder="Nama lengkap konsumen"></div>
-                           <div class="field"><label>Alamat Konsumen</label><textarea id="customerAddress" rows="2"
-                                 maxlength="240" placeholder="Alamat konsumen"></textarea></div><label
-                              class="remember-user"><input id="customerPromoConsent" type="checkbox"><span>Konsumen
-                                 setuju menerima informasi promo melalui WhatsApp</span></label>
+                    </div>
+                    <div class="panel">
+                        <h3>Tambah Persediaan</h3>
+                        <form id="stockForm">
+                            <div class="form-grid">
+                                <div class="field"><label>Pilih Nama Roti</label><select id="stockProduct" required>
+                                        <option value="">Pilih produk…</option>
+                                    </select></div>
+                                <div class="field"><label>Qty Masuk (pcs)</label><input id="stockQty" type="number"
+                                        min="1" step="1" required placeholder="0"></div>
+                                <div class="field"><label>Tanggal Input</label><input id="stockDate" type="date"
+                                        required></div>
+                            </div><button class="btn btn-primary" type="submit">Simpan Stock</button>
+                        </form>
+                        <p id="stockMessage" class="muted" style="font-size:11px"></p>
+                    </div>
+                    <div class="panel">
+                        <h3>Posisi Stok</h3>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Kode</th>
+                                        <th>Nama Roti</th>
+                                        <th>Stok Tersedia</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="stockTable"></tbody>
+                            </table>
                         </div>
-                     </div>
-                     <div class="field"><label>Metode Pembayaran</label><select id="paymentMethod">
-                           <option value="CASH">CASH</option>
-                           <option value="QRIS">NON CASH (QRIS)</option>
-                        </select></div>
-                     <div id="cashFields">
-                        <div class="field"><label>Uang Diterima (Rp)</label><input id="cashReceived" type="text"
-                              inputmode="numeric" pattern="[0-9]*" autocomplete="off"
-                              placeholder="Masukkan nominal secara manual"></div>
-                        <div class="total-line"><span>Kembalian</span><strong id="changeAmount">Rp 0</strong></div>
-                     </div>
-                     <div id="qrisFields" class="hidden">
-                        <div class="qr-area">
-                           <div id="qrisImageBox" class="qr-placeholder">QRIS MERCHANT<br><small>Masukkan gambar QRIS
-                                 resmi toko agar pelanggan dapat memindainya.</small></div>
-                           <p style="font-size:10px;color:#76664f">ID Merchant: <b>ID1025383607252</b></p>
+                    </div>
+                </section>
+                <section id="pos" class="page">
+                    <div class="section-head">
+                        <div>
+                            <h2>Point of Sale</h2>
+                            <p>Pilih produk, tentukan jumlah, lalu proses pembayaran.</p>
                         </div>
-                        <div class="field"><label>Nominal Dibayar via QRIS (Rp)</label><input id="qrisReceived"
-                              type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off"
-                              placeholder="Masukkan nominal pembayaran QRIS secara manual"></div>
-                        <div class="notice">Pelanggan memindai QRIS di atas, lalu memasukkan nominal sesuai total
-                           tagihan. Kasir memasukkan nominal yang dibayarkan di kolom ini. Kasir wajib memastikan
-                           pembayaran berhasil pada aplikasi / dashboard QRIS terlebih dahulu, lalu tekan PROSES
-                           TRANSAKSI.</div>
-                     </div>
-                     <button id="checkoutBtn" class="btn btn-primary btn-block" style="margin-top:14px">PROSES
-                        TRANSAKSI</button><button id="clearCartBtn" class="btn btn-light btn-block"
-                        style="margin-top:8px">Kosongkan Keranjang</button>
-                     <p id="checkoutMessage" style="font-size:11px"></p>
-                  </div>
-               </div>
-            </section>
-            <section id="history" class="page">
-               <div class="section-head">
-                  <div>
-                     <p>Pilih tanggal transaksi untuk melihat dan mencetak laporan keuangan.</p>
-                  </div>
-               </div>
-               <div class="panel">
-                  <div class="history-tools">
-                     <div class="field"><label>Dari Tanggal</label><input type="date" id="historyStart"></div>
-                     <div class="field"><label>Sampai Tanggal</label><input type="date" id="historyEnd"></div><button
-                        class="btn btn-gold" id="filterHistoryBtn" type="button">Tampilkan</button><button
-                        class="btn btn-light" id="resetHistoryBtn" type="button">Hari Ini</button>
-                     <div class="field page-size-field"><label>Tampilkan Data</label><select id="historyPageSize">
-                           <option value="10">10 data</option>
-                           <option value="25">25 data</option>
-                           <option value="50">50 data</option>
-                           <option value="100">100 data</option>
-                        </select></div><button class="btn btn-primary" id="printReportBtn" type="button">Cetak
-                        Laporan</button>
-                  </div>
-                  <div class="history-summary"><span>Jumlah transaksi: <strong
-                           id="historyCount">0</strong></span><span>Total penjualan lunas: <strong
-                           id="historyRevenue">Rp 0</strong></span><span>Metode pembayaran: <strong>PAID CASH / PAID
-                           QRIS</strong></span></div>
-                  <div class="table-wrap">
-                     <table>
-                        <thead>
-                           <tr>
-                              <th>Tanggal</th>
-                              <th>No. Transaksi</th>
-                              <th>Item</th>
-                              <th>Metode</th>
-                              <th>Status</th>
-                              <th>Total</th>
-                              <th>Struk</th>
-                           </tr>
-                        </thead>
-                        <tbody id="historyTable"></tbody>
-                     </table>
-                  </div>
-                  <div class="table-pagination" id="historyPagination"></div>
-               </div>
-            </section>
-            <section id="customers" class="page admin-only">
-               <div class="section-head">
-                  <div>
-                     <p>Daftar pelanggan yang tercatat dari transaksi kasir.</p>
-                  </div>
-                  <div class="customer-count" id="customerCount">0 konsumen</div>
-               </div>
-               <div class="panel">
-                  <div class="history-tools">
-                     <div class="field" style="min-width:220px"><label>Cari Konsumen</label><input id="customerSearch"
-                           type="search" placeholder="Nama, NPRAS, atau nomor HP"></div>
-                     <div class="field page-size-field"><label>Tampilkan Data</label><select id="customerPageSize">
-                           <option value="10">10 data</option>
-                           <option value="25">25 data</option>
-                           <option value="50">50 data</option>
-                           <option value="100">100 data</option>
-                        </select></div><button class="btn btn-light" id="refreshCustomersBtn" type="button">Muat
-                        Ulang</button>
-                  </div>
-                  <div class="table-wrap">
-                     <table>
-                        <thead>
-                           <tr>
-                              <th>No. Pelanggan</th>
-                              <th>Nama Pelanggan</th>
-                              <th>Alamat</th>
-                              <th>Nomor HP (Privat)</th>
-                              <th>Promo WhatsApp</th>
-                              <th>Aksi</th>
-                           </tr>
-                        </thead>
-                        <tbody id="customersTable">
-                           <tr>
-                              <td colspan="6" class="empty">Memuat data konsumen…</td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </div>
-                  <div class="table-pagination" id="customerPagination"></div>
-                  <p class="customer-hint">Status promo WhatsApp hanya boleh diaktifkan jika pelanggan telah memberikan
-                     persetujuan.</p>
-               </div>
-            </section>
-            <section id="promoBlast" class="page admin-only">
-               <div class="section-head">
-                  <div>
-                     <p>Buat pesan promo, tinjau penerima yang menyetujui pesan promosi, lalu kirim satu per satu
-                        melalui WhatsApp.</p>
-                  </div>
-               </div>
-               <div class="panel">
-                  <h3>Buat Isi Promo</h3>
-                  <form id="blastForm">
-                     <div class="field"><label>Judul Promo</label><input id="blastTitle" maxlength="80" required
-                           placeholder="Contoh: Promo Roti Akhir Pekan"></div>
-                     <div class="field"><label>Isi Pesan WhatsApp</label><textarea id="blastMessage" rows="6"
-                           maxlength="1200" required placeholder="Halo {nama}, ada promo spesial dari ROTI ANGET SUBUH...
+                    </div>
+                    <div class="pos-grid">
+                        <div class="panel">
+                            <h3>Pilih Produk</h3>
+                            <div class="field"><label>Ketik kode roti atau pilih nama</label><input id="posCode"
+                                    list="productOptions" placeholder="Ketik RAS001 atau nama roti…"><datalist
+                                    id="productOptions"></datalist></div>
+                            <div id="productPreview" class="product-preview">
+                                <div class="empty" style="width:100%">Pilih produk untuk melihat detail.</div>
+                            </div>
+                            <div class="form-grid">
+                                <div class="field"><label>Qty Pembelian (pcs)</label><input id="posQty" type="number"
+                                        min="1" value="1"></div>
+                                <div class="field"><label>&nbsp;</label><button id="addCartBtn"
+                                        class="btn btn-gold btn-block" type="button">+ Tambahkan ke Keranjang</button>
+                                </div>
+                            </div>
+                            <h3 style="margin-top:25px">Keranjang</h3>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Produk</th>
+                                            <th>Qty</th>
+                                            <th>Subtotal</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cartTable">
+                                        <tr>
+                                            <td colspan="4" class="empty">Keranjang masih kosong</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <h3>Ringkasan Pembayaran</h3>
+                            <div class="total-line"><span>Subtotal</span><strong id="cartSubtotal">Rp 0</strong></div>
+                            <div class="field"><label>Pilih Promo / Discount</label><select id="posPromo">
+                                    <option value="">Tanpa Promo</option>
+                                </select>
+                                <div id="promoInfo" class="customer-hint">Pilih promo jika tersedia.</div>
+                            </div>
+                            <div class="total-line discount-line"><span>Diskon</span><strong id="cartDiscount">- Rp
+                                    0</strong></div>
+                            <div class="total-line grand"><span>Total Tagihan</span><strong id="cartTotal">Rp 0</strong>
+                            </div>
+                            <div class="customer-entry" style="margin-top:18px">
+                                <div class="field"><label>Nomor Pelanggan / Nomor HP</label><input id="customerPhone"
+                                        type="text" inputmode="text" autocomplete="off"
+                                        placeholder="NPRAS0001 atau 081234567890">
+                                    <div id="customerHint" class="customer-hint">Cari pelanggan menggunakan nomor
+                                        anggota atau nomor HP. Nomor HP tetap tersimpan sebagai data privat dan tidak
+                                        dicetak di struk.</div>
+                                </div>
+                                <div id="customerNewFields" class="customer-new-fields hidden">
+                                    <div class="field"><label>Nama Konsumen</label><input id="customerName"
+                                            maxlength="80" autocomplete="name" placeholder="Nama lengkap konsumen">
+                                    </div>
+                                    <div class="field"><label>Alamat Konsumen</label><textarea id="customerAddress"
+                                            rows="2" maxlength="240" placeholder="Alamat konsumen"></textarea></div>
+                                    <label class="remember-user"><input id="customerPromoConsent"
+                                            type="checkbox"><span>Konsumen setuju menerima informasi promo melalui
+                                            WhatsApp</span></label>
+                                </div>
+                            </div>
+                            <div class="field"><label>Metode Pembayaran</label><select id="paymentMethod">
+                                    <option value="CASH">CASH</option>
+                                    <option value="QRIS">NON CASH (QRIS)</option>
+                                </select></div>
+                            <div id="cashFields">
+                                <div class="field"><label>Uang Diterima (Rp)</label><input id="cashReceived" type="text"
+                                        inputmode="numeric" pattern="[0-9]*" autocomplete="off"
+                                        placeholder="Masukkan nominal secara manual"></div>
+                                <div class="total-line"><span>Kembalian</span><strong id="changeAmount">Rp 0</strong>
+                                </div>
+                            </div>
+                            <div id="qrisFields" class="hidden">
+                                <div class="qr-area">
+                                    <div id="qrisImageBox" class="qr-placeholder">QRIS MERCHANT<br><small>Masukkan
+                                            gambar QRIS resmi toko agar pelanggan dapat memindainya.</small></div>
+                                    <p style="font-size:10px;color:#76664f">ID Merchant: <b>ID1025383607252</b></p>
+                                </div>
+                                <div class="field"><label>Nominal Dibayar via QRIS (Rp)</label><input id="qrisReceived"
+                                        type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off"
+                                        placeholder="Masukkan nominal pembayaran QRIS secara manual"></div>
+                                <div class="notice">Pelanggan memindai QRIS di atas, lalu memasukkan nominal sesuai
+                                    total tagihan. Kasir memasukkan nominal yang dibayarkan di kolom ini. Kasir wajib
+                                    memastikan pembayaran berhasil pada aplikasi / dashboard QRIS terlebih dahulu, lalu
+                                    tekan PROSES TRANSAKSI.</div>
+                            </div>
+                            <button id="checkoutBtn" class="btn btn-primary btn-block" style="margin-top:14px">PROSES
+                                TRANSAKSI</button><button id="clearCartBtn" class="btn btn-light btn-block"
+                                style="margin-top:8px">Kosongkan Keranjang</button>
+                            <p id="checkoutMessage" style="font-size:11px"></p>
+                        </div>
+                    </div>
+                </section>
+                <section id="history" class="page">
+                    <div class="section-head">
+                        <div>
+                            <h2>Riwayat Transaksi</h2>
+                            <p>Pilih tanggal transaksi untuk melihat dan mencetak laporan keuangan.</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="history-tools">
+                            <div class="field"><label>Dari Tanggal</label><input type="date" id="historyStart"></div>
+                            <div class="field"><label>Sampai Tanggal</label><input type="date" id="historyEnd"></div>
+                            <button class="btn btn-gold" id="filterHistoryBtn" type="button">Tampilkan</button><button
+                                class="btn btn-light" id="resetHistoryBtn" type="button">Hari Ini</button>
+                            <div class="field page-size-field"><label>Tampilkan Data</label><select
+                                    id="historyPageSize">
+                                    <option value="10">10 data</option>
+                                    <option value="25">25 data</option>
+                                    <option value="50">50 data</option>
+                                    <option value="100">100 data</option>
+                                </select></div><button class="btn btn-primary" id="printReportBtn" type="button">Cetak
+                                Laporan</button>
+                        </div>
+                        <div class="history-summary"><span>Jumlah transaksi: <strong
+                                    id="historyCount">0</strong></span><span>Total penjualan lunas: <strong
+                                    id="historyRevenue">Rp 0</strong></span><span>Metode pembayaran: <strong>PAID CASH /
+                                    PAID QRIS</strong></span></div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>No. Transaksi</th>
+                                        <th>Item</th>
+                                        <th>Metode</th>
+                                        <th>Status</th>
+                                        <th>Total</th>
+                                        <th>Struk</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="historyTable"></tbody>
+                            </table>
+                        </div>
+                        <div class="table-pagination" id="historyPagination"></div>
+                    </div>
+                </section>
+                <section id="customers" class="page admin-only">
+                    <div class="section-head">
+                        <div>
+                            <h2>Data Konsumen</h2>
+                            <p>Daftar pelanggan yang tercatat dari transaksi kasir.</p>
+                        </div>
+                        <div class="customer-count" id="customerCount">0 konsumen</div>
+                    </div>
+                    <div class="panel">
+                        <div class="history-tools">
+                            <div class="field" style="min-width:220px"><label>Cari Konsumen</label><input
+                                    id="customerSearch" type="search" placeholder="Nama, NPRAS, atau nomor HP"></div>
+                            <div class="field page-size-field"><label>Tampilkan Data</label><select
+                                    id="customerPageSize">
+                                    <option value="10">10 data</option>
+                                    <option value="25">25 data</option>
+                                    <option value="50">50 data</option>
+                                    <option value="100">100 data</option>
+                                </select></div><button class="btn btn-light" id="refreshCustomersBtn" type="button">Muat
+                                Ulang</button>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>No. Pelanggan</th>
+                                        <th>Nama Pelanggan</th>
+                                        <th>Alamat</th>
+                                        <th>Nomor HP (Privat)</th>
+                                        <th>Promo WhatsApp</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="customersTable">
+                                    <tr>
+                                        <td colspan="6" class="empty">Memuat data konsumen…</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-pagination" id="customerPagination"></div>
+                        <p class="customer-hint">Status promo WhatsApp hanya boleh diaktifkan jika pelanggan telah
+                            memberikan persetujuan.</p>
+                    </div>
+                </section>
+                <section id="promoBlast" class="page admin-only">
+                    <div class="section-head">
+                        <div>
+                            <h2>Blast Promo WhatsApp</h2>
+                            <p>Buat pesan promo, tinjau penerima yang menyetujui pesan promosi, lalu kirim satu per satu
+                                melalui WhatsApp.</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>Buat Isi Promo</h3>
+                        <form id="blastForm">
+                            <div class="field"><label>Judul Promo</label><input id="blastTitle" maxlength="80" required
+                                    placeholder="Contoh: Promo Roti Akhir Pekan"></div>
+                            <div class="field"><label>Isi Pesan WhatsApp</label><textarea id="blastMessage" rows="6"
+                                    maxlength="1200" required placeholder="Halo {nama}, ada promo spesial dari ROTI ANGET SUBUH...
 
 Gunakan kode promo ..."></textarea>
-                        <div class="customer-hint">Gunakan {nama} untuk menyisipkan nama pelanggan. Cantumkan cara
-                           berhenti menerima promo bila diperlukan.</div>
-                     </div><button class="btn btn-primary" type="submit">Simpan Draft Promo</button>
-                  </form>
-                  <p id="blastSaveMessage" class="muted" style="font-size:11px"></p>
-               </div>
-               <div class="panel">
-                  <div class="section-head">
-                     <div>
-                        <h3>Draft Promo Tersimpan</h3>
-                        <p>Pilih draft untuk menyiapkan pesan WhatsApp.</p>
-                     </div>
-                  </div>
-                  <div id="blastDraftList" class="promo-list"><span class="muted">Belum ada draft promo.</span></div>
-               </div>
-               <div class="panel">
-                  <h3>Daftar Penerima & Pengiriman</h3>
-                  <div id="blastSelectedInfo" class="notice">Pilih draft promo untuk melihat jumlah penerima yang
-                     menyetujui pesan promosi.</div>
-                  <div id="blastQueue" class="blast-queue">
-                     <div class="empty">Belum ada pengiriman yang disiapkan.</div>
-                  </div>
-               </div>
-            </section>
-         </main>
-      </div>
-      <div id="stockWarningModal" class="stock-warning-modal" role="alertdialog" aria-modal="true"
-         aria-labelledby="stockWarningTitle">
-         <div class="stock-warning-card">
-            <div class="stock-warning-icon">!</div>
-            <h3 id="stockWarningTitle">STOK TIDAK CUKUP!</h3>
-            <p id="stockWarningText">Stok produk tidak mencukupi.</p><button type="button"
-               class="btn btn-primary btn-block" id="closeStockWarning">Tutup & Periksa Stok</button>
-         </div>
-      </div>
-      <div id="receiptModal" class="receipt-modal">
-         <div class="receipt-card">
-            <div id="receiptContent"></div>
-            <div class="actions" style="justify-content:center;margin-top:18px"><button class="btn btn-primary"
-                  id="printReceiptBtn" type="button">Cetak Struk</button><button class="btn btn-light"
-                  id="closeReceiptBtn" type="button">Tutup</button></div>
-         </div>
-      </div>
-
-      <div id="customerCardModal" class="customer-card-modal" role="dialog" aria-modal="true"
-         aria-labelledby="customerCardTitle">
-         <div class="customer-card-dialog">
-            <div class="section-head">
-               <div>
-                  <h2 id="customerCardTitle" style="font:24px 'Playfair Display';margin:0">Kartu Pelanggan</h2>
-                  <p class="muted">ROTI ANGET SUBUH • MEMBERSHIP CARD</p>
-               </div><button type="button" class="btn btn-light" id="closeCustomerCardBtn">Tutup</button>
+                                <div class="customer-hint">Gunakan {nama} untuk menyisipkan nama pelanggan. Cantumkan
+                                    cara berhenti menerima promo bila diperlukan.</div>
+                            </div><button class="btn btn-primary" type="submit">Simpan Draft Promo</button>
+                        </form>
+                        <p id="blastSaveMessage" class="muted" style="font-size:11px"></p>
+                    </div>
+                    <div class="panel">
+                        <div class="section-head">
+                            <div>
+                                <h3>Draft Promo Tersimpan</h3>
+                                <p>Pilih draft untuk menyiapkan pesan WhatsApp.</p>
+                            </div>
+                        </div>
+                        <div id="blastDraftList" class="promo-list"><span class="muted">Belum ada draft promo.</span>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>Daftar Penerima & Pengiriman</h3>
+                        <div id="blastSelectedInfo" class="notice">Pilih draft promo untuk melihat jumlah penerima yang
+                            menyetujui pesan promosi.</div>
+                        <div id="blastQueue" class="blast-queue">
+                            <div class="empty">Belum ada pengiriman yang disiapkan.</div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        <div id="stockWarningModal" class="stock-warning-modal" role="alertdialog" aria-modal="true"
+            aria-labelledby="stockWarningTitle">
+            <div class="stock-warning-card">
+                <div class="stock-warning-icon">!</div>
+                <h3 id="stockWarningTitle">STOK TIDAK CUKUP!</h3>
+                <p id="stockWarningText">Stok produk tidak mencukupi.</p><button type="button"
+                    class="btn btn-primary btn-block" id="closeStockWarning">Tutup & Periksa Stok</button>
             </div>
-            <div id="customerCardArtwork" class="customer-card-preview"></div>
-            <div id="customerCardDetails" class="member-card-details"></div>
-            <div class="actions"><button type="button" class="btn btn-primary" id="shareCustomerCardBtn">Kirim Kartu via
-                  WhatsApp</button><button type="button" class="btn btn-light" id="downloadCustomerCardBtn">Simpan Kartu
-                  PNG</button></div>
-            <p class="customer-hint">Di perangkat yang mendukung berbagi file, kartu PNG dapat langsung dibagikan ke
-               WhatsApp. Jika tidak, simpan gambar lalu lampirkan pada chat WhatsApp pelanggan.</p>
-         </div>
-      </div>
+        </div>
+        <div id="receiptModal" class="receipt-modal">
+            <div class="receipt-card">
+                <div id="receiptContent"></div>
+                <div class="actions" style="justify-content:center;margin-top:18px"><button class="btn btn-primary"
+                        id="printReceiptBtn" type="button">Cetak Struk</button><button class="btn btn-light"
+                        id="closeReceiptBtn" type="button">Tutup</button></div>
+            </div>
+        </div>
 
-      <div id="imageZoom" class="image-zoom" aria-hidden="true"><button type="button" class="zoom-close" id="zoomClose"
-            aria-label="Tutup zoom">×</button><img id="zoomImage" alt="Foto produk diperbesar">
-         <div id="zoomCaption" class="zoom-caption">Klik area gelap atau tombol × untuk menutup</div>
-      </div>
-      <script type="module" src="script.js"></script>
-   </body>
+        <div id="customerCardModal" class="customer-card-modal" role="dialog" aria-modal="true"
+            aria-labelledby="customerCardTitle">
+            <div class="customer-card-dialog">
+                <div class="section-head">
+                    <div>
+                        <h2 id="customerCardTitle" style="font:24px 'Playfair Display';margin:0">Kartu Pelanggan</h2>
+                        <p class="muted">ROTI ANGET SUBUH • MEMBERSHIP CARD</p>
+                    </div><button type="button" class="btn btn-light" id="closeCustomerCardBtn">Tutup</button>
+                </div>
+                <div id="customerCardArtwork" class="customer-card-preview"></div>
+                <div id="customerCardDetails" class="member-card-details"></div>
+                <div class="actions"><button type="button" class="btn btn-primary" id="shareCustomerCardBtn">Kirim Kartu
+                        via WhatsApp</button><button type="button" class="btn btn-light"
+                        id="downloadCustomerCardBtn">Simpan Kartu PNG</button></div>
+                <p class="customer-hint">Di perangkat yang mendukung berbagi file, kartu PNG dapat langsung dibagikan ke
+                    WhatsApp. Jika tidak, simpan gambar lalu lampirkan pada chat WhatsApp pelanggan.</p>
+            </div>
+        </div>
+
+        <div id="imageZoom" class="image-zoom" aria-hidden="true"><button type="button" class="zoom-close"
+                id="zoomClose" aria-label="Tutup zoom">×</button><img id="zoomImage" alt="Foto produk diperbesar">
+            <div id="zoomCaption" class="zoom-caption">Klik area gelap atau tombol × untuk menutup</div>
+        </div>
+        <script type="module" src="script.js"></script>
+    </body>
 
 </html>
