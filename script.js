@@ -2,10 +2,6 @@
          import {getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, setPersistence, browserSessionPersistence, inMemoryPersistence} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
          import {getFirestore, collection, doc, setDoc, addDoc, getDocs, getDoc, updateDoc, runTransaction, query, where, orderBy, limit, serverTimestamp, deleteDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-         /* 1) GANTI konfigurasi di bawah dengan Firebase Console > Project settings > Your apps.
-            2) Aktifkan Authentication > Email/Password, Firestore Database, dan Storage.
-            3) Buat user kasir dari Authentication > Users. Jangan menyimpan password di file ini. */
-         // Ganti dengan URL gambar GitHub RAW milik toko. Kosongkan untuk memakai gambar bawaan.
          const LOGIN_HERO_IMAGE_URL = 'https://erpmadebali.github.io/Roti-Anget-Subuh/logo.jpeg';
 
          const firebaseConfig = {
