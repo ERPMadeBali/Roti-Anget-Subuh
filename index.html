@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id">
-
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,6 @@
          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
          rel="stylesheet">
       <link rel="stylesheet" href="style.css">
-
    </head>
 
    <body>
@@ -57,30 +55,80 @@
             </div>
          </div>
       </section>
+      <div id="brandNotice" class="brand-notice hidden" role="status" aria-live="polite" aria-modal="true">
+         <div class="brand-notice-card">
+            <img class="brand-notice-logo" src="logo.png" alt="Logo ROTI ANGET SUBUH">
+            <div class="brand-notice-kicker">ROTI ANGET SUBUH</div>
+            <h2 id="brandNoticeTitle">Selamat Datang</h2>
+            <p id="brandNoticeMessage"></p>
+            <div class="brand-notice-line"></div>
+            <small>BAKERY • POINT OF SALE</small>
+         </div>
+      </div>
       <div id="appScreen" class="app hidden">
          <aside id="sidebar" class="sidebar">
-            <div class="brand">ROTI <span style="color:var(--gold2)">ANGET SUBUH</span><small>POINT OF SALE</small>
+            <div class="sidebar-brand">
+               <img class="sidebar-logo" src="logo.png" alt="Logo ROTI ANGET SUBUH">
+               <div class="sidebar-brand-name">ROTI ANGET SUBUH</div>
+               <small>POINT OF SALE</small>
             </div>
             <div class="nav-label">MAIN MENU</div>
             <nav class="nav">
                <button class="active" data-page="dashboard"><span class="ico">▦</span> Dashboard</button>
                <div class="nav-group admin-only" id="inputDataGroup"><button type="button" class="nav-parent"
                      id="inputDataToggle" aria-expanded="false" aria-controls="inputDataChildren"><span
-                        class="ico">◇</span> Input Data <span class="nav-chevron">▼</span></button>
-                  <div class="nav-children" id="inputDataChildren"><button class="nav-sub" data-page="products"><span
-                           class="sub-dot">—</span> Master Produk</button><button class="nav-sub"
-                        data-page="promos"><span class="sub-dot">—</span> Seting Promo</button></div>
+                        class="ico">◇</span> Master Data <span class="nav-chevron">▼</span></button>
+                  <div class="nav-children" id="inputDataChildren"><button class="nav-sub" data-page="uom"><span
+                           class="sub-dot">—</span> Master UOM/Unit</button><button class="nav-sub"
+                        data-page="rawMaterials"><span class="sub-dot">—</span> Master Bahan Baku</button><button
+                        class="nav-sub" data-page="products"><span class="sub-dot">—</span> Master
+                        Produk</button><button class="nav-sub" data-page="masterCostOverhead"><span
+                           class="sub-dot">—</span> Master Data Cost Overhead</button></div>
                </div>
-               <button class="admin-only" data-page="stock"><span class="ico">▤</span> Input Stock</button>
-               <button data-page="pos"><span class="ico">▣</span> Menu Kasir</button>
+               <div class="nav-group admin-only" id="purchasingGroup"><button type="button" class="nav-parent"
+                     id="purchasingToggle" aria-expanded="false" aria-controls="purchasingChildren"><span
+                        class="ico">🛒</span> Purchasing <span class="nav-chevron">▼</span></button>
+                  <div class="nav-children" id="purchasingChildren"><button class="nav-sub"
+                        data-page="addSupplier"><span class="sub-dot">—</span> Add Supplier</button><button
+                        class="nav-sub" data-page="purchaseOrderMaterial"><span class="sub-dot">—</span> Purchase Order
+                        Material</button><button class="nav-sub" data-page="stockBahanBaku"><span
+                           class="sub-dot">—</span> Stock Bahan Baku</button></div>
+               </div>
+               <div class="nav-group admin-only" id="productionGroup"><button type="button" class="nav-parent"
+                     id="productionToggle" aria-expanded="false" aria-controls="productionChildren"><span
+                        class="ico">⚙</span> Produksi <span class="nav-chevron">▼</span></button>
+                  <div class="nav-children" id="productionChildren"><button class="nav-sub"
+                        data-page="mrpProduction"><span class="sub-dot">—</span> MRP Produksi</button><button
+                        class="nav-sub" data-page="finishGood"><span class="sub-dot">—</span> Input Data Finish
+                        Good</button><button class="nav-sub" data-page="waste"><span class="sub-dot">—</span> Input Data
+                        Waste</button></div>
+               </div>
+               <div class="nav-group admin-only" id="marketingGroup"><button type="button" class="nav-parent"
+                     id="marketingToggle" aria-expanded="false" aria-controls="marketingChildren"><span
+                        class="ico">▧</span> Marketing <span class="nav-chevron">▼</span></button>
+                  <div class="nav-children" id="marketingChildren"><button class="nav-sub" data-page="addStore"><span
+                           class="sub-dot">—</span> Add Store</button><button class="nav-sub"
+                        data-page="inputSales"><span class="sub-dot">—</span> Input Sales</button></div>
+               </div>
+               <div class="nav-group" id="cashierGroup"><button type="button" class="nav-parent" id="cashierToggle"
+                     aria-expanded="false" aria-controls="cashierChildren"><span class="ico">▣</span> Kasir <span
+                        class="nav-chevron">▼</span></button>
+                  <div class="nav-children" id="cashierChildren"><button class="nav-sub" data-page="pos"><span
+                           class="sub-dot">—</span> Penjualan</button><button class="nav-sub" data-page="stock"><span
+                           class="sub-dot">—</span> Input Stock</button><button class="nav-sub"
+                        data-page="printerSettings"><span class="sub-dot">—</span> Setting Printer</button></div>
+               </div>
+               <button class="admin-only" data-page="accounting"><span class="ico">▤</span> Accounting</button>
                <div class="nav-group admin-only" id="managementGroup"><button type="button" class="nav-parent"
                      id="managementToggle" aria-expanded="false" aria-controls="managementChildren"><span
                         class="ico">▤</span> Management <span class="nav-chevron">▼</span></button>
-                  <div class="nav-children" id="managementChildren"><button class="nav-sub" data-page="history"><span
-                           class="sub-dot">—</span> Riwayat Transaksi</button><button class="nav-sub"
-                        data-page="soStock"><span class="sub-dot">—</span> SO Stock</button><button class="nav-sub"
-                        data-page="customers"><span class="sub-dot">—</span> Data Konsumen</button><button
-                        class="nav-sub" data-page="promoBlast"><span class="sub-dot">—</span> Blast Promo</button></div>
+                  <div class="nav-children" id="managementChildren"><button class="nav-sub" data-page="promos"><span
+                           class="sub-dot">—</span> Seting Promo</button><button class="nav-sub"
+                        data-page="history"><span class="sub-dot">—</span> Riwayat Transaksi</button><button
+                        class="nav-sub" data-page="soStock"><span class="sub-dot">—</span> SO Stock</button><button
+                        class="nav-sub" data-page="customers"><span class="sub-dot">—</span> Data
+                        Konsumen</button><button class="nav-sub" data-page="promoBlast"><span class="sub-dot">—</span>
+                        Blast Promo</button></div>
                </div>
             </nav>
             <div class="sidebar-foot">Connected to Firebase<br><span id="connectionState">Menunggu
@@ -96,6 +144,95 @@
                </div>
                <div class="user-chip" id="userEmail">Kasir</div>
             </header>
+            <section id="hubMasterData" class="page admin-only">
+               <div class="panel module-hub-intro">
+                  <h3>Master Data</h3>
+                  <p class="muted">Kelola data dasar yang digunakan di seluruh proses aplikasi.</p>
+               </div>
+               <div class="module-hub-grid"><button type="button" class="module-hub-card" data-hub-target="uom"><span
+                        class="module-hub-icon">📏</span><strong>Master UOM / Unit</strong><small>Pengaturan satuan
+                        bahan baku dan produk.</small></button><button type="button" class="module-hub-card"
+                     data-hub-target="rawMaterials"><span class="module-hub-icon">🥣</span><strong>Master Bahan
+                        Baku</strong><small>Data bahan baku, satuan, dan harga.</small></button><button type="button"
+                     class="module-hub-card" data-hub-target="products"><span
+                        class="module-hub-icon">🍞</span><strong>Master Produk</strong><small>Daftar produk dan resep
+                        produksi.</small></button><button type="button" class="module-hub-card"
+                     data-hub-target="masterCostOverhead"><span class="module-hub-icon">💰</span><strong>Master Cost
+                        Overhead</strong><small>Master komponen biaya overhead.</small></button></div>
+            </section>
+            <section id="hubPurchasing" class="page admin-only">
+               <div class="panel module-hub-intro">
+                  <h3>Purchasing</h3>
+                  <p class="muted">Akses pembelian dan pemantauan persediaan bahan baku.</p>
+               </div>
+               <div class="module-hub-grid"><button type="button" class="module-hub-card"
+                     data-hub-target="addSupplier"><span class="module-hub-icon">🤝</span><strong>Add
+                        Supplier</strong><small>Kelola data pemasok bahan baku.</small></button><button type="button"
+                     class="module-hub-card" data-hub-target="purchaseOrderMaterial"><span
+                        class="module-hub-icon">🧾</span><strong>Purchase Order Material</strong><small>Buat dan kelola
+                        pesanan pembelian.</small></button><button type="button" class="module-hub-card"
+                     data-hub-target="stockBahanBaku"><span class="module-hub-icon">📦</span><strong>Stock Bahan
+                        Baku</strong><small>Lihat saldo persediaan bahan baku.</small></button></div>
+            </section>
+            <section id="hubProduction" class="page admin-only">
+               <div class="panel module-hub-intro">
+                  <h3>Produksi</h3>
+                  <p class="muted">Akses perencanaan, hasil produksi, dan pencatatan waste.</p>
+               </div>
+               <div class="module-hub-grid"><button type="button" class="module-hub-card"
+                     data-hub-target="mrpProduction"><span class="module-hub-icon">🗓️</span><strong>MRP
+                        Produksi</strong><small>Perencanaan kebutuhan bahan baku produksi.</small></button><button
+                     type="button" class="module-hub-card" data-hub-target="finishGood"><span
+                        class="module-hub-icon">🏭</span><strong>Input Data Finish Good</strong><small>Catat hasil
+                        produksi dan pengiriman.</small></button><button type="button" class="module-hub-card"
+                     data-hub-target="waste"><span class="module-hub-icon">♻️</span><strong>Input Data
+                        Waste</strong><small>Catat waste bahan baku dan produk.</small></button></div>
+            </section>
+            <section id="hubMarketing" class="page admin-only">
+               <div class="panel module-hub-intro">
+                  <h3>Marketing</h3>
+                  <p class="muted">Kelola store dan pencatatan nilai penjualan.</p>
+               </div>
+               <div class="module-hub-grid"><button type="button" class="module-hub-card"
+                     data-hub-target="addStore"><span class="module-hub-icon">🏬</span><strong>Add
+                        Store</strong><small>Tambah dan kelola data store.</small></button><button type="button"
+                     class="module-hub-card" data-hub-target="inputSales"><span
+                        class="module-hub-icon">📈</span><strong>Input Sales</strong><small>Catat penjualan berdasarkan
+                        store.</small></button></div>
+            </section>
+            <section id="hubCashier" class="page ">
+               <div class="panel module-hub-intro">
+                  <h3>Kasir</h3>
+                  <p class="muted">Akses transaksi penjualan, input stock, dan pengaturan printer.</p>
+               </div>
+               <div class="module-hub-grid"><button type="button" class="module-hub-card" data-hub-target="pos"><span
+                        class="module-hub-icon">🛒</span><strong>Penjualan</strong><small>Buka halaman transaksi
+                        kasir.</small></button><button type="button" class="module-hub-card"
+                     data-hub-target="stock"><span class="module-hub-icon">📦</span><strong>Input
+                        Stock</strong><small>Catat penambahan stock produk.</small></button><button type="button"
+                     class="module-hub-card" data-hub-target="printerSettings"><span
+                        class="module-hub-icon">🖨️</span><strong>Setting Printer</strong><small>Atur ukuran kertas,
+                        pairing, dan tes cetak.</small></button></div>
+            </section>
+            <section id="hubManagement" class="page admin-only">
+               <div class="panel module-hub-intro">
+                  <h3>Management</h3>
+                  <p class="muted">Kelola transaksi, konsumen, promo, dan stock opname.</p>
+               </div>
+               <div class="module-hub-grid"><button type="button" class="module-hub-card" data-hub-target="promos"><span
+                        class="module-hub-icon">🎟️</span><strong>Seting Promo</strong><small>Atur promo yang digunakan
+                        di kasir.</small></button><button type="button" class="module-hub-card"
+                     data-hub-target="history"><span class="module-hub-icon">🧾</span><strong>Riwayat
+                        Transaksi</strong><small>Lihat dan kelola riwayat transaksi.</small></button><button
+                     type="button" class="module-hub-card" data-hub-target="soStock"><span
+                        class="module-hub-icon">📋</span><strong>SO Stock</strong><small>Lakukan stock
+                        opname.</small></button><button type="button" class="module-hub-card"
+                     data-hub-target="customers"><span class="module-hub-icon">👥</span><strong>Data
+                        Konsumen</strong><small>Kelola data konsumen.</small></button><button type="button"
+                     class="module-hub-card" data-hub-target="promoBlast"><span
+                        class="module-hub-icon">📣</span><strong>Blast Promo</strong><small>Kelola pengiriman informasi
+                        promo.</small></button></div>
+            </section>
             <section id="dashboard" class="page active">
                <div class="dashboard-address"><span class="pin">⌖</span>
                   <div class="store-address">
@@ -137,8 +274,327 @@
                   </div>
                </div>
             </section>
-            <section id="products" class="page">
+            <section id="uom" class="page">
                <div class="panel">
+                  <h3>Master UOM / Unit</h3>
+                  <p class="master-help">Daftarkan satuan yang akan digunakan pada data bahan baku, misalnya Kg, Gram,
+                     Liter, Pcs, atau Butir.</p>
+                  <form id="uomForm">
+                     <div class="form-grid">
+                        <div class="field"><label>Kode UOM (otomatis)</label><input id="uomCode" readonly
+                              placeholder="UNT001"></div>
+                        <div class="field"><label>Nama UOM / Unit</label><input id="uomName" required maxlength="40"
+                              placeholder="Contoh: Kg"></div>
+                     </div>
+                     <div class="actions"><button class="btn btn-primary" type="submit">Simpan Data</button><button
+                           class="btn btn-light" type="reset" id="resetUom">Reset</button></div>
+                  </form>
+                  <p id="uomMessage" class="muted" style="font-size:11px"></p>
+               </div>
+               <div class="panel">
+                  <h3>Daftar UOM / Unit</h3>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Kode UOM</th>
+                              <th>Nama UOM / Unit</th>
+                              <th>Action</th>
+                           </tr>
+                        </thead>
+                        <tbody id="uomTable">
+                           <tr>
+                              <td colspan="3" class="empty">Belum ada data UOM.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </section>
+            <section id="masterCostOverhead" class="page admin-only">
+               <div class="panel">
+                  <h3>Master Data Cost Overhead</h3>
+                  <p class="master-help">Daftarkan rincian biaya overhead untuk pencatatan biaya Accounting.</p>
+                  <form id="costOverheadMasterForm">
+                     <div class="form-grid">
+                        <div class="field"><label>Kode Biaya (otomatis)</label><input id="costOverheadCode" readonly
+                              placeholder="COH001"></div>
+                        <div class="field"><label>Nama Biaya</label><input id="costOverheadName" required
+                              maxlength="100" placeholder="Contoh: Gaji Karyawan"></div>
+                     </div>
+                     <div class="actions"><button class="btn btn-primary" type="submit">Simpan Data</button></div>
+                  </form>
+                  <p id="costOverheadMasterMessage" class="muted" style="font-size:11px"></p>
+               </div>
+               <div class="panel">
+                  <h3>Daftar Cost Overhead</h3>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>No Urut</th>
+                              <th>KODE</th>
+                              <th>Nama Biaya</th>
+                           </tr>
+                        </thead>
+                        <tbody id="costOverheadMasterTable">
+                           <tr>
+                              <td colspan="3" class="empty">Belum ada rincian biaya.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </section>
+            <section id="addSupplier" class="page admin-only">
+               <div class="panel">
+                  <h3>Add Supplier</h3>
+                  <p class="master-help">Daftarkan data supplier untuk kebutuhan Purchasing.</p>
+                  <form id="supplierForm">
+                     <div class="form-grid">
+                        <div class="field"><label>Kode Supplier (otomatis)</label><input id="supplierCode" readonly
+                              placeholder="SUP001"></div>
+                        <div class="field"><label>Nama Supplier</label><input id="supplierName" required maxlength="120"
+                              placeholder="Masukkan nama supplier"></div>
+                        <div class="field"><label>Alamat Supplier</label><input id="supplierAddress" required
+                              maxlength="250" placeholder="Masukkan alamat supplier"></div>
+                        <div class="field"><label>Contact / HP</label><input id="supplierContact" required
+                              maxlength="40" placeholder="Masukkan nomor telepon / HP"></div>
+                     </div>
+                     <div class="actions"><button class="btn btn-primary" id="saveSupplierBtn" type="submit">Simpan
+                           Data</button><button class="btn btn-light" id="resetSupplierBtn" type="button">Reset</button>
+                     </div>
+                  </form>
+                  <p id="supplierMessage" class="muted" style="font-size:11px"></p>
+               </div>
+               <div class="panel">
+                  <h3>Daftar Supplier</h3>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>No</th>
+                              <th>Kode Supplier</th>
+                              <th>Nama Supplier</th>
+                              <th>Alamat Supplier</th>
+                              <th>Contact / HP</th>
+                              <th>Aksi</th>
+                           </tr>
+                        </thead>
+                        <tbody id="supplierTable">
+                           <tr>
+                              <td colspan="6" class="empty">Belum ada data supplier.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </section>
+            <section id="purchaseOrderMaterial" class="page admin-only">
+               <div class="panel">
+                  <h3>Purchase Order Material</h3>
+                  <p class="master-help">Catat pembelian bahan baku dari supplier. UOM dan Average mengikuti Master
+                     Bahan Baku.</p>
+                  <form id="purchaseOrderForm">
+                     <div class="form-grid">
+                        <div class="field"><label>Select Supplier</label><select id="poSupplier" required>
+                              <option value="">Pilih Supplier</option>
+                           </select></div>
+                        <div class="field"><label>Select Bahan Baku</label><select id="poMaterial" required>
+                              <option value="">Pilih Bahan Baku</option>
+                           </select></div>
+                        <div class="field"><label>Qty</label><input id="poQty" type="number" min="0.0001" step="any"
+                              required placeholder="Masukkan Qty"></div>
+                        <div class="field"><label>UOM / Unit</label><input id="poUom" readonly
+                              placeholder="Otomatis dari Master Bahan Baku"></div>
+                        <div class="field"><label>Value Purchase Price (Rp)</label><input id="poValue" type="number"
+                              min="0" step="1" required placeholder="Input nilai pembelian"></div>
+                        <div class="field"><label>Average (Value Purchase Price ÷ Qty)</label><input id="poAverage"
+                              readonly placeholder="Dihitung dari Value ÷ Qty"></div>
+                        <div class="field"><label>Tanggal Pembelian</label><input id="poDate" type="date" required>
+                        </div>
+                     </div>
+                     <div class="actions"><button class="btn btn-primary" id="savePurchaseOrderBtn" type="submit">Save
+                           Data</button><button class="btn btn-light" id="resetPurchaseOrderBtn"
+                           type="button">Reset</button></div>
+                  </form>
+                  <p id="poMessage" class="muted" style="font-size:11px"></p>
+               </div>
+               <div class="panel">
+                  <div class="section-head">
+                     <div>
+                        <h3>Data Pembelian Bahan Baku</h3>
+                        <p class="muted">Pilih bulan dan tahun untuk menampilkan riwayat pembelian.</p>
+                     </div>
+                     <div class="actions" style="align-items:end">
+                        <div class="field"><label>Bulan</label><select id="poMonth"></select></div>
+                        <div class="field"><label>Tahun</label><select id="poYear"></select></div><button type="button"
+                           class="btn btn-primary" id="printPurchaseOrdersBtn">Print PDF</button>
+                     </div>
+                  </div>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>No</th>
+                              <th>Tanggal</th>
+                              <th>Supplier</th>
+                              <th>Bahan Baku</th>
+                              <th>Qty</th>
+                              <th>UOM</th>
+                              <th>Value Purchase Price</th>
+                              <th>Average</th>
+                              <th>Aksi</th>
+                           </tr>
+                        </thead>
+                        <tbody id="purchaseOrderTable">
+                           <tr>
+                              <td colspan="9" class="empty">Belum ada data pembelian.</td>
+                           </tr>
+                        </tbody>
+                        <tfoot>
+                           <tr>
+                              <th colspan="6" style="text-align:right">Total Pembelian</th>
+                              <th id="poMonthTotal">Rp 0</th>
+                              <th colspan="2"></th>
+                           </tr>
+                        </tfoot>
+                     </table>
+                  </div>
+               </div>
+            </section>
+            <section id="stockBahanBaku" class="page admin-only">
+               <div class="panel">
+                  <div class="section-head">
+                     <div>
+                        <h2>Stock Bahan Baku Produksi</h2>
+                        <p class="muted">Akumulasi seluruh pembelian Purchase Order dikurangi pemakaian bahan baku dari
+                           MRP Produksi.</p>
+                     </div><button type="button" class="btn btn-primary" id="printStockBahanBakuBtn">Print PDF</button>
+                  </div>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Kode Bahan Baku</th>
+                              <th>Nama Bahan Baku</th>
+                              <th>UOM / Unit</th>
+                              <th>Qty PO</th>
+                              <th>Qty Produksi</th>
+                              <th>Qty Stock</th>
+                              <th>Value</th>
+                           </tr>
+                        </thead>
+                        <tbody id="stockBahanBakuTable">
+                           <tr>
+                              <td colspan="7" class="empty">Memuat stock bahan baku...</td>
+                           </tr>
+                        </tbody>
+                        <tfoot>
+                           <tr>
+                              <th colspan="6" style="text-align:right">Total Value Stock</th>
+                              <th id="stockBahanBakuTotal">Rp 0</th>
+                           </tr>
+                        </tfoot>
+                     </table>
+                  </div>
+                  <p class="muted" style="font-size:11px;margin-top:10px">Qty Stock = Qty PO − Qty Produksi. Value =
+                     Average Master Bahan Baku × Qty Stock.</p>
+               </div>
+            </section>
+            <section id="costOverheadInput" class="page admin-only">
+               <div class="panel">
+                  <div class="section-head">
+                     <div>
+                        <h2>Input Biaya Cost Overhead</h2>
+                        <p class="muted">Pilih tanggal posting, lalu isi nilai biaya.</p>
+                     </div>
+                     <div class="actions"><button type="button" class="btn btn-light" id="backToCostsReport">← Kembali
+                           ke Laporan Biaya</button></div>
+                  </div>
+                  <div class="field" style="max-width:280px"><label>Tanggal Posting Biaya</label><input
+                        id="costOverheadPostingDate" type="date"></div>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>No</th>
+                              <th>Kode</th>
+                              <th>Nama Biaya</th>
+                              <th>Value (Rp)</th>
+                           </tr>
+                        </thead>
+                        <tbody id="costOverheadInputTable">
+                           <tr>
+                              <td colspan="4" class="empty">Pilih tanggal posting terlebih dahulu.</td>
+                           </tr>
+                        </tbody>
+                        <tfoot>
+                           <tr>
+                              <th colspan="3" style="text-align:right">Total Biaya</th>
+                              <th id="costOverheadInputTotal">Rp 0</th>
+                           </tr>
+                        </tfoot>
+                     </table>
+                  </div>
+                  <div class="actions"><button type="button" class="btn btn-primary"
+                        id="saveCostOverheadExpenses">Simpan Biaya</button></div>
+                  <p id="costOverheadInputMessage" class="muted" style="font-size:11px"></p>
+               </div>
+            </section>
+            <section id="rawMaterials" class="page">
+               <div class="panel">
+                  <h3>Master Bahan Baku</h3>
+                  <p class="master-help">Average dihitung otomatis dari Purchase Price dibagi Weight. Contoh: Rp15.000 ÷
+                     2 Kg = Rp7.500 per Kg.</p>
+                  <form id="rawMaterialForm">
+                     <div class="form-grid">
+                        <div class="field"><label>Kode Bahan Baku (otomatis)</label><input id="rawMaterialCode" readonly
+                              placeholder="MAT001"></div>
+                        <div class="field"><label>Nama Bahan Baku</label><input id="rawMaterialName" required
+                              maxlength="100" placeholder="Contoh: Tepung Terigu"></div>
+                        <div class="field"><label>Select UOM / Unit</label><select id="rawMaterialUom" required>
+                              <option value="">Pilih UOM…</option>
+                           </select></div>
+                        <div class="field"><label>Weight</label><input id="rawMaterialWeight" type="number" min="0.001"
+                              step="any" required placeholder="Contoh: 2 atau 0.5"></div>
+                        <div class="field"><label>Purchase Price (Rp)</label><input id="rawMaterialPurchasePrice"
+                              type="number" min="0" step="1" required placeholder="15000"></div>
+                        <div class="field"><label>Average (otomatis)</label><input id="rawMaterialAverage" readonly
+                              placeholder="Rp 0"></div>
+                     </div>
+                     <div class="actions"><button class="btn btn-primary" type="submit" id="saveRawMaterialBtn">Save
+                           Data</button><button class="btn btn-light" type="reset" id="resetRawMaterial">Reset</button>
+                     </div>
+                  </form>
+                  <p id="rawMaterialMessage" class="muted" style="font-size:11px"></p>
+               </div>
+               <div class="panel">
+                  <h3>Daftar Data Bahan Baku</h3>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Kode BB</th>
+                              <th>Bahan Baku</th>
+                              <th>UOM Unit</th>
+                              <th>Weight</th>
+                              <th>Purchase Price</th>
+                              <th>Average</th>
+                              <th>Action</th>
+                           </tr>
+                        </thead>
+                        <tbody id="rawMaterialsTable">
+                           <tr>
+                              <td colspan="7" class="empty">Belum ada data bahan baku.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </section>
+            <section id="products" class="page">
+               <div class="panel" id="productEntryPanel">
                   <h3>Tambah / Perbarui Produk</h3>
                   <form id="productForm">
                      <div class="form-grid">
@@ -162,7 +618,7 @@
                   </form>
                   <p id="productMessage" class="muted" style="font-size:11px"></p>
                </div>
-               <div class="panel">
+               <div class="panel" id="productListPanel">
                   <h3>Daftar Produk</h3>
                   <div class="table-wrap">
                      <table>
@@ -183,6 +639,361 @@
                      </table>
                   </div>
                </div>
+               <div class="panel hidden" id="forecastPanel">
+                  <div class="row"
+                     style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+                     <div>
+                        <h3 style="margin-bottom:5px">Forecast / Resep Produk</h3>
+                        <p class="muted" style="font-size:11px">Masukkan seluruh bahan baku yang digunakan untuk membuat
+                           satu produk.</p>
+                     </div>
+                     <button type="button" class="btn btn-light" id="closeForecastBtn">← Kembali ke Master
+                        Produk</button>
+                  </div>
+                  <div class="forecast-product-card"
+                     style="display:flex;align-items:center;gap:16px;padding:14px;background:#faf6ef;border:1px solid var(--line);border-radius:12px;margin:14px 0">
+                     <img id="forecastProductImage" src="" alt="Foto produk"
+                        style="width:88px;height:88px;object-fit:cover;border-radius:10px;background:#eee">
+                     <div style="display:grid;gap:5px"><strong id="forecastProductName">Nama Produk</strong><span>Harga
+                           Jual: <b id="forecastProductPrice">Rp0</b></span><small id="forecastProductCode"
+                           class="muted"></small></div>
+                  </div>
+                  <h4 style="margin:16px 0 10px">Tambah Bahan Baku</h4>
+                  <div class="form-grid">
+                     <div class="field span-2"><label>Select Bahan Baku</label><select id="forecastMaterialSelect">
+                           <option value="">Pilih bahan baku</option>
+                        </select></div>
+                     <div class="field"><label>UOM</label><input id="forecastUom" readonly
+                           placeholder="Otomatis dari bahan baku"></div>
+                     <div class="field"><label>Average (Rp)</label><input id="forecastAverage" readonly placeholder="0">
+                     </div>
+                     <div class="field"><label>Weight / Qty</label><input id="forecastWeight" type="number"
+                           min="0.00000001" step="any" placeholder="Contoh: 0.003277"></div>
+                     <div class="field"><label>Price (Weight × Average)</label><input id="forecastPrice" readonly
+                           placeholder="Rp0"></div>
+                  </div>
+                  <div class="actions" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><button
+                        type="button" class="btn btn-primary" id="addForecastMaterialBtn">+ Tambah Bahan
+                        Baku</button><button type="button" class="btn btn-gold" id="saveForecastBtn">Simpan
+                        Forecast</button></div>
+                  <p id="forecastMessage" class="muted" style="font-size:11px"></p>
+                  <div class="table-wrap" style="margin-top:14px">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Kode Bahan Baku</th>
+                              <th>Nama Bahan Baku</th>
+                              <th>Weight</th>
+                              <th>UOM</th>
+                              <th>Average</th>
+                              <th>Price</th>
+                              <th>Action</th>
+                           </tr>
+                        </thead>
+                        <tbody id="forecastItemsTable">
+                           <tr>
+                              <td colspan="7" class="empty">Belum ada bahan baku ditambahkan.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div
+                     style="max-width:420px;margin:16px 0 0 auto;padding:15px;background:#faf6ef;border:1px solid var(--line);border-radius:12px">
+                     <div style="display:flex;justify-content:space-between;padding:5px 0"><span>HPP</span><b
+                           id="forecastHpp">Rp0</b></div>
+                     <div style="display:flex;justify-content:space-between;padding:5px 0"><span>Variable Cost
+                           (1%)</span><b id="forecastVariableCost">Rp0</b></div>
+                     <div
+                        style="display:flex;justify-content:space-between;padding:9px 0 2px;border-top:1px solid var(--line);font-size:17px">
+                        <strong>HPP Total</strong><strong id="forecastHppTotal">Rp0</strong>
+                     </div>
+                  </div>
+                  <div class="actions" style="justify-content:flex-end;margin-top:16px">
+                     <button type="button" class="btn btn-light" id="closeForecastBottomBtn">Close</button>
+                  </div>
+               </div>
+            </section>
+            <section id="mrpProduction" class="page">
+               <div class="panel">
+                  <h3>MRP Produksi</h3>
+                  <p class="master-help">Catat jumlah produksi berdasarkan Forecast produk. Pemakaian bahan baku dan HPP
+                     dihitung dari resep Forecast dikalikan Qty Produksi.</p>
+                  <form id="mrpProductionForm">
+                     <div class="form-grid">
+                        <div class="field span-2"><label>Select Item Produk</label><select id="mrpProduct" required>
+                              <option value="">Pilih produk</option>
+                           </select></div>
+                        <div class="field"><label>Qty Produksi</label><input id="mrpQty" type="number" min="1" step="1"
+                              required placeholder="Contoh: 250"></div>
+                        <div class="field"><label>Tanggal Produksi</label><input id="mrpDate" type="date" required>
+                        </div>
+                     </div>
+                     <div class="actions"><button type="submit" class="btn btn-primary">Save Produksi</button></div>
+                  </form>
+                  <p id="mrpMessage" class="muted" style="font-size:11px"></p>
+               </div>
+               <div class="panel">
+                  <div class="chart-heading" style="flex-wrap:wrap">
+                     <div>
+                        <h3>Data Recipe Production</h3>
+                        <p class="muted" style="font-size:11px">Riwayat produksi berdasarkan bulan dan tahun.</p>
+                     </div>
+                     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:end">
+                        <button type="button" class="btn btn-gold" id="mrpForecastBtn"
+                           aria-expanded="false">Forecast</button>
+                        <div class="field"><label>Select Month</label><select id="mrpMonth"></select></div>
+                        <div class="field"><label>Select Year</label><select id="mrpYear"></select></div>
+                     </div>
+                  </div>
+                  <div id="mrpMonthlyForecast" class="panel hidden"
+                     style="margin:12px 0 16px;padding:14px;background:#faf6ef">
+                     <div
+                        style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+                        <div>
+                           <h3 style="margin:0">Forecast Pemakaian Bahan Baku Bulanan</h3>
+                           <p id="mrpForecastPeriod" class="muted" style="font-size:11px;margin:4px 0 0">Gabungan
+                              seluruh item produksi pada periode terpilih.</p>
+                        </div>
+                     </div>
+                     <div class="table-wrap">
+                        <table>
+                           <thead>
+                              <tr>
+                                 <th>Kode Bahan Baku</th>
+                                 <th>Nama Bahan Baku</th>
+                                 <th>Total Weight</th>
+                                 <th>UOM</th>
+                                 <th>Total Price</th>
+                              </tr>
+                           </thead>
+                           <tbody id="mrpMonthlyForecastTable">
+                              <tr>
+                                 <td colspan="5" class="empty">Belum ada pemakaian bahan baku.</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div style="max-width:380px;margin:12px 0 0 auto">
+                        <div style="display:flex;justify-content:space-between;padding:5px 0"><span>HPP</span><b
+                              id="mrpMonthlyHpp">Rp 0,00</b></div>
+                        <div style="display:flex;justify-content:space-between;padding:5px 0"><span>Variable Cost
+                              (1%)</span><b id="mrpMonthlyVariableCost">Rp 0,00</b></div>
+                        <div
+                           style="display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:9px 0;font-size:16px">
+                           <strong>Total HPP</strong><strong id="mrpMonthlyHppTotal">Rp 0,00</strong>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Kode Produk</th>
+                              <th>Nama Produk</th>
+                              <th>Qty</th>
+                              <th>Aksi</th>
+                           </tr>
+                        </thead>
+                        <tbody id="mrpProductionTable">
+                           <tr>
+                              <td colspan="4" class="empty">Belum ada data produksi.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <p id="mrpListMessage" class="muted" style="font-size:11px"></p>
+               </div>
+            </section>
+            <section id="finishGood" class="page admin-only">
+               <div class="panel">
+                  <div class="section-head">
+                     <div>
+                        <h3>Data Finish Good Produksi</h3>
+                        <p class="muted">Qty Recipe diambil dari total Qty MRP Produksi per item pada bulan terpilih.
+                           Qty FG dan Qty Kirim diinput manual.</p>
+                     </div>
+                  </div>
+                  <div class="history-tools" style="align-items:end">
+                     <div class="field"><label>Select Month</label><select id="fgMonth"></select></div>
+                     <div class="field"><label>Select Year</label><select id="fgYear"></select></div>
+                     <button type="button" class="btn btn-light" id="fgEditBtn">Edit Data</button>
+                     <button type="button" class="btn btn-gold" id="fgSaveBtn">Simpan Data FG</button>
+                     <button type="button" class="btn btn-primary" id="fgForecastBtn"
+                        aria-expanded="false">Forecast</button>
+                  </div>
+                  <p id="fgMessage" class="muted" style="font-size:11px"></p>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Kode Item</th>
+                              <th>Nama Item</th>
+                              <th>Qty Recipe</th>
+                              <th>Qty FG</th>
+                              <th>Qty Kirim</th>
+                              <th>Stock</th>
+                           </tr>
+                        </thead>
+                        <tbody id="finishGoodTable">
+                           <tr>
+                              <td colspan="6" class="empty">Belum ada data MRP pada periode ini.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <div id="fgForecastPanel" class="panel hidden" style="margin-top:14px">
+                  <h3>Forecast Pemakaian Bahan Baku Finish Good</h3>
+                  <p id="fgForecastPeriod" class="muted" style="font-size:11px">Pemakaian bahan baku dihitung
+                     berdasarkan Qty FG.</p>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Kode Bahan Baku</th>
+                              <th>Nama Bahan Baku</th>
+                              <th>Total Weight</th>
+                              <th>UOM</th>
+                              <th>Total Price</th>
+                           </tr>
+                        </thead>
+                        <tbody id="fgForecastTable">
+                           <tr>
+                              <td colspan="5" class="empty">Belum ada pemakaian bahan baku.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div style="max-width:380px;margin:12px 0 0 auto">
+                     <div style="display:flex;justify-content:space-between;padding:5px 0"><span>HPP</span><b
+                           id="fgHpp">Rp 0,00</b></div>
+                     <div style="display:flex;justify-content:space-between;padding:5px 0"><span>Variable Cost
+                           (1%)</span><b id="fgVariableCost">Rp 0,00</b></div>
+                     <div
+                        style="display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:9px 0;font-size:16px">
+                        <strong>Total HPP</strong><strong id="fgHppTotal">Rp 0,00</strong>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section id="waste" class="page admin-only">
+               <div class="panel">
+                  <div class="section-head">
+                     <div>
+                        <h2>Input Data Waste</h2>
+                        <p class="muted">Catat waste bahan baku dan produk jadi berdasarkan tanggal proses.</p>
+                     </div>
+                  </div>
+                  <div class="actions" style="margin:0 0 16px">
+                     <button type="button" class="btn btn-primary" id="wasteMaterialTab">Input Waste Bahan Baku</button>
+                     <button type="button" class="btn btn-light" id="wasteProductTab">Input Waste Produk</button>
+                  </div>
+               </div>
+               <div id="wasteMaterialPanel">
+                  <div class="panel">
+                     <h3>Input Waste Bahan Baku</h3>
+                     <form id="wasteMaterialForm">
+                        <div class="form-grid">
+                           <div class="field span-2"><label>Select Nama Bahan Baku</label><select
+                                 id="wasteMaterialSelect" required>
+                                 <option value="">Pilih bahan baku</option>
+                              </select></div>
+                           <div class="field"><label>Qty Waste</label><input id="wasteMaterialQty" type="number"
+                                 min="0.00000001" step="any" required placeholder="Contoh: 7.5 atau 0.5"></div>
+                           <div class="field"><label>UOM / Unit</label><input id="wasteMaterialUom" readonly
+                                 placeholder="Otomatis dari Master Bahan Baku"></div>
+                           <div class="field"><label>Average (Rp)</label><input id="wasteMaterialAverage" readonly
+                                 placeholder="Rp 0"></div>
+                           <div class="field"><label>Value Waste (Qty × Average)</label><input id="wasteMaterialValue"
+                                 readonly placeholder="Rp 0"></div>
+                           <div class="field"><label>Tanggal Proses Waste</label><input id="wasteMaterialDate"
+                                 type="date" required></div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Simpan Data Waste Bahan Baku</button>
+                     </form>
+                     <p id="wasteMaterialMessage" class="muted" style="font-size:11px"></p>
+                  </div>
+                  <div class="panel">
+                     <h3>Data Waste Bahan Baku</h3>
+                     <div class="history-tools">
+                        <div class="field"><label>Dari Tanggal</label><input id="wasteMaterialStart" type="date"></div>
+                        <div class="field"><label>Sampai Tanggal</label><input id="wasteMaterialEnd" type="date"></div>
+                        <button type="button" class="btn btn-light" id="wasteMaterialFilter">Tampilkan</button>
+                        <button type="button" class="btn btn-gold" id="wasteMaterialPrint">Print / Save PDF</button>
+                     </div>
+                     <div class="table-wrap">
+                        <table>
+                           <thead>
+                              <tr>
+                                 <th>Tanggal</th>
+                                 <th>Kode Bahan Baku</th>
+                                 <th>Nama Bahan Baku</th>
+                                 <th>Qty Waste</th>
+                                 <th>UOM</th>
+                                 <th>Average</th>
+                                 <th>Value Waste</th>
+                              </tr>
+                           </thead>
+                           <tbody id="wasteMaterialTable">
+                              <tr>
+                                 <td colspan="7" class="empty">Belum ada data waste bahan baku.</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div id="wasteProductPanel" class="hidden">
+                  <div class="panel">
+                     <h3>Input Waste Produk</h3>
+                     <form id="wasteProductForm">
+                        <div class="form-grid">
+                           <div class="field span-2"><label>Select Nama Produk</label><select id="wasteProductSelect"
+                                 required>
+                                 <option value="">Pilih produk</option>
+                              </select></div>
+                           <div class="field"><label>Qty Waste (pcs)</label><input id="wasteProductQty" type="number"
+                                 min="0.00000001" step="any" required placeholder="Masukkan qty waste"></div>
+                           <div class="field"><label>HPP per PCS</label><input id="wasteProductHppUnit" readonly
+                                 placeholder="Otomatis dari Forecast Master Produk"></div>
+                           <div class="field"><label>Total HPP Waste (Qty × HPP per PCS)</label><input
+                                 id="wasteProductHppTotal" readonly placeholder="Rp 0"></div>
+                           <div class="field"><label>Tanggal Proses Waste</label><input id="wasteProductDate"
+                                 type="date" required></div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Simpan Data Waste Produk</button>
+                     </form>
+                     <p id="wasteProductMessage" class="muted" style="font-size:11px"></p>
+                  </div>
+                  <div class="panel">
+                     <h3>Data Waste Produk</h3>
+                     <div class="history-tools">
+                        <div class="field"><label>Dari Tanggal</label><input id="wasteProductStart" type="date"></div>
+                        <div class="field"><label>Sampai Tanggal</label><input id="wasteProductEnd" type="date"></div>
+                        <button type="button" class="btn btn-light" id="wasteProductFilter">Tampilkan</button>
+                        <button type="button" class="btn btn-gold" id="wasteProductPrint">Print / Save PDF</button>
+                     </div>
+                     <div class="table-wrap">
+                        <table>
+                           <thead>
+                              <tr>
+                                 <th>Tanggal</th>
+                                 <th>Kode Produk</th>
+                                 <th>Nama Produk</th>
+                                 <th>Qty Waste</th>
+                                 <th>HPP / PCS</th>
+                                 <th>Total HPP Waste</th>
+                              </tr>
+                           </thead>
+                           <tbody id="wasteProductTable">
+                              <tr>
+                                 <td colspan="6" class="empty">Belum ada data waste produk.</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
             </section>
             <section id="promos" class="page">
                <div class="panel">
@@ -200,6 +1011,486 @@
                   <p id="promoMessage" class="muted" style="font-size:11px"></p>
                   <h3 style="margin-top:18px">Promo Tersimpan</h3>
                   <div id="promoList" class="promo-list"><span class="muted">Belum ada promo.</span></div>
+               </div>
+            </section>
+            <section id="addStore" class="page admin-only">
+               <div class="panel">
+                  <h3>Add Store</h3>
+                  <p class="muted" style="font-size:11px">Tambahkan data toko. Kode Store dibuat otomatis oleh sistem.
+                  </p>
+                  <form id="storeForm">
+                     <div class="form-grid">
+                        <div class="field"><label>Kode Store</label><input id="storeCode" readonly
+                              placeholder="Otomatis"></div>
+                        <div class="field"><label>Nama Store</label><input id="storeName" required maxlength="100"
+                              placeholder="Nama store"></div>
+                        <div class="field"><label>Alamat Store</label><input id="storeAddress" required maxlength="250"
+                              placeholder="Alamat lengkap store"></div>
+                        <div class="field"><label>Kontak / HP</label><input id="storeContact" required maxlength="40"
+                              placeholder="Nomor telepon / HP"></div>
+                     </div>
+                     <div class="actions"><button class="btn btn-primary" type="submit">Save Data</button><button
+                           class="btn btn-light" type="reset" id="resetStore">Reset</button></div>
+                  </form>
+                  <p id="storeMessage" class="muted" style="font-size:11px"></p>
+               </div>
+               <div class="panel">
+                  <div class="section-head">
+                     <div>
+                        <h3>Store List</h3>
+                        <p class="muted">Daftar toko yang sudah tersimpan.</p>
+                     </div>
+                     <div class="field" style="max-width:130px"><label>Tampilkan</label><select id="storePageSize">
+                           <option>5</option>
+                           <option>10</option>
+                           <option>25</option>
+                           <option>50</option>
+                           <option>100</option>
+                        </select></div>
+                  </div>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Kode Store</th>
+                              <th>Nama Store</th>
+                              <th>Alamat</th>
+                              <th>Kontak / HP</th>
+                              <th>Aksi</th>
+                           </tr>
+                        </thead>
+                        <tbody id="storesTable"></tbody>
+                     </table>
+                  </div>
+                  <div id="storePagination" class="actions" style="justify-content:space-between"></div>
+               </div>
+            </section>
+            <section id="inputSales" class="page admin-only">
+               <div class="panel">
+                  <h3>Input Sales</h3>
+                  <p class="muted" style="font-size:11px">Catat nilai penjualan berdasarkan store dan tanggal sales.</p>
+                  <form id="salesForm">
+                     <div class="form-grid">
+                        <div class="field"><label>Select Store</label><select id="salesStore" required>
+                              <option value="">Pilih Store...</option>
+                           </select></div>
+                        <div class="field"><label>Sales Value (Rp)</label><input id="salesValue" type="number" min="1"
+                              step="1" required placeholder="Contoh: 1000000"></div>
+                        <div class="field"><label>Tanggal Sales</label><input id="salesDate" type="date" required></div>
+                     </div>
+                     <div class="actions"><button class="btn btn-primary" type="submit">Save Data</button><button
+                           class="btn btn-light" type="reset">Reset</button></div>
+                  </form>
+                  <p id="salesMessage" class="muted" style="font-size:11px"></p>
+               </div>
+               <div class="panel">
+                  <div class="section-head sales-data-head">
+                     <div>
+                        <h3>Sales Data</h3>
+                        <p class="muted">Riwayat sales berdasarkan bulan dan tahun yang dipilih.</p>
+                     </div>
+                     <div class="sales-filter-bar">
+                        <div class="field sales-filter-field"><label for="salesFilterMonth">Select Month</label><select
+                              id="salesFilterMonth">
+                              <option value="01">January</option>
+                              <option value="02">February</option>
+                              <option value="03">March</option>
+                              <option value="04">April</option>
+                              <option value="05">May</option>
+                              <option value="06">June</option>
+                              <option value="07">July</option>
+                              <option value="08">August</option>
+                              <option value="09">September</option>
+                              <option value="10">October</option>
+                              <option value="11">November</option>
+                              <option value="12">December</option>
+                           </select></div>
+                        <div class="field sales-filter-field"><label for="salesFilterYear">Select Year</label><select
+                              id="salesFilterYear"></select></div>
+                        <button type="button" class="btn btn-primary sales-print-btn" id="printSalesPdf">🖨 Print
+                           PDF</button>
+                        <div class="field sales-page-size"><label for="salesPageSize">Tampilkan</label><select
+                              id="salesPageSize">
+                              <option>5</option>
+                              <option>10</option>
+                              <option>25</option>
+                              <option>50</option>
+                              <option>100</option>
+                           </select></div>
+                     </div>
+                  </div>
+                  <div id="salesFilterSummary" class="muted sales-filter-summary"></div>
+                  <div class="table-wrap">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>Tanggal Sales</th>
+                              <th>Kode Store</th>
+                              <th>Nama Store</th>
+                              <th>Sales Value</th>
+                              <th>Aksi</th>
+                           </tr>
+                        </thead>
+                        <tbody id="salesTable"></tbody>
+                     </table>
+                  </div>
+                  <div id="salesPagination" class="actions" style="justify-content:space-between"></div>
+               </div>
+            </section>
+            <section id="accounting" class="page admin-only">
+               <div class="panel accounting-intro">
+                  <h3>Accounting Reports</h3>
+                  <p class="muted">Pilih ikon laporan untuk membuka data, melihat rekap, dan mencetak laporan.</p>
+               </div>
+               <div class="accounting-grid">
+                  <button type="button" class="accounting-card" data-report-page="reportProductionFG"><span
+                        class="accounting-icon">🏭</span><strong>Laporan Produksi FG</strong><small>Rekap hasil produksi
+                        Finish Good berdasarkan data produksi.</small><span class="accounting-open">Buka Laporan
+                        →</span></button>
+                  <button type="button" class="accounting-card" data-report-page="reportShipment"><span
+                        class="accounting-icon">🚚</span><strong>Laporan Stock Finish Good dan
+                        Pengiriman</strong><small>Rekap stock Finish Good dan kuantitas yang sudah dikirim.</small><span
+                        class="accounting-open">Buka Laporan →</span></button>
+                  <button type="button" class="accounting-card" data-report-page="reportSales"><span
+                        class="accounting-icon">📈</span><strong>Laporan Sales Penjualan</strong><small>Gabungan
+                        penjualan dari transaksi kasir dan input sales Marketing.</small><span
+                        class="accounting-open">Buka Laporan →</span></button>
+                  <button type="button" class="accounting-card" data-report-page="reportCosts"><span
+                        class="accounting-icon">💸</span><strong>Laporan Cost Overhead</strong><small>Rekap biaya Cost
+                        Overhead berdasarkan input biaya.</small><span class="accounting-open">Buka Laporan
+                        →</span></button>
+                  <button type="button" class="accounting-card" data-report-page="reportCOGS"><span
+                        class="accounting-icon">🧮</span><strong>Laporan COGS Produksi</strong><small>Rekap HPP,
+                        variable cost, dan HPP total dari produksi.</small><span class="accounting-open">Buka Laporan
+                        →</span></button>
+                  <button type="button" class="accounting-card" data-report-page="reportStockRM"><span
+                        class="accounting-icon">🧺</span><strong>Laporan Stock Bahan Baku</strong><small>Master bahan
+                        baku, pembelian, pemakaian, saldo stock, dan nilai stock.</small><span
+                        class="accounting-open">Buka Laporan →</span></button>
+                  <button type="button" class="accounting-card" data-report-page="reportProfitLoss"><span
+                        class="accounting-icon">📊</span><strong>Laporan Laba/Rugi</strong><small>Ringkasan penjualan
+                        dan biaya yang tersedia dari pencatatan aplikasi.</small><span class="accounting-open">Buka
+                        Laporan →</span></button>
+                  <button type="button" class="accounting-card" data-report-page="reportStockFG"><span
+                        class="accounting-icon">🖨️</span><strong>Print Semua Laporan</strong><small>Cetak seluruh
+                        laporan Accounting berdasarkan Month dan Year yang dipilih.</small><span
+                        class="accounting-open">Buka Laporan →</span></button>
+               </div>
+            </section>
+            <section id="reportProductionFG" class="page admin-only accounting-report-page">
+               <div class="panel">
+                  <div class="section-head accounting-report-head">
+                     <div>
+                        <p class="eyebrow">ACCOUNTING</p>
+                        <h3>Laporan Produksi FG</h3>
+                        <p class="muted">Rekap hasil produksi Finish Good berdasarkan data produksi.</p>
+                     </div>
+                     <div class="actions"><button type="button" class="btn btn-light" data-accounting-home>←
+                           Accounting</button><button type="button" class="btn btn-primary" data-print-report>🖨 Print
+                           Laporan</button></div>
+                  </div>
+                  <div class="accounting-filter">
+                     <div class="field"><label>Month</label><select id="productionMonth" data-report-month>
+                           <option value="01">Januari</option>
+                           <option value="02">Februari</option>
+                           <option value="03">Maret</option>
+                           <option value="04">April</option>
+                           <option value="05">Mei</option>
+                           <option value="06">Juni</option>
+                           <option value="07">Juli</option>
+                           <option value="08">Agustus</option>
+                           <option value="09">September</option>
+                           <option value="10">Oktober</option>
+                           <option value="11">November</option>
+                           <option value="12">Desember</option>
+                        </select></div>
+                     <div class="field"><label>Year</label><select id="productionYear" data-report-year>
+                           <option value="2026">2026</option>
+                           <option value="2027">2027</option>
+                           <option value="2028">2028</option>
+                           <option value="2029">2029</option>
+                           <option value="2030">2030</option>
+                           <option value="2031">2031</option>
+                           <option value="2032">2032</option>
+                           <option value="2033">2033</option>
+                           <option value="2034">2034</option>
+                           <option value="2035">2035</option>
+                        </select></div><button type="button" class="btn btn-light"
+                        data-refresh-report>Tampilkan</button>
+                  </div>
+                  <div class="accounting-report-body" data-report-body></div>
+               </div>
+            </section>
+            <section id="reportShipment" class="page admin-only accounting-report-page">
+               <div class="panel">
+                  <div class="section-head accounting-report-head">
+                     <div>
+                        <p class="eyebrow">ACCOUNTING</p>
+                        <h3>Laporan Stock Finish Good dan Pengiriman</h3>
+                        <p class="muted">Rekap stock Finish Good dan kuantitas yang sudah dikirim.</p>
+                     </div>
+                     <div class="actions"><button type="button" class="btn btn-light" data-accounting-home>←
+                           Accounting</button><button type="button" class="btn btn-primary" data-print-report>🖨 Print
+                           Laporan</button></div>
+                  </div>
+                  <div class="accounting-filter">
+                     <div class="field"><label>Month</label><select id="shipmentMonth" data-report-month>
+                           <option value="01">Januari</option>
+                           <option value="02">Februari</option>
+                           <option value="03">Maret</option>
+                           <option value="04">April</option>
+                           <option value="05">Mei</option>
+                           <option value="06">Juni</option>
+                           <option value="07">Juli</option>
+                           <option value="08">Agustus</option>
+                           <option value="09">September</option>
+                           <option value="10">Oktober</option>
+                           <option value="11">November</option>
+                           <option value="12">Desember</option>
+                        </select></div>
+                     <div class="field"><label>Year</label><select id="shipmentYear" data-report-year>
+                           <option value="2026">2026</option>
+                           <option value="2027">2027</option>
+                           <option value="2028">2028</option>
+                           <option value="2029">2029</option>
+                           <option value="2030">2030</option>
+                           <option value="2031">2031</option>
+                           <option value="2032">2032</option>
+                           <option value="2033">2033</option>
+                           <option value="2034">2034</option>
+                           <option value="2035">2035</option>
+                        </select></div><button type="button" class="btn btn-light"
+                        data-refresh-report>Tampilkan</button>
+                  </div>
+                  <div class="accounting-report-body" data-report-body></div>
+               </div>
+            </section>
+            <section id="reportSales" class="page admin-only accounting-report-page">
+               <div class="panel">
+                  <div class="section-head accounting-report-head">
+                     <div>
+                        <p class="eyebrow">ACCOUNTING</p>
+                        <h3>Laporan Sales Penjualan</h3>
+                        <p class="muted">Gabungan penjualan dari transaksi kasir dan input sales Marketing.</p>
+                     </div>
+                     <div class="actions"><button type="button" class="btn btn-light" data-accounting-home>←
+                           Accounting</button><button type="button" class="btn btn-primary" data-print-report>🖨 Print
+                           Laporan</button></div>
+                  </div>
+                  <div class="accounting-filter">
+                     <div class="field"><label>Month</label><select id="salesMonth" data-report-month>
+                           <option value="01">Januari</option>
+                           <option value="02">Februari</option>
+                           <option value="03">Maret</option>
+                           <option value="04">April</option>
+                           <option value="05">Mei</option>
+                           <option value="06">Juni</option>
+                           <option value="07">Juli</option>
+                           <option value="08">Agustus</option>
+                           <option value="09">September</option>
+                           <option value="10">Oktober</option>
+                           <option value="11">November</option>
+                           <option value="12">Desember</option>
+                        </select></div>
+                     <div class="field"><label>Year</label><select id="salesYear" data-report-year>
+                           <option value="2026">2026</option>
+                           <option value="2027">2027</option>
+                           <option value="2028">2028</option>
+                           <option value="2029">2029</option>
+                           <option value="2030">2030</option>
+                           <option value="2031">2031</option>
+                           <option value="2032">2032</option>
+                           <option value="2033">2033</option>
+                           <option value="2034">2034</option>
+                           <option value="2035">2035</option>
+                        </select></div><button type="button" class="btn btn-light"
+                        data-refresh-report>Tampilkan</button>
+                     <div class="field" style="max-width:130px"><label for="reportSalesPageSize">Jumlah
+                           Baris</label><select id="reportSalesPageSize">
+                           <option value="10" selected>10</option>
+                           <option value="25">25</option>
+                           <option value="50">50</option>
+                           <option value="100">100</option>
+                        </select></div>
+                  </div>
+                  <div class="accounting-report-body" data-report-body></div>
+               </div>
+            </section>
+            <section id="reportCosts" class="page admin-only accounting-report-page">
+               <div class="panel">
+                  <div class="section-head accounting-report-head">
+                     <div>
+                        <p class="eyebrow">ACCOUNTING</p>
+                        <h3>Laporan Cost Overhead</h3>
+                        <p class="muted">Rekap biaya berdasarkan data input Cost Overhead saja.</p>
+                     </div>
+                     <div class="actions"><button type="button" class="btn btn-light" data-accounting-home>←
+                           Accounting</button><button type="button" class="btn btn-gold" id="openCostOverheadInput">＋
+                           Input Biaya</button><button type="button" class="btn btn-primary" data-print-report>🖨 Print
+                           Laporan</button></div>
+                  </div>
+                  <div class="accounting-filter">
+                     <div class="field"><label>Month</label><select id="costsMonth" data-report-month>
+                           <option value="01">Januari</option>
+                           <option value="02">Februari</option>
+                           <option value="03">Maret</option>
+                           <option value="04">April</option>
+                           <option value="05">Mei</option>
+                           <option value="06">Juni</option>
+                           <option value="07">Juli</option>
+                           <option value="08">Agustus</option>
+                           <option value="09">September</option>
+                           <option value="10">Oktober</option>
+                           <option value="11">November</option>
+                           <option value="12">Desember</option>
+                        </select></div>
+                     <div class="field"><label>Year</label><select id="costsYear" data-report-year>
+                           <option value="2026">2026</option>
+                           <option value="2027">2027</option>
+                           <option value="2028">2028</option>
+                           <option value="2029">2029</option>
+                           <option value="2030">2030</option>
+                           <option value="2031">2031</option>
+                           <option value="2032">2032</option>
+                           <option value="2033">2033</option>
+                           <option value="2034">2034</option>
+                           <option value="2035">2035</option>
+                        </select></div><button type="button" class="btn btn-light"
+                        data-refresh-report>Tampilkan</button>
+                  </div>
+                  <div class="accounting-report-body" data-report-body></div>
+               </div>
+            </section>
+            <section id="reportCOGS" class="page admin-only accounting-report-page">
+               <div class="panel">
+                  <div class="section-head accounting-report-head">
+                     <div>
+                        <p class="eyebrow">ACCOUNTING</p>
+                        <h3>Laporan COGS Produksi</h3>
+                        <p class="muted">Rekap produksi Finish Good dan pemakaian bahan baku berdasarkan bulan dan
+                           tahun.</p>
+                     </div>
+                     <div class="actions"><button type="button" class="btn btn-light" data-accounting-home>←
+                           Accounting</button><button type="button" class="btn btn-primary" data-print-report>🖨 Print
+                           Laporan</button></div>
+                  </div>
+                  <div class="accounting-filter">
+                     <div class="field"><label>Month</label><select id="cogsMonth" data-cogs-month>
+                           <option value="01">Januari</option>
+                           <option value="02">Februari</option>
+                           <option value="03">Maret</option>
+                           <option value="04">April</option>
+                           <option value="05">Mei</option>
+                           <option value="06">Juni</option>
+                           <option value="07">Juli</option>
+                           <option value="08">Agustus</option>
+                           <option value="09">September</option>
+                           <option value="10">Oktober</option>
+                           <option value="11">November</option>
+                           <option value="12">Desember</option>
+                        </select></div>
+                     <div class="field"><label>Year</label><select id="cogsYear" data-cogs-year>
+                           <option value="2026">2026</option>
+                           <option value="2027">2027</option>
+                           <option value="2028">2028</option>
+                           <option value="2029">2029</option>
+                           <option value="2030">2030</option>
+                           <option value="2031">2031</option>
+                           <option value="2032">2032</option>
+                           <option value="2033">2033</option>
+                           <option value="2034">2034</option>
+                           <option value="2035">2035</option>
+                        </select></div><button type="button" class="btn btn-light"
+                        data-refresh-report>Tampilkan</button>
+                  </div>
+                  <div class="accounting-report-body" data-report-body></div>
+               </div>
+            </section>
+            <section id="reportStockFG" class="page admin-only accounting-report-page">
+               <div class="panel">
+                  <div class="section-head accounting-report-head">
+                     <div>
+                        <p class="eyebrow">ACCOUNTING</p>
+                        <h3>Print Semua Laporan</h3>
+                        <p class="muted">Pilih periode laporan, lalu cetak seluruh laporan Accounting dalam satu
+                           dokumen.</p>
+                     </div>
+                     <div class="actions"><button type="button" class="btn btn-light" data-accounting-home>←
+                           Accounting</button></div>
+                  </div>
+                  <div class="accounting-filter">
+                     <div class="field"><label>Month</label><select id="printAllMonth">
+                           <option value="01">Januari</option>
+                           <option value="02">Februari</option>
+                           <option value="03">Maret</option>
+                           <option value="04">April</option>
+                           <option value="05">Mei</option>
+                           <option value="06">Juni</option>
+                           <option value="07">Juli</option>
+                           <option value="08">Agustus</option>
+                           <option value="09">September</option>
+                           <option value="10">Oktober</option>
+                           <option value="11">November</option>
+                           <option value="12">Desember</option>
+                        </select></div>
+                     <div class="field"><label>Year</label><select id="printAllYear">
+                           <option value="2026">2026</option>
+                           <option value="2027">2027</option>
+                           <option value="2028">2028</option>
+                           <option value="2029">2029</option>
+                           <option value="2030">2030</option>
+                           <option value="2031">2031</option>
+                           <option value="2032">2032</option>
+                           <option value="2033">2033</option>
+                           <option value="2034">2034</option>
+                           <option value="2035">2035</option>
+                        </select></div><button type="button" class="btn btn-primary" id="printAllAccountingReports">🖨
+                        Print Laporan</button>
+                  </div>
+                  <div class="accounting-report-body">
+                     <p class="muted">Laporan yang dicetak: Produksi FG, Pengiriman, Sales Penjualan, Cost Overhead,
+                        COGS Produksi, Stock Bahan Baku, dan Laba/Rugi.</p>
+                  </div>
+               </div>
+            </section>
+            <section id="reportStockRM" class="page admin-only accounting-report-page">
+               <div class="panel">
+                  <div class="section-head accounting-report-head">
+                     <div>
+                        <p class="eyebrow">ACCOUNTING</p>
+                        <h3>Laporan Stock Bahan Baku</h3>
+                        <p class="muted">Master bahan baku, pembelian, pemakaian, saldo stock, dan nilai stock.</p>
+                     </div>
+                     <div class="actions"><button type="button" class="btn btn-light" data-accounting-home>←
+                           Accounting</button><button type="button" class="btn btn-primary" data-print-report>🖨 Print
+                           Laporan</button></div>
+                  </div>
+                  <div class="accounting-filter">
+                     <div class="field"><label>Dari Tanggal</label><input type="date" data-report-start></div>
+                     <div class="field"><label>Sampai Tanggal</label><input type="date" data-report-end></div><button
+                        type="button" class="btn btn-light" data-refresh-report>Tampilkan</button>
+                  </div>
+                  <div class="accounting-report-body" data-report-body></div>
+               </div>
+            </section>
+            <section id="reportProfitLoss" class="page admin-only accounting-report-page">
+               <div class="panel">
+                  <div class="section-head accounting-report-head">
+                     <div>
+                        <p class="eyebrow">ACCOUNTING</p>
+                        <h3>Laporan Laba/Rugi</h3>
+                        <p class="muted">Ringkasan penjualan dan biaya yang tersedia dari pencatatan aplikasi.</p>
+                     </div>
+                     <div class="actions"><button type="button" class="btn btn-light" data-accounting-home>←
+                           Accounting</button><button type="button" class="btn btn-primary" data-print-report>🖨 Print
+                           Laporan</button></div>
+                  </div>
+                  <div class="accounting-filter">
+                     <div class="field"><label>Dari Tanggal</label><input type="date" data-report-start></div>
+                     <div class="field"><label>Sampai Tanggal</label><input type="date" data-report-end></div><button
+                        type="button" class="btn btn-light" data-refresh-report>Tampilkan</button>
+                  </div>
+                  <div class="accounting-report-body" data-report-body></div>
                </div>
             </section>
             <section id="stock" class="page">
@@ -233,7 +1524,58 @@
                   </div>
                </div>
             </section>
+            <section id="printerSettings" class="page">
+               <div class="panel" style="margin-bottom:16px">
+                  <div class="section-head" style="align-items:center;flex-wrap:wrap">
+                     <div>
+                        <p class="eyebrow">KASIR / PERANGKAT</p>
+                        <h3 style="margin-bottom:4px">Setting Printer Thermal</h3>
+                        <p class="muted" style="margin:0;font-size:12px">Cetak struk menggunakan dialog cetak bawaan
+                           Android maupun browser desktop.</p>
+                     </div><span class="status-pill">Pengaturan perangkat ini</span>
+                  </div>
+                  <div class="form-grid"
+                     style="margin-top:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+                     <div class="field"><label for="receiptPaperSize">Ukuran Kertas</label><select id="receiptPaperSize"
+                           disabled>
+                           <option value="58" selected>Thermal 58 mm</option>
+                        </select><small class="muted">Ukuran struk dikunci pada 58 mm.</small></div>
+                     <div class="field"><label>Metode Cetak</label>
+                        <div class="form-control"
+                           style="padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface,#fff)">
+                           Dialog cetak Android / browser</div><small class="muted">Pilih printer Bluetooth dari daftar
+                           printer pada dialog cetak Android.</small>
+                     </div>
+                  </div>
+                  <div class="actions" style="margin-top:12px;flex-wrap:wrap"><button id="testPrinterBtn"
+                        class="btn btn-gold" type="button">🖨 Test Print</button></div>
+                  <p id="printerSettingMessage" class="muted" style="font-size:12px;margin:12px 0 0">Siapkan printer
+                     Bluetooth 58 mm, lalu pilih printer tersebut pada dialog cetak.</p>
+               </div>
+               <div class="panel">
+                  <h3>Panduan Cetak Android</h3>
+                  <ol class="muted" style="font-size:12px;line-height:1.8;padding-left:20px">
+                     <li>Pastikan printer thermal 58 mm sudah dipasangkan melalui Pengaturan Bluetooth Android.</li>
+                     <li>Tekan Cetak Struk dari Kasir atau Cetak Ulang dari Riwayat Transaksi.</li>
+                     <li>Dialog cetak Android akan terbuka. Pilih printer Bluetooth yang tersedia pada daftar printer.
+                     </li>
+                     <li>Pastikan ukuran kertas 58 mm, lalu lanjutkan proses cetak.</li>
+                  </ol>
+                  <p class="muted" style="font-size:11px">Ketersediaan printer Bluetooth pada dialog bergantung pada
+                     dukungan Android, browser, dan layanan cetak yang terpasang di perangkat.</p>
+               </div>
+            </section>
             <section id="pos" class="page">
+               <div class="panel"
+                  style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+                  <div>
+                     <h3 style="margin-bottom:4px">Struk Penjualan</h3>
+                     <p class="muted" style="margin:0;font-size:12px">Printer diatur melalui Kasir → Setting Printer.
+                     </p>
+                  </div>
+                  <button id="reprintLastTransactionBtn" class="btn btn-gold" type="button">↻ Reprint Transaksi
+                     Terakhir</button>
+               </div>
                <div class="pos-grid">
                   <div class="panel">
                      <h3>Pilih Produk</h3>
@@ -324,6 +1666,38 @@
                      <p id="checkoutMessage" style="font-size:11px"></p>
                   </div>
                </div>
+               <div class="panel" style="margin-top:18px">
+                  <div class="section-head" style="align-items:flex-start">
+                     <div>
+                        <h3 style="margin-bottom:5px">Cancel Transaksi</h3>
+                        <p class="muted" style="margin:0;font-size:12px">Cari transaksi menggunakan nomor transaksi/kode
+                           invoice. Transaksi yang dibatalkan tetap tersimpan di laporan.</p>
+                     </div>
+                  </div>
+                  <div class="correction-grid" style="grid-template-columns:minmax(0,1fr) auto">
+                     <div class="field"><label>Kode / Nomor Transaksi</label><input id="cancelInvoiceSearch"
+                           autocomplete="off" placeholder="Masukkan kode transaksi / invoice"></div>
+                     <div class="field" style="align-self:end"><button id="cancelSearchBtn" class="btn btn-gold"
+                           type="button">Cari Transaksi</button></div>
+                  </div>
+                  <p id="cancelSearchMessage" class="muted" style="font-size:12px"></p>
+                  <div id="cancelTransactionDetails" class="hidden" style="margin-top:12px">
+                     <div id="cancelTransactionSummary" class="correction-summary"></div>
+                     <div class="field" style="margin-top:12px"><label>Alasan Cancel Transaksi (wajib)</label><textarea
+                           id="cancelReason" rows="2" maxlength="300"
+                           placeholder="Tuliskan alasan pembatalan transaksi secara jelas"></textarea></div>
+                     <div class="field"><label>Password Admin (wajib)</label><input id="cancelAdminPassword"
+                           type="password" autocomplete="new-password" placeholder="Masukkan password akun Admin"></div>
+                     <p class="muted" style="font-size:11px">Password diverifikasi langsung ke Firebase Authentication
+                        menggunakan akun Admin. Sesi kasir yang sedang aktif tidak diganti. Nilai pembayaran dibalik
+                        dalam laporan; pengembalian uang tunai atau refund QRIS secara fisik tetap dilakukan melalui
+                        metode pembayaran terkait.</p>
+                     <p id="cancelEligibilityMessage" class="muted" style="font-size:12px"></p>
+                     <div class="actions"><button id="cancelTransactionBtn" class="btn btn-danger"
+                           type="button">Batalkan Transaksi</button></div>
+                  </div>
+                  <p id="cancelActionMessage" style="font-size:12px"></p>
+               </div>
             </section>
             <section id="history" class="page">
                <div class="section-head">
@@ -361,8 +1735,9 @@
                               <th>Status</th>
                               <th>Total</th>
                               <th>Struk</th>
-                              <th>Aksi</th>
+                              <th>Koreksi</th>
                               <th>Keterangan</th>
+                              <th>User</th>
                            </tr>
                         </thead>
                         <tbody id="historyTable"></tbody>
@@ -581,7 +1956,6 @@ Gunakan kode promo ..."></textarea>
          <div id="zoomCaption" class="zoom-caption">Klik area gelap atau tombol × untuk menutup</div>
       </div>
       <script type="module" src="script.js"></script>
-
    </body>
 
 </html>
