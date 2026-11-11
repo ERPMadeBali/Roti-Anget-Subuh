@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -126,6 +127,7 @@
                            class="sub-dot">—</span> Seting Promo</button><button class="nav-sub"
                         data-page="history"><span class="sub-dot">—</span> Riwayat Transaksi</button><button
                         class="nav-sub" data-page="soStock"><span class="sub-dot">—</span> SO Stock</button><button
+                        class="nav-sub" data-page="summaryInputStock"><span class="sub-dot">—</span> Summary data Input Stock</button><button
                         class="nav-sub" data-page="customers"><span class="sub-dot">—</span> Data
                         Konsumen</button><button class="nav-sub" data-page="promoBlast"><span class="sub-dot">—</span>
                         Blast Promo</button></div>
@@ -227,7 +229,9 @@
                      type="button" class="module-hub-card" data-hub-target="soStock"><span
                         class="module-hub-icon">📋</span><strong>SO Stock</strong><small>Lakukan stock
                         opname.</small></button><button type="button" class="module-hub-card"
-                     data-hub-target="customers"><span class="module-hub-icon">👥</span><strong>Data
+                     data-hub-target="summaryInputStock"><span class="module-hub-icon">📦</span><strong>Summary data
+                        Input Stock</strong><small>Lihat, koreksi, dan hapus riwayat penambahan stock.</small></button><button
+                     type="button" class="module-hub-card" data-hub-target="customers"><span class="module-hub-icon">👥</span><strong>Data
                         Konsumen</strong><small>Kelola data konsumen.</small></button><button type="button"
                      class="module-hub-card" data-hub-target="promoBlast"><span
                         class="module-hub-icon">📣</span><strong>Blast Promo</strong><small>Kelola pengiriman informasi
@@ -1068,18 +1072,26 @@
             <section id="inputSales" class="page admin-only">
                <div class="panel">
                   <h3>Input Sales</h3>
-                  <p class="muted" style="font-size:11px">Catat nilai penjualan berdasarkan store dan tanggal sales.</p>
+                  <p class="muted" style="font-size:11px">Catat beberapa produk terjual untuk satu Store dan tanggal yang sama. Value dihitung otomatis dari harga Master Produk × Qty.</p>
                   <form id="salesForm">
                      <div class="form-grid">
-                        <div class="field"><label>Select Store</label><select id="salesStore" required>
-                              <option value="">Pilih Store...</option>
-                           </select></div>
-                        <div class="field"><label>Sales Value (Rp)</label><input id="salesValue" type="number" min="1"
-                              step="1" required placeholder="Contoh: 1000000"></div>
-                        <div class="field"><label>Tanggal Sales</label><input id="salesDate" type="date" required></div>
+                        <div class="field"><label for="salesDate">Select Tanggal</label><input id="salesDate" type="date" required></div>
+                        <div class="field"><label for="salesStore">Select Store</label><select id="salesStore" required><option value="">Pilih Store...</option></select></div>
                      </div>
-                     <div class="actions"><button class="btn btn-primary" type="submit">Save Data</button><button
-                           class="btn btn-light" type="reset">Reset</button></div>
+                     <div class="sales-items-heading"><strong>Detail Produk Terjual</strong><button type="button" class="btn btn-light" id="addSalesItem">＋ Add Item</button></div>
+                     <div class="table-wrap">
+                        <table class="sales-entry-table"><thead><tr><th style="min-width:190px">Produk</th><th style="min-width:105px">Qty Terjual</th><th style="min-width:140px;text-align:right">Value (Rp)</th><th>Aksi</th></tr></thead>
+                           <tbody id="salesItemsBody"></tbody>
+                        </table>
+                     </div>
+                     <div class="form-grid" style="margin-top:14px">
+                        <div class="field"><label for="salesDiscount">Discount (Rp)</label><input id="salesDiscount" type="number" min="0" step="1" value="0" placeholder="Masukkan discount"></div>
+                        <div class="field"><label for="salesPaymentMethod">Cara Pembayaran</label><select id="salesPaymentMethod" required><option value="CASH">CASH</option><option value="QRIS">QRIS</option></select></div>
+                     </div>
+                     <div class="sales-entry-total"><span>Value Penjualan</span><strong id="salesGrandTotal">Rp 0</strong></div>
+                     <div class="sales-entry-total"><span>Total Discount</span><strong id="salesDiscountValue">Rp 0</strong></div>
+                     <div class="sales-entry-total"><span>Value Diterima</span><strong id="salesNetTotal">Rp 0</strong></div>
+                     <div class="actions"><button class="btn btn-primary" type="submit">Simpan Data</button><button class="btn btn-light" id="resetSalesForm" type="button">Reset</button></div>
                   </form>
                   <p id="salesMessage" class="muted" style="font-size:11px"></p>
                </div>
@@ -1124,9 +1136,10 @@
                      <table>
                         <thead>
                            <tr>
-                              <th>Tanggal Sales</th>
-                              <th>Kode Store</th>
-                              <th>Nama Store</th>
+                              <th>Tgl</th>
+                              <th>Nama Toko</th>
+                              <th>Item Produk</th>
+                              <th>Qty</th>
                               <th>Sales Value</th>
                               <th>Aksi</th>
                            </tr>
@@ -1781,6 +1794,31 @@
                   <p class="muted" style="font-size:11px;margin-top:10px">Qty Terjual dihitung dari item pada transaksi
                      berstatus lunas (PAID / PAID CASH / PAID QRIS). Stock Qty menampilkan stok tersedia saat laporan
                      dibuka, bukan stok historis pada tanggal akhir.</p>
+               </div>
+            </section>
+            <section id="summaryInputStock" class="page admin-only">
+               <div class="panel">
+                  <div class="section-head" style="align-items:center;flex-wrap:wrap">
+                     <div>
+                        <p class="eyebrow">MANAGEMENT / STOCK CONTROL</p>
+                        <h3>Summary data Input Stock</h3>
+                        <p class="muted" style="margin:0">Tinjau dan koreksi catatan penambahan stok dari menu Kasir → Input Stock.</p>
+                     </div>
+                  </div>
+                  <div class="form-grid" style="align-items:end;margin-top:16px">
+                     <div class="field"><label for="summaryStockDate">Tanggal Input Stock</label><input id="summaryStockDate" type="date"></div>
+                     <div class="field"><label>&nbsp;</label><button type="button" class="btn btn-light" id="summaryStockFilter">Tampilkan Data</button></div>
+                  </div>
+                  <p id="summaryStockMessage" class="muted" style="font-size:12px;margin:8px 0"></p>
+                  <div class="table-wrap">
+                     <table>
+                        <thead><tr><th>Tgl Input Stock</th><th>Item Produk</th><th>Qty Input</th><th>Aksi</th></tr></thead>
+                        <tbody id="summaryStockTable"><tr><td colspan="4" class="empty">Pilih tanggal untuk menampilkan data input stock.</td></tr></tbody>
+                     </table>
+                  </div>
+                  <div class="actions" style="justify-content:flex-end;margin-top:16px">
+                     <button type="button" class="btn btn-primary" id="saveSummaryStockChanges">Save Perubahan</button>
+                  </div>
                </div>
             </section>
             <section id="customers" class="page admin-only">
