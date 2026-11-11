@@ -2815,3 +2815,18 @@
          .nav .nav-parent .nav-chevron {
             display: none !important;
          }
+      
+          .sales-items-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 8px}
+          .sales-entry-table{min-width:620px}
+          .sales-entry-table select,.sales-entry-table input{width:100%;min-height:42px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:#fff}
+          .sales-entry-total{display:flex;justify-content:flex-end;align-items:center;gap:24px;padding:15px 4px;border-top:1px solid var(--line);font-size:13px}
+          .sales-entry-total strong{font:700 20px 'Playfair Display';color:var(--gold)}
+          .sales-entry-table td{vertical-align:middle}
+          @media(max-width:680px){.sales-items-heading{align-items:stretch;flex-direction:column}.sales-items-heading .btn{width:100%}.sales-entry-total{justify-content:space-between}}
+
+/* Management - Summary data Input Stock */
+#summaryInputStock .table-wrap { overflow-x:auto; }
+#summaryInputStock table { min-width:620px; }
+#summaryInputStock td, #summaryInputStock th { vertical-align:middle; }
+#summaryInputStock .actions .btn { padding:7px 11px; font-size:12px; }
+#summaryInputStock input[type="number"] { width:100px; min-width:82px; }
