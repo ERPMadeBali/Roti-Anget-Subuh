@@ -23,7 +23,7 @@
             <div>
                <h1>Freshly baked.<br>Beautifully served.</h1>
                <p>Kelola produk, persediaan, dan transaksi penjualan roti dalam satu sistem kasir yang elegan.</p>
-            </div><small style="color:#c9b99f;letter-spacing:2px">BAKERY POS • LUXURY EDITION</small>
+            </div><small style="color:#c9b99f;letter-spacing:2px">BAKERY POS • LUXURY EDITION</small><small style="color:#c9b99f;letter-spacing:2px">VER.01.XI.2026</small>
          </div>
          <div class="login-panel">
             <div class="login-box">
@@ -72,6 +72,7 @@
                <img class="sidebar-logo" src="logo.png" alt="Logo ROTI ANGET SUBUH">
                <div class="sidebar-brand-name">ROTI ANGET SUBUH</div>
                <small>POINT OF SALE</small>
+               <small>VER.01.XI.2026</small>
             </div>
             <div class="nav-label">MAIN MENU</div>
             <nav class="nav">
@@ -117,7 +118,7 @@
                   <div class="nav-children" id="cashierChildren"><button class="nav-sub" data-page="pos"><span
                            class="sub-dot">—</span> Penjualan</button><button class="nav-sub" data-page="stock"><span
                            class="sub-dot">—</span> Input Stock</button><button class="nav-sub"
-                        data-page="printerSettings"><span class="sub-dot">—</span> Setting Printer</button></div>
+                        data-page="printerSettings"><span class="sub-dot">—</span> Setting Printer</button><button class="nav-sub" data-page="reportTransactions"><span class="sub-dot">—</span> Report Transaksi Penjualan</button></div>
                </div>
                <button class="admin-only" data-page="accounting"><span class="ico">▤</span> Accounting</button>
                <div class="nav-group admin-only" id="managementGroup"><button type="button" class="nav-parent"
@@ -127,8 +128,8 @@
                            class="sub-dot">—</span> Seting Promo</button><button class="nav-sub"
                         data-page="history"><span class="sub-dot">—</span> Riwayat Transaksi</button><button
                         class="nav-sub" data-page="soStock"><span class="sub-dot">—</span> SO Stock</button><button
-                        class="nav-sub" data-page="summaryInputStock"><span class="sub-dot">—</span> Summary data Input Stock</button><button
-                        class="nav-sub" data-page="customers"><span class="sub-dot">—</span> Data
+                        class="nav-sub" data-page="summaryInputStock"><span class="sub-dot">—</span> Summary data Input
+                        Stock</button><button class="nav-sub" data-page="customers"><span class="sub-dot">—</span> Data
                         Konsumen</button><button class="nav-sub" data-page="promoBlast"><span class="sub-dot">—</span>
                         Blast Promo</button></div>
                </div>
@@ -211,7 +212,7 @@
                         class="module-hub-icon">🛒</span><strong>Penjualan</strong><small>Buka halaman transaksi
                         kasir.</small></button><button type="button" class="module-hub-card"
                      data-hub-target="stock"><span class="module-hub-icon">📦</span><strong>Input
-                        Stock</strong><small>Catat penambahan stock produk.</small></button><button type="button"
+                        Stock</strong><small>Catat penambahan stock produk.</small></button><button type="button" class="module-hub-card" data-hub-target="reportTransactions"><span class="module-hub-icon">📊</span><strong>Report Transaksi Penjualan</strong><small>Laporan transaksi dari Kasir berdasarkan periode tanggal.</small></button><button type="button"
                      class="module-hub-card" data-hub-target="printerSettings"><span
                         class="module-hub-icon">🖨️</span><strong>Setting Printer</strong><small>Atur ukuran kertas,
                         pairing, dan tes cetak.</small></button></div>
@@ -230,8 +231,9 @@
                         class="module-hub-icon">📋</span><strong>SO Stock</strong><small>Lakukan stock
                         opname.</small></button><button type="button" class="module-hub-card"
                      data-hub-target="summaryInputStock"><span class="module-hub-icon">📦</span><strong>Summary data
-                        Input Stock</strong><small>Lihat, koreksi, dan hapus riwayat penambahan stock.</small></button><button
-                     type="button" class="module-hub-card" data-hub-target="customers"><span class="module-hub-icon">👥</span><strong>Data
+                        Input Stock</strong><small>Lihat, koreksi, dan hapus riwayat penambahan
+                        stock.</small></button><button type="button" class="module-hub-card"
+                     data-hub-target="customers"><span class="module-hub-icon">👥</span><strong>Data
                         Konsumen</strong><small>Kelola data konsumen.</small></button><button type="button"
                      class="module-hub-card" data-hub-target="promoBlast"><span
                         class="module-hub-icon">📣</span><strong>Blast Promo</strong><small>Kelola pengiriman informasi
@@ -1072,26 +1074,48 @@
             <section id="inputSales" class="page admin-only">
                <div class="panel">
                   <h3>Input Sales</h3>
-                  <p class="muted" style="font-size:11px">Catat beberapa produk terjual untuk satu Store dan tanggal yang sama. Value dihitung otomatis dari harga Master Produk × Qty.</p>
+                  <p class="muted" style="font-size:11px">Catat beberapa produk terjual untuk satu Store dan tanggal
+                     yang sama. Value dihitung otomatis dari harga Master Produk × Qty.</p>
                   <form id="salesForm">
                      <div class="form-grid">
-                        <div class="field"><label for="salesDate">Select Tanggal</label><input id="salesDate" type="date" required></div>
-                        <div class="field"><label for="salesStore">Select Store</label><select id="salesStore" required><option value="">Pilih Store...</option></select></div>
+                        <div class="field"><label for="salesDate">Select Tanggal</label><input id="salesDate"
+                              type="date" required></div>
+                        <div class="field"><label for="salesStore">Select Store</label><select id="salesStore" required>
+                              <option value="">Pilih Store...</option>
+                           </select></div>
                      </div>
-                     <div class="sales-items-heading"><strong>Detail Produk Terjual</strong><button type="button" class="btn btn-light" id="addSalesItem">＋ Add Item</button></div>
+                     <div class="sales-items-heading"><strong>Detail Produk Terjual</strong><button type="button"
+                           class="btn btn-light" id="addSalesItem">＋ Add Item</button></div>
                      <div class="table-wrap">
-                        <table class="sales-entry-table"><thead><tr><th style="min-width:190px">Produk</th><th style="min-width:105px">Qty Terjual</th><th style="min-width:140px;text-align:right">Value (Rp)</th><th>Aksi</th></tr></thead>
+                        <table class="sales-entry-table">
+                           <thead>
+                              <tr>
+                                 <th style="min-width:190px">Produk</th>
+                                 <th style="min-width:105px">Qty Terjual</th>
+                                 <th style="min-width:140px;text-align:right">Value (Rp)</th>
+                                 <th>Aksi</th>
+                              </tr>
+                           </thead>
                            <tbody id="salesItemsBody"></tbody>
                         </table>
                      </div>
                      <div class="form-grid" style="margin-top:14px">
-                        <div class="field"><label for="salesDiscount">Discount (Rp)</label><input id="salesDiscount" type="number" min="0" step="1" value="0" placeholder="Masukkan discount"></div>
-                        <div class="field"><label for="salesPaymentMethod">Cara Pembayaran</label><select id="salesPaymentMethod" required><option value="CASH">CASH</option><option value="QRIS">QRIS</option></select></div>
+                        <div class="field"><label for="salesDiscount">Discount (Rp)</label><input id="salesDiscount"
+                              type="number" min="0" step="1" value="0" placeholder="Masukkan discount"></div>
+                        <div class="field"><label for="salesPaymentMethod">Cara Pembayaran</label><select
+                              id="salesPaymentMethod" required>
+                              <option value="CASH">CASH</option>
+                              <option value="QRIS">QRIS</option>
+                           </select></div>
                      </div>
-                     <div class="sales-entry-total"><span>Value Penjualan</span><strong id="salesGrandTotal">Rp 0</strong></div>
-                     <div class="sales-entry-total"><span>Total Discount</span><strong id="salesDiscountValue">Rp 0</strong></div>
-                     <div class="sales-entry-total"><span>Value Diterima</span><strong id="salesNetTotal">Rp 0</strong></div>
-                     <div class="actions"><button class="btn btn-primary" type="submit">Simpan Data</button><button class="btn btn-light" id="resetSalesForm" type="button">Reset</button></div>
+                     <div class="sales-entry-total"><span>Value Penjualan</span><strong id="salesGrandTotal">Rp
+                           0</strong></div>
+                     <div class="sales-entry-total"><span>Total Discount</span><strong id="salesDiscountValue">Rp
+                           0</strong></div>
+                     <div class="sales-entry-total"><span>Value Diterima</span><strong id="salesNetTotal">Rp 0</strong>
+                     </div>
+                     <div class="actions"><button class="btn btn-primary" type="submit">Simpan Data</button><button
+                           class="btn btn-light" id="resetSalesForm" type="button">Reset</button></div>
                   </form>
                   <p id="salesMessage" class="muted" style="font-size:11px"></p>
                </div>
@@ -1759,6 +1783,28 @@
                   <div class="table-pagination" id="historyPagination"></div>
                </div>
             </section>
+            
+            <section id="reportTransactions" class="page">
+               <div class="panel">
+                  <div class="report-transaction-filters">
+                     <div class="field"><label>Start Date</label><input type="date" id="reportTransactionStart"></div>
+                     <div class="field"><label>End Date</label><input type="date" id="reportTransactionEnd"></div>
+                     <button class="btn btn-gold" id="reportTransactionFilter" type="button">Tampilkan Data</button>
+                     <button class="btn btn-light" id="reportTransactionToday" type="button">Hari Ini</button>
+                     <button class="btn btn-primary" id="reportTransactionPrint" type="button">🖨 Print / Simpan PDF</button>
+                  </div>
+                  <p class="report-transaction-note">Data bersumber dari transaksi Kasir. Input Sales Marketing tidak disertakan dalam laporan ini.</p>
+                  <div class="report-transaction-summary">
+                     <span>Periode<strong id="reportTransactionPeriod">-</strong></span>
+                     <span>Jumlah transaksi<strong id="reportTransactionCount">0</strong></span>
+                     <span>Total penjualan<strong id="reportTransactionRevenue">Rp 0</strong></span>
+                  </div>
+                  <div class="table-wrap"><table class="report-transaction-table">
+                     <thead><tr><th>Tanggal</th><th>No. Transaksi</th><th>Item</th><th>Qty</th><th>Metode</th><th>Status</th><th>Total</th><th>Keterangan</th><th>User</th></tr></thead>
+                     <tbody id="reportTransactionTable"><tr><td colspan="9" class="empty">Pilih periode tanggal untuk menampilkan data.</td></tr></tbody>
+                  </table></div>
+               </div>
+            </section>
             <section id="soStock" class="page admin-only">
                <div class="section-head">
                   <div>
@@ -1802,18 +1848,32 @@
                      <div>
                         <p class="eyebrow">MANAGEMENT / STOCK CONTROL</p>
                         <h3>Summary data Input Stock</h3>
-                        <p class="muted" style="margin:0">Tinjau dan koreksi catatan penambahan stok dari menu Kasir → Input Stock.</p>
+                        <p class="muted" style="margin:0">Tinjau dan koreksi catatan penambahan stok dari menu Kasir →
+                           Input Stock.</p>
                      </div>
                   </div>
                   <div class="form-grid" style="align-items:end;margin-top:16px">
-                     <div class="field"><label for="summaryStockDate">Tanggal Input Stock</label><input id="summaryStockDate" type="date"></div>
-                     <div class="field"><label>&nbsp;</label><button type="button" class="btn btn-light" id="summaryStockFilter">Tampilkan Data</button></div>
+                     <div class="field"><label for="summaryStockDate">Tanggal Input Stock</label><input
+                           id="summaryStockDate" type="date"></div>
+                     <div class="field"><label>&nbsp;</label><button type="button" class="btn btn-light"
+                           id="summaryStockFilter">Tampilkan Data</button></div>
                   </div>
                   <p id="summaryStockMessage" class="muted" style="font-size:12px;margin:8px 0"></p>
                   <div class="table-wrap">
                      <table>
-                        <thead><tr><th>Tgl Input Stock</th><th>Item Produk</th><th>Qty Input</th><th>Aksi</th></tr></thead>
-                        <tbody id="summaryStockTable"><tr><td colspan="4" class="empty">Pilih tanggal untuk menampilkan data input stock.</td></tr></tbody>
+                        <thead>
+                           <tr>
+                              <th>Tgl Input Stock</th>
+                              <th>Item Produk</th>
+                              <th>Qty Input</th>
+                              <th>Aksi</th>
+                           </tr>
+                        </thead>
+                        <tbody id="summaryStockTable">
+                           <tr>
+                              <td colspan="4" class="empty">Pilih tanggal untuk menampilkan data input stock.</td>
+                           </tr>
+                        </tbody>
                      </table>
                   </div>
                   <div class="actions" style="justify-content:flex-end;margin-top:16px">
