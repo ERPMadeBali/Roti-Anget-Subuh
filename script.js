@@ -1,8 +1,15 @@
+
+
          import {initializeApp, deleteApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
          import {getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, setPersistence, browserSessionPersistence, inMemoryPersistence} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
          import {getFirestore, collection, doc, setDoc, addDoc, getDocs, getDoc, updateDoc, runTransaction, query, where, orderBy, limit, serverTimestamp, deleteDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+         /* 1) GANTI konfigurasi di bawah dengan Firebase Console > Project settings > Your apps.
+            2) Aktifkan Authentication > Email/Password, Firestore Database, dan Storage.
+            3) Buat user kasir dari Authentication > Users. Jangan menyimpan password di file ini. */
+         // Ganti dengan URL gambar GitHub RAW milik toko. Kosongkan untuk memakai gambar bawaan.
          const LOGIN_HERO_IMAGE_URL = 'https://erpmadebali.github.io/Roti-Anget-Subuh/logo.jpeg';
+
          const firebaseConfig= {
             apiKey: "AIzaSyDhWWLBX2DqO3Z0JW5E0TlI-wCuqrq98Pg",
                authDomain: "roti-anget-subuh.firebaseapp.com",
@@ -12,7 +19,6 @@
                appId: "1:697822931254:web:365fbad4f1964b995a2b97",
                measurementId: "G-QD1FTD2M91"
          };
-
          /* URL gambar QRIS statis resmi milik toko (opsional). Untuk QRIS dinamis, integrasikan API acquirer/payment gateway. */
          const QRIS_IMAGE_URL = "data:image/png;base64,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"; // QR tampilan yang dipilih pengguna; uji scan sebelum transaksi nyata.
          const MERCHANT_QRIS_ID = "ID1025383607252";
@@ -925,11 +931,20 @@
          $('resetHistoryBtn').onclick = () => setHistoryToday();
          $('historyPageSize').onchange = () => {historyPageSize = Number($('historyPageSize').value) || 10; historyCurrentPage = 1; renderHistory();};
          (function initHistoryDateRange() {const now = new Date(), key = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`; $('historyStart').value = key; $('historyEnd').value = key;})();
+         // Menampilkan snapshot promo dari transaksi, tidak bergantung pada status promo master saat ini.
+         function transactionPromoLabel(t) {
+            const name = String(t?.promoName || '').trim();
+            const percent = Number(t?.discountPercent) || 0;
+            if (name) return `${name}${percent > 0 ? ` (${percent}%)` : ''}`;
+            if (t?.promoId || percent > 0) return `Promo${percent > 0 ? ` (${percent}%)` : ''}`;
+            return '-';
+         }
+
          function renderHistory() {
             const list = filteredTransactions.slice().sort((a, b) => transactionDateKey(b).localeCompare(transactionDateKey(a)));
             const totalPages = Math.max(1, Math.ceil(list.length / historyPageSize)); historyCurrentPage = Math.min(historyCurrentPage, totalPages);
             const start = (historyCurrentPage - 1) * historyPageSize, visible = list.slice(start, start + historyPageSize);
-            $('historyTable').innerHTML = visible.length ? visible.map(t => {const isMarketing = t._historySource === 'MARKETING'; const items = t.items || []; const itemNames = items.map(x => `<div>${escapeHtml(x.name || x.productName || 'Produk')}</div>`).join(''); const itemQty = items.map(x => `<div style="font-variant-numeric:tabular-nums">${Number(x.qty) || 0}</div>`).join(''); const corrected = Number(t.correctionCount || 0) > 0 || !!t.correctedAt; const cancelled = !isMarketing && (String(t.status || '').toUpperCase() === 'CANCELLED' || !!t.cancelledAt || !!t.cancellation); const reason = String(t.lastCorrectionReason || '').trim(); const cancelReason = String(t.cancelReason || t.cancellation?.reason || '').trim(); const auditText = isMarketing ? `Input Sales Marketing • Store: ${t.storeName || '-'}` : cancelled ? `DIBATALKAN • Alasan: ${cancelReason || 'Tidak tersedia'}${t.cancelledAt ? ' • ' + formatCorrectionDate(t.cancelledAt) : ''}` : corrected ? `Alasan Koreksi: ${reason || 'Alasan tidak tersedia pada data koreksi lama'}${t.correctedAt ? ' • ' + formatCorrectionDate(t.correctedAt) : ''}` : 'Transaksi Normal'; const dateLabel = isMarketing ? (t.salesDate || '-') : formatDate(t.createdAt); const numberLabel = `${isMarketing ? 'MKT • ' : ''}${t.invoice || t.id.slice(-8)}`; const receiptAction = isMarketing ? '<small class="muted">—</small>' : `<button class="btn btn-light" data-receipt="${t.id}" style="padding:6px 9px">Lihat</button>`; const correctionAction = isMarketing ? '<small class="muted">—</small>' : `<button class="btn btn-gold" data-correct="${t.id}" style="padding:6px 9px" ${cancelled ? 'disabled title="Transaksi sudah dibatalkan"' : ''}>Koreksi</button>`; const statusLabel = isMarketing ? 'INPUT SALES' : (t.status || ''); return `<tr><td>${escapeHtml(dateLabel)}</td><td>${escapeHtml(numberLabel)}</td><td><div style="display:grid;gap:5px">${itemNames || '-'}</div></td><td><div style="display:grid;gap:5px;text-align:center;font-weight:700">${itemQty || '-'}</div></td><td><span class="tag">${escapeHtml(t.method || '')}</span></td><td><small>${escapeHtml(statusLabel)}</small></td><td>${rupiah(t.total)}</td><td>${receiptAction}</td><td>${correctionAction}</td><td>${isMarketing ? `<span class="tag">MARKETING</span><br><small>${escapeHtml(auditText)}</small>` : cancelled ? `<span class="tag" style="background:#fde8e7;color:#9b2c25">DIBATALKAN</span><br><small>${escapeHtml(auditText)}</small>` : corrected ? `<span class="tag" style="background:#fff0d8;color:#80520b">SUDAH DIKOREKSI</span><br><small>${escapeHtml(auditText)}</small>` : '<small style="color:#888">Transaksi Normal</small>'}</td><td>${escapeHtml(getTransactionUserLabel(t))}</td></tr>`;}).join('') : '<tr><td colspan="11" class="empty">Tidak ada transaksi pada rentang tanggal yang dipilih.</td></tr>';
+            $('historyTable').innerHTML = visible.length ? visible.map(t => {const isMarketing = t._historySource === 'MARKETING'; const items = t.items || []; const itemNames = items.map(x => `<div>${escapeHtml(x.name || x.productName || 'Produk')}</div>`).join(''); const itemQty = items.map(x => `<div style="font-variant-numeric:tabular-nums">${Number(x.qty) || 0}</div>`).join(''); const corrected = Number(t.correctionCount || 0) > 0 || !!t.correctedAt; const cancelled = !isMarketing && (String(t.status || '').toUpperCase() === 'CANCELLED' || !!t.cancelledAt || !!t.cancellation); const reason = String(t.lastCorrectionReason || '').trim(); const cancelReason = String(t.cancelReason || t.cancellation?.reason || '').trim(); const auditText = isMarketing ? `Input Sales Marketing • Store: ${t.storeName || '-'}` : cancelled ? `DIBATALKAN • Alasan: ${cancelReason || 'Tidak tersedia'}${t.cancelledAt ? ' • ' + formatCorrectionDate(t.cancelledAt) : ''}` : corrected ? `Alasan Koreksi: ${reason || 'Alasan tidak tersedia pada data koreksi lama'}${t.correctedAt ? ' • ' + formatCorrectionDate(t.correctedAt) : ''}` : 'Transaksi Normal'; const dateLabel = isMarketing ? (t.salesDate || '-') : formatDate(t.createdAt); const numberLabel = `${isMarketing ? 'MKT • ' : ''}${t.invoice || t.id.slice(-8)}`; const receiptAction = isMarketing ? '<small class="muted">—</small>' : `<button class="btn btn-light" data-receipt="${t.id}" style="padding:6px 9px">Lihat</button>`; const correctionAction = isMarketing ? '<small class="muted">—</small>' : `<button class="btn btn-gold" data-correct="${t.id}" style="padding:6px 9px" ${cancelled ? 'disabled title="Transaksi sudah dibatalkan"' : ''}>Koreksi</button>`; const statusLabel = isMarketing ? 'INPUT SALES' : (t.status || ''); return `<tr><td>${escapeHtml(dateLabel)}</td><td>${escapeHtml(numberLabel)}</td><td><div style="display:grid;gap:5px">${itemNames || '-'}</div></td><td><div style="display:grid;gap:5px;text-align:center;font-weight:700">${itemQty || '-'}</div></td><td><span class="tag">${escapeHtml(t.method || '')}</span></td><td><small>${escapeHtml(statusLabel)}</small></td><td>${rupiah(t.total)}</td><td>${escapeHtml(transactionPromoLabel(t))}</td><td>${receiptAction}</td><td>${correctionAction}</td><td>${isMarketing ? `<span class="tag">MARKETING</span><br><small>${escapeHtml(auditText)}</small>` : cancelled ? `<span class="tag" style="background:#fde8e7;color:#9b2c25">DIBATALKAN</span><br><small>${escapeHtml(auditText)}</small>` : corrected ? `<span class="tag" style="background:#fff0d8;color:#80520b">SUDAH DIKOREKSI</span><br><small>${escapeHtml(auditText)}</small>` : '<small style="color:#888">Transaksi Normal</small>'}</td><td>${escapeHtml(getTransactionUserLabel(t))}</td></tr>`;}).join('') : '<tr><td colspan="12" class="empty">Tidak ada transaksi pada rentang tanggal yang dipilih.</td></tr>';
             $('historyCount').textContent = list.length; $('historyRevenue').textContent = rupiah(list.filter(t => t._historySource === 'MARKETING' || ['PAID', 'PAID CASH', 'PAID QRIS'].includes(String(t.status || '').toUpperCase())).reduce((sum, t) => sum + (Number(t.total) || 0), 0));
             $('historyPagination').innerHTML = `<span>Menampilkan ${list.length ? start + 1 : 0}–${Math.min(start + historyPageSize, list.length)} dari ${list.length} transaksi sesuai tanggal filter</span><div class="pagination-actions"><button class="btn btn-light" id="historyPrev" type="button" ${historyCurrentPage <= 1 ? 'disabled' : ''}>‹ Sebelumnya</button><span>Halaman ${historyCurrentPage} / ${totalPages}</span><button class="btn btn-light" id="historyNext" type="button" ${historyCurrentPage >= totalPages ? 'disabled' : ''}>Berikutnya ›</button></div>`;
             $('historyPrev').onclick = () => {if (historyCurrentPage > 1) {historyCurrentPage--; renderHistory();} }; $('historyNext').onclick = () => {if (historyCurrentPage < totalPages) {historyCurrentPage++; renderHistory();} };
@@ -937,58 +952,66 @@
             document.querySelectorAll('[data-correct]').forEach(b => b.onclick = () => openCorrectionById(b.dataset.correct));
          }
 
-         
-          // REPORT TRANSAKSI PENJUALAN: sumber hanya koleksi transactions (Kasir), bukan Marketing.
-          let reportTransactionRows = [];
-          function reportTransactionNote(t) {
-             const cancelled = String(t.status || '').toUpperCase() === 'CANCELLED' || !!t.cancelledAt || !!t.cancellation;
-             const corrected = Number(t.correctionCount || 0) > 0 || !!t.correctedAt;
-             if (cancelled) return `DIBATALKAN • ${String(t.cancelReason || t.cancellation?.reason || 'Alasan tidak tersedia')}`;
-             if (corrected) return `SUDAH DIKOREKSI • ${String(t.lastCorrectionReason || 'Koreksi transaksi')}`;
-             return 'Transaksi Normal';
-          }
-          function getReportTransactionRows() {
-             const from=$('reportTransactionStart').value,to=$('reportTransactionEnd').value;
-             return transactions.filter(t=>{const day=transactionDateKey(t);return !!day&&(!from||day>=from)&&(!to||day<=to);})
-                .slice().sort((a,b)=>transactionDateKey(b).localeCompare(transactionDateKey(a)));
-          }
-          function renderReportTransactions() {
-             const from=$('reportTransactionStart').value,to=$('reportTransactionEnd').value;
-             if(from&&to&&from>to){alert('Start Date tidak boleh melewati End Date.');return;}
-             reportTransactionRows=getReportTransactionRows();
-             const paid=['PAID','PAID CASH','PAID QRIS'];
-             const totalSales=reportTransactionRows.filter(t=>paid.includes(String(t.status||'').toUpperCase())).reduce((n,t)=>n+(Number(t.total)||0),0);
-             $('reportTransactionPeriod').textContent=`${from||'Tidak dibatasi'} s/d ${to||'Tidak dibatasi'}`;
-             $('reportTransactionCount').textContent=reportTransactionRows.length.toLocaleString('id-ID');
-             $('reportTransactionRevenue').textContent=rupiah(totalSales);
-             $('reportTransactionTable').innerHTML=reportTransactionRows.length?reportTransactionRows.map(t=>{
-                const items=Array.isArray(t.items)?t.items:[];
-                const names=items.map(x=>escapeHtml(x.name||x.productName||'Produk')).join('<br>')||'-';
-                const qty=items.reduce((n,x)=>n+(Number(x.qty)||0),0);
-                const invoice=t.invoice||String(t.id||'').slice(-8).toUpperCase()||'-';
-                const status=String(t.status||'—');
-                const tag=status.toUpperCase()==='CANCELLED'?'<span class="tag" style="background:#fde8e7;color:#9b2c25">DIBATALKAN</span>':`<span class="tag">${escapeHtml(status)}</span>`;
-                return `<tr><td>${escapeHtml(formatDate(t.createdAt||t.date))}</td><td>${escapeHtml(invoice)}</td><td>${names}</td><td style="text-align:center;font-weight:700">${qty.toLocaleString('id-ID')}</td><td>${escapeHtml(t.method||'-')}</td><td>${tag}</td><td>${rupiah(t.total)}</td><td>${escapeHtml(reportTransactionNote(t))}</td><td>${escapeHtml(getTransactionUserLabel(t))}</td></tr>`;
-             }).join(''):'<tr><td colspan="9" class="empty">Tidak ada transaksi Kasir pada periode tanggal yang dipilih.</td></tr>';
-          }
-          function setReportTransactionToday(){const d=new Date(),k=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;$('reportTransactionStart').value=k;$('reportTransactionEnd').value=k;renderReportTransactions();}
-          $('reportTransactionFilter').onclick=renderReportTransactions;
-          document.querySelector('.nav button[data-page="reportTransactions"]')?.addEventListener('click', renderReportTransactions);
-          $('reportTransactionToday').onclick=setReportTransactionToday;
-          $('reportTransactionPrint').onclick=()=>{
-             const from=$('reportTransactionStart').value,to=$('reportTransactionEnd').value;
-             if(from&&to&&from>to){alert('Start Date tidak boleh melewati End Date.');return;}
-             const list=getReportTransactionRows(),paid=['PAID','PAID CASH','PAID QRIS'];
-             const totalSales=list.filter(t=>paid.includes(String(t.status||'').toUpperCase())).reduce((n,t)=>n+(Number(t.total)||0),0);
-             const rows=list.map(t=>{const items=Array.isArray(t.items)?t.items:[],names=items.map(x=>escapeHtml(x.name||x.productName||'Produk')).join('<br>')||'-',qty=items.reduce((n,x)=>n+(Number(x.qty)||0),0);
-                return `<tr><td>${escapeHtml(formatDate(t.createdAt||t.date))}</td><td>${escapeHtml(t.invoice||String(t.id||'').slice(-8).toUpperCase())}</td><td>${names}</td><td>${qty}</td><td>${escapeHtml(t.method||'-')}</td><td>${escapeHtml(t.status||'-')}</td><td>${rupiah(t.total)}</td><td>${escapeHtml(reportTransactionNote(t))}</td><td>${escapeHtml(getTransactionUserLabel(t))}</td></tr>`;}).join('');
-             const period=`${from||'Tidak dibatasi'} s/d ${to||'Tidak dibatasi'}`;
-             const body=`<h1>ROTI ANGET SUBUH</h1><h2>REPORT TRANSAKSI PENJUALAN</h2><p class="center">Periode: ${escapeHtml(period)}</p><p>Jumlah transaksi: <b>${list.length}</b> | Total penjualan: <b>${rupiah(totalSales)}</b></p><table><thead><tr><th>Tanggal</th><th>No. Transaksi</th><th>Item</th><th>Qty</th><th>Metode</th><th>Status</th><th>Total</th><th>Keterangan</th><th>User</th></tr></thead><tbody>${rows||'<tr><td colspan="9" style="text-align:center">Tidak ada transaksi Kasir pada periode ini.</td></tr>'}</tbody></table><h3 style="text-align:right">Total Penjualan: ${rupiah(totalSales)}</h3>`;
-             printDocument('Report Transaksi Penjualan',body);
-          };
-          (function initReportTransactionDates(){const d=new Date(),k=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;$('reportTransactionStart').value=k;$('reportTransactionEnd').value=k;})();
 
-          // LAPORAN SO STOCK: qty terjual dari transaksi lunas dalam periode tanggal.
+         // REPORT TRANSAKSI PENJUALAN: sumber hanya koleksi transactions (Kasir), bukan Marketing.
+         let reportTransactionRows = [];
+         function reportTransactionNote(t) {
+            const cancelled = String(t.status || '').toUpperCase() === 'CANCELLED' || !!t.cancelledAt || !!t.cancellation;
+            const corrected = Number(t.correctionCount || 0) > 0 || !!t.correctedAt;
+            if (cancelled) return `DIBATALKAN • ${String(t.cancelReason || t.cancellation?.reason || 'Alasan tidak tersedia')}`;
+            if (corrected) return `SUDAH DIKOREKSI • ${String(t.lastCorrectionReason || 'Koreksi transaksi')}`;
+            return 'Transaksi Normal';
+         }
+         function getReportTransactionRows() {
+            const from = $('reportTransactionStart').value, to = $('reportTransactionEnd').value;
+            return transactions.filter(t => {const day = transactionDateKey(t); return !!day && (!from || day >= from) && (!to || day <= to);})
+               .slice().sort((a, b) => transactionDateKey(b).localeCompare(transactionDateKey(a)));
+         }
+         function renderReportTransactions() {
+            const from = $('reportTransactionStart').value, to = $('reportTransactionEnd').value;
+            if (from && to && from > to) {alert('Start Date tidak boleh melewati End Date.'); return;}
+            reportTransactionRows = getReportTransactionRows();
+            const paid = ['PAID', 'PAID CASH', 'PAID QRIS'];
+            const totalSales = reportTransactionRows.filter(t => paid.includes(String(t.status || '').toUpperCase())).reduce((n, t) => n + (Number(t.total) || 0), 0);
+            $('reportTransactionPeriod').textContent = `${from || 'Tidak dibatasi'} s/d ${to || 'Tidak dibatasi'}`;
+            $('reportTransactionCount').textContent = reportTransactionRows.length.toLocaleString('id-ID');
+            $('reportTransactionRevenue').textContent = rupiah(totalSales);
+            $('reportTransactionTable').innerHTML = reportTransactionRows.length ? reportTransactionRows.map(t => {
+               const items = Array.isArray(t.items) ? t.items : [];
+               const names = items.map(x => escapeHtml(x.name || x.productName || 'Produk')).join('<br>') || '-';
+               const qty = items.reduce((n, x) => n + (Number(x.qty) || 0), 0);
+               const invoice = t.invoice || String(t.id || '').slice(-8).toUpperCase() || '-';
+               const status = String(t.status || '—');
+               const tag = status.toUpperCase() === 'CANCELLED' ? '<span class="tag" style="background:#fde8e7;color:#9b2c25">DIBATALKAN</span>' : `<span class="tag">${escapeHtml(status)}</span>`;
+               return `<tr><td>${escapeHtml(formatDate(t.createdAt || t.date))}</td><td>${escapeHtml(invoice)}</td><td>${names}</td><td style="text-align:center;font-weight:700">${qty.toLocaleString('id-ID')}</td><td>${escapeHtml(t.method || '-')}</td><td>${tag}</td><td>${rupiah(t.total)}</td><td>${escapeHtml(transactionPromoLabel(t))}</td><td>${escapeHtml(reportTransactionNote(t))}</td><td>${escapeHtml(getTransactionUserLabel(t))}</td></tr>`;
+            }).join('') : '<tr><td colspan="10" class="empty">Tidak ada transaksi Kasir pada periode tanggal yang dipilih.</td></tr>';
+         }
+         function setReportTransactionToday() {const d = new Date(), k = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; $('reportTransactionStart').value = k; $('reportTransactionEnd').value = k; renderReportTransactions();}
+         $('reportTransactionFilter').onclick = renderReportTransactions;
+         document.querySelector('.nav button[data-page="reportTransactions"]')?.addEventListener('click', renderReportTransactions);
+         $('reportTransactionToday').onclick = setReportTransactionToday;
+         $('reportTransactionPrint').onclick = () => {
+            const from = $('reportTransactionStart').value, to = $('reportTransactionEnd').value;
+            if (from && to && from > to) {alert('Start Date tidak boleh melewati End Date.'); return;}
+            const list = getReportTransactionRows(), paid = ['PAID', 'PAID CASH', 'PAID QRIS'];
+            const isCancelledReportTransaction = t => String(t.status || '').toUpperCase() === 'CANCELLED' || !!t.cancelledAt || !!t.cancellation;
+            const paidRows = list.filter(t => !isCancelledReportTransaction(t) && paid.includes(String(t.status || '').toUpperCase()));
+            const cancelledRows = list.filter(isCancelledReportTransaction);
+            const totalSales = paidRows.reduce((n, t) => n + (Number(t.total) || 0), 0);
+            const totalCancelled = cancelledRows.reduce((n, t) => n + (Number(t.total) || 0), 0);
+            const totalQris = paidRows.filter(t => String(t.method || '').toUpperCase().includes('QRIS') || String(t.status || '').toUpperCase() === 'PAID QRIS').reduce((n, t) => n + (Number(t.total) || 0), 0);
+            const totalCash = paidRows.filter(t => String(t.method || '').toUpperCase().includes('CASH') || String(t.status || '').toUpperCase() === 'PAID CASH').reduce((n, t) => n + (Number(t.total) || 0), 0);
+            const rows = list.map(t => {
+               const items = Array.isArray(t.items) ? t.items : [], names = items.map(x => escapeHtml(x.name || x.productName || 'Produk')).join('<br>') || '-', qty = items.reduce((n, x) => n + (Number(x.qty) || 0), 0);
+               return `<tr><td>${escapeHtml(formatDate(t.createdAt || t.date))}</td><td>${escapeHtml(t.invoice || String(t.id || '').slice(-8).toUpperCase())}</td><td>${names}</td><td>${qty}</td><td>${escapeHtml(t.method || '-')}</td><td>${escapeHtml(t.status || '-')}</td><td>${rupiah(t.total)}</td><td>${escapeHtml(transactionPromoLabel(t))}</td><td>${escapeHtml(reportTransactionNote(t))}</td><td>${escapeHtml(getTransactionUserLabel(t))}</td></tr>`;
+            }).join('');
+            const period = `${from || 'Tidak dibatasi'} s/d ${to || 'Tidak dibatasi'}`;
+            const body = `<h1>ROTI ANGET SUBUH</h1><h2>REPORT TRANSAKSI PENJUALAN</h2><p class="center">Periode: ${escapeHtml(period)}</p><p>Jumlah transaksi: <b>${list.length}</b> | Total penjualan: <b>${rupiah(totalSales)}</b></p><table><thead><tr><th>Tanggal</th><th>No. Transaksi</th><th>Item</th><th>Qty</th><th>Metode</th><th>Status</th><th>Total</th><th>Promo</th><th>Keterangan</th><th>User</th></tr></thead><tbody>${rows || '<tr><td colspan="10" style="text-align:center">Tidak ada transaksi Kasir pada periode ini.</td></tr>'}</tbody></table><div class="totals" style="text-align:left;max-width:460px;margin:14px 0 0 auto;line-height:1.9"><div><b>Total penjualan lunas:</b> <span style="float:right">${rupiah(totalSales)}</span></div><div><b>Total nilai transaksi dibatalkan (pembalik):</b> <span style="float:right">${rupiah(totalCancelled)}</span></div><div>Pembayaran QRIS <span style="float:right">${rupiah(totalQris)}</span></div><div>Pembayaran CASH <span style="float:right">${rupiah(totalCash)}</span></div></div>`;
+            printDocument('Report Transaksi Penjualan', body);
+         };
+         (function initReportTransactionDates() {const d = new Date(), k = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; $('reportTransactionStart').value = k; $('reportTransactionEnd').value = k;})();
+
+         // LAPORAN SO STOCK: qty terjual dari transaksi lunas dalam periode tanggal.
          function initSOStockDates() {const d = new Date(), k = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; $('soStart').value = k; $('soEnd').value = k;}
          function soDateKey(t) {const d = t.createdAt?.toDate ? t.createdAt.toDate() : (t.date?.toDate ? t.date.toDate() : (t.date ? new Date(t.date) : null)); if (!d || Number.isNaN(d.getTime())) return ''; return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;}
          function getSOStockRows() {const from = $('soStart').value, to = $('soEnd').value, sold = {}; transactions.forEach(t => {const day = soDateKey(t), status = String(t.status || '').toUpperCase(); if (!day || (from && day < from) || (to && day > to) || !['PAID', 'PAID CASH', 'PAID QRIS'].includes(status)) return; (t.items || []).forEach(it => {const id = String(it.id || it.productId || ''); if (id) sold[id] = (sold[id] || 0) + (Number(it.qty) || 0);});}); return products.map(p => ({product: p, qty: sold[p.id] || 0, value: (sold[p.id] || 0) * (Number(p.price) || 0)})).sort((a, b) => String(a.product.code || '').localeCompare(String(b.product.code || '')));}
@@ -1583,4 +1606,5 @@
             if (hubId) addModuleBackButton(target, hubId);
             $('sidebar').classList.remove('open');
          }));
+
       
