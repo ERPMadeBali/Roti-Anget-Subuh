@@ -23,7 +23,8 @@
             <div>
                <h1>Freshly baked.<br>Beautifully served.</h1>
                <p>Kelola produk, persediaan, dan transaksi penjualan roti dalam satu sistem kasir yang elegan.</p>
-            </div><small style="color:#c9b99f;letter-spacing:2px">BAKERY POS • LUXURY EDITION</small><small style="color:#c9b99f;letter-spacing:2px">VER.01.XI.2026</small>
+            </div><small style="color:#c9b99f;letter-spacing:2px">BAKERY POS • LUXURY EDITION</small><small
+               style="color:#c9b99f;letter-spacing:2px">VER.01.XI.2026</small>
          </div>
          <div class="login-panel">
             <div class="login-box">
@@ -118,7 +119,9 @@
                   <div class="nav-children" id="cashierChildren"><button class="nav-sub" data-page="pos"><span
                            class="sub-dot">—</span> Penjualan</button><button class="nav-sub" data-page="stock"><span
                            class="sub-dot">—</span> Input Stock</button><button class="nav-sub"
-                        data-page="printerSettings"><span class="sub-dot">—</span> Setting Printer</button><button class="nav-sub" data-page="reportTransactions"><span class="sub-dot">—</span> Report Transaksi Penjualan</button></div>
+                        data-page="printerSettings"><span class="sub-dot">—</span> Setting Printer</button><button
+                        class="nav-sub" data-page="reportTransactions"><span class="sub-dot">—</span> Report Transaksi
+                        Penjualan</button></div>
                </div>
                <button class="admin-only" data-page="accounting"><span class="ico">▤</span> Accounting</button>
                <div class="nav-group admin-only" id="managementGroup"><button type="button" class="nav-parent"
@@ -212,9 +215,13 @@
                         class="module-hub-icon">🛒</span><strong>Penjualan</strong><small>Buka halaman transaksi
                         kasir.</small></button><button type="button" class="module-hub-card"
                      data-hub-target="stock"><span class="module-hub-icon">📦</span><strong>Input
-                        Stock</strong><small>Catat penambahan stock produk.</small></button><button type="button" class="module-hub-card" data-hub-target="reportTransactions"><span class="module-hub-icon">📊</span><strong>Report Transaksi Penjualan</strong><small>Laporan transaksi dari Kasir berdasarkan periode tanggal.</small></button><button type="button"
-                     class="module-hub-card" data-hub-target="printerSettings"><span
-                        class="module-hub-icon">🖨️</span><strong>Setting Printer</strong><small>Atur ukuran kertas,
+                        Stock</strong><small>Catat penambahan stock produk.</small></button><button type="button"
+                     class="module-hub-card" data-hub-target="reportTransactions"><span
+                        class="module-hub-icon">📊</span><strong>Report
+                        Transaksi Penjualan</strong><small>Laporan transaksi dari Kasir berdasarkan periode
+                        tanggal.</small></button><button type="button" class="module-hub-card"
+                     data-hub-target="printerSettings"><span class="module-hub-icon">🖨️</span><strong>Setting
+                        Printer</strong><small>Atur ukuran kertas,
                         pairing, dan tes cetak.</small></button></div>
             </section>
             <section id="hubManagement" class="page admin-only">
@@ -1771,6 +1778,7 @@
                               <th>Metode</th>
                               <th>Status</th>
                               <th>Total</th>
+                              <th>Promo</th>
                               <th>Struk</th>
                               <th>Koreksi</th>
                               <th>Keterangan</th>
@@ -1783,26 +1791,48 @@
                   <div class="table-pagination" id="historyPagination"></div>
                </div>
             </section>
-            
+
             <section id="reportTransactions" class="page">
                <div class="panel">
                   <div class="report-transaction-filters">
-                     <div class="field"><label>Start Date</label><input type="date" id="reportTransactionStart"></div>
+                     <div class="field"><label>Start Date</label><input type="date" id="reportTransactionStart">
+                     </div>
                      <div class="field"><label>End Date</label><input type="date" id="reportTransactionEnd"></div>
                      <button class="btn btn-gold" id="reportTransactionFilter" type="button">Tampilkan Data</button>
                      <button class="btn btn-light" id="reportTransactionToday" type="button">Hari Ini</button>
-                     <button class="btn btn-primary" id="reportTransactionPrint" type="button">🖨 Print / Simpan PDF</button>
+                     <button class="btn btn-primary" id="reportTransactionPrint" type="button">🖨 Print / Simpan
+                        PDF</button>
                   </div>
-                  <p class="report-transaction-note">Data bersumber dari transaksi Kasir. Input Sales Marketing tidak disertakan dalam laporan ini.</p>
+                  <p class="report-transaction-note">Data bersumber dari transaksi Kasir. Input Sales Marketing tidak
+                     disertakan dalam laporan ini.</p>
                   <div class="report-transaction-summary">
                      <span>Periode<strong id="reportTransactionPeriod">-</strong></span>
                      <span>Jumlah transaksi<strong id="reportTransactionCount">0</strong></span>
                      <span>Total penjualan<strong id="reportTransactionRevenue">Rp 0</strong></span>
                   </div>
-                  <div class="table-wrap"><table class="report-transaction-table">
-                     <thead><tr><th>Tanggal</th><th>No. Transaksi</th><th>Item</th><th>Qty</th><th>Metode</th><th>Status</th><th>Total</th><th>Keterangan</th><th>User</th></tr></thead>
-                     <tbody id="reportTransactionTable"><tr><td colspan="9" class="empty">Pilih periode tanggal untuk menampilkan data.</td></tr></tbody>
-                  </table></div>
+                  <div class="table-wrap">
+                     <table class="report-transaction-table">
+                        <thead>
+                           <tr>
+                              <th>Tanggal</th>
+                              <th>No. Transaksi</th>
+                              <th>Item</th>
+                              <th>Qty</th>
+                              <th>Metode</th>
+                              <th>Status</th>
+                              <th>Total</th>
+                              <th>Promo</th>
+                              <th>Keterangan</th>
+                              <th>User</th>
+                           </tr>
+                        </thead>
+                        <tbody id="reportTransactionTable">
+                           <tr>
+                              <td colspan="10" class="empty">Pilih periode tanggal untuk menampilkan data.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
                </div>
             </section>
             <section id="soStock" class="page admin-only">
